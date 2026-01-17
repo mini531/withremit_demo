@@ -117,41 +117,36 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>일시</th>
-                                            <th>수취인</th>
-                                            <th>송금 금액</th>
-                                            <th>상태</th>
-                                            <th>비고</th>
+                                            <th>날짜</th>
+                                            <th>입금</th>
+                                            <th>출금</th>
+                                            <th>잔액</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>2026.01.15</td>
-                                            <td>Tanaka</td>
-                                            <td>₩ 1,000,000</td>
-                                            <td><span class="db-status-badge success">완료</span></td>
-                                            <td><a href="#" class="db-link">상세보기</a></td>
+                                            <td>₩ 500,000</td>
+                                            <td>-</td>
+                                            <td>₩ 1,250,000</td>
                                         </tr>
                                         <tr>
                                             <td>2026.01.12</td>
-                                            <td>Sato</td>
-                                            <td>₩ 500,000</td>
-                                            <td><span class="db-status-badge progress">진행중</span></td>
-                                            <td><a href="#" class="db-link">취소요청</a></td>
+                                            <td>-</td>
+                                            <td>₩ 1,000,000</td>
+                                            <td>₩ 750,000</td>
                                         </tr>
                                         <tr>
-                                            <td>2026.01.05</td>
-                                            <td>My Account</td>
+                                            <td>2026.01.10</td>
                                             <td>₩ 2,000,000</td>
-                                            <td><span class="db-status-badge success">완료</span></td>
-                                            <td><a href="#" class="db-link">영수증</a></td>
+                                            <td>-</td>
+                                            <td>₩ 1,750,000</td>
                                         </tr>
                                         <tr>
                                             <td>2025.12.30</td>
-                                            <td>Suzuki</td>
-                                            <td>₩ 300,000</td>
-                                            <td><span class="db-status-badge failed">반려</span></td>
-                                            <td><a href="#" class="db-link">사유확인</a></td>
+                                            <td>₩ 250,000</td>
+                                            <td>-</td>
+                                            <td>₩ 0</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -197,11 +192,7 @@
                         <div class="db-info-card db-inquiry-card">
                             <h3 class="db-card-title">접수번호 조회</h3>
                             <p class="db-inquiry-desc">접수번호와 비밀번호를 입력하시면 송금신청상태 조회 및 송금결과보고서를 다운로드 하실 수 있습니다.</p>
-                            <div class="db-inquiry-inputs">
-                                <input type="text" class="db-inquiry-input" placeholder="접수번호">
-                                <input type="password" class="db-inquiry-input" placeholder="비밀번호">
-                            </div>
-                            <button class="btn btn-primary" style="width: 100%; height: 44px; margin-top: 12px;">조회하기</button>
+                            <button class="btn btn-primary" style="width: 100%; height: 44px;">조회하기</button>
                         </div>
                     </div>
 
@@ -331,42 +322,16 @@
                                     <span class="db-ongoing-value">₩ 1,000,000</span>
                                 </div>
                             </div>
-                            <div class="db-status-steps">
-                                <div class="db-step completed">
-                                    <div class="db-step-icon">
-                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </div>
-                                    <div class="db-step-text">접수완료</div>
+                            <div class="db-status-single">
+                                <div class="db-status-icon">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
                                 </div>
-                                <div class="db-step-line completed"></div>
-                                <div class="db-step completed">
-                                    <div class="db-step-icon">
-                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </div>
-                                    <div class="db-step-text">입금확인</div>
-                                </div>
-                                <div class="db-step-line active"></div>
-                                <div class="db-step active">
-                                    <div class="db-step-icon">
-                                        <div class="db-step-spinner"></div>
-                                    </div>
-                                    <div class="db-step-text">현지송금중</div>
-                                </div>
-                                <div class="db-step-line"></div>
-                                <div class="db-step">
-                                    <div class="db-step-icon">
-                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                        </svg>
-                                    </div>
-                                    <div class="db-step-text">송금완료</div>
-                                </div>
+                                <span class="db-status-text">입금확인</span>
                             </div>
-                            <div class="db-ongoing-notice">약 10분 이내에 완료될 예정입니다.</div>
+                            <div class="db-ongoing-notice">송금이 완료되면 상태가 변경됩니다.</div>
                         </div>
 
                         <!-- Notices Card -->
@@ -407,7 +372,7 @@
                                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                     </svg>
-                                    1:1 상담
+                                    1:1 문의
                                 </button>
                             </div>
                         </div>
@@ -416,6 +381,27 @@
             </div>
         </div>
     </main>
+
+    <!-- Contact Info Bar -->
+    <div class="contact-info-bar">
+        <div class="container">
+            <div class="contact-info-items">
+                <span class="contact-info-item">한국어 상담 02-2285-2077</span>
+                <span class="contact-info-divider">|</span>
+                <span class="contact-info-item">日本語 相談 070-8785-1799</span>
+                <span class="contact-info-divider">|</span>
+                <span class="contact-info-item">FAX 02-2285-2078</span>
+                <span class="contact-info-divider">|</span>
+                <span class="contact-info-item">이메일 hana@oneremit.co.kr</span>
+                <span class="contact-info-divider">|</span>
+                <span class="contact-info-item">평일 09:00 ~ 18:00</span>
+                <span class="contact-info-divider">|</span>
+                <span class="contact-info-item">토요일 · 공휴일 10:00 ~ 16:00</span>
+                <span class="contact-info-divider">|</span>
+                <span class="contact-info-item">일요일 휴무</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
