@@ -110,41 +110,6 @@
                             </div>
                         </div>
 
-                        <!-- Frequent Accounts -->
-                        <div class="db-info-card db-accounts-card">
-                            <h3 class="db-card-title">자주 쓰는 계좌</h3>
-                            <div class="db-account-list">
-                                <div class="db-account-item">
-                                    <div class="db-account-flag">
-                                        <img src="images/jp.png" alt="일본">
-                                    </div>
-                                    <div class="db-account-info">
-                                        <div class="db-account-name">Tanaka (일본)</div>
-                                        <div class="db-account-bank">JP 모건 ****1234</div>
-                                    </div>
-                                </div>
-                                <div class="db-account-item">
-                                    <div class="db-account-flag">
-                                        <img src="images/jp.png" alt="일본">
-                                    </div>
-                                    <div class="db-account-info">
-                                        <div class="db-account-name">Sato (일본)</div>
-                                        <div class="db-account-bank">미즈호 은행 ****9988</div>
-                                    </div>
-                                </div>
-                                <div class="db-account-item">
-                                    <div class="db-account-flag">
-                                        <img src="images/jp.png" alt="일본">
-                                    </div>
-                                    <div class="db-account-info">
-                                        <div class="db-account-name">내 일본 계좌</div>
-                                        <div class="db-account-bank">UFJ 은행 ****5566</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="db-add-account">+ 새 계좌 등록하기</a>
-                        </div>
-
                         <!-- Recent Transactions -->
                         <div class="db-info-card db-transactions-card">
                             <h3 class="db-card-title">최근 거래 내역</h3>
@@ -191,6 +156,52 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+
+                        <!-- Frequent Accounts -->
+                        <div class="db-info-card db-accounts-card">
+                            <h3 class="db-card-title">자주 쓰는 계좌</h3>
+                            <div class="db-account-list">
+                                <div class="db-account-item">
+                                    <div class="db-account-flag">
+                                        <img src="images/jp.png" alt="일본">
+                                    </div>
+                                    <div class="db-account-info">
+                                        <div class="db-account-name">Tanaka (일본)</div>
+                                        <div class="db-account-bank">JP 모건 ****1234</div>
+                                    </div>
+                                </div>
+                                <div class="db-account-item">
+                                    <div class="db-account-flag">
+                                        <img src="images/jp.png" alt="일본">
+                                    </div>
+                                    <div class="db-account-info">
+                                        <div class="db-account-name">Sato (일본)</div>
+                                        <div class="db-account-bank">미즈호 은행 ****9988</div>
+                                    </div>
+                                </div>
+                                <div class="db-account-item">
+                                    <div class="db-account-flag">
+                                        <img src="images/jp.png" alt="일본">
+                                    </div>
+                                    <div class="db-account-info">
+                                        <div class="db-account-name">내 일본 계좌</div>
+                                        <div class="db-account-bank">UFJ 은행 ****5566</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="db-add-account">+ 새 계좌 등록하기</a>
+                        </div>
+
+                        <!-- Receipt Number Inquiry -->
+                        <div class="db-info-card db-inquiry-card">
+                            <h3 class="db-card-title">접수번호 조회</h3>
+                            <p class="db-inquiry-desc">접수번호와 비밀번호를 입력하시면 송금신청상태 조회 및 송금결과보고서를 다운로드 하실 수 있습니다.</p>
+                            <div class="db-inquiry-inputs">
+                                <input type="text" class="db-inquiry-input" placeholder="접수번호">
+                                <input type="password" class="db-inquiry-input" placeholder="비밀번호">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; height: 44px; margin-top: 12px;">조회하기</button>
                         </div>
                     </div>
 
@@ -319,33 +330,63 @@
                                     <span class="db-ongoing-label">금액</span>
                                     <span class="db-ongoing-value">₩ 1,000,000</span>
                                 </div>
-                                <div class="db-ongoing-row">
-                                    <span class="db-ongoing-label">현재 상태</span>
-                                    <span class="db-status-badge progress">현지 송금 중</span>
+                            </div>
+                            <div class="db-status-steps">
+                                <div class="db-step completed">
+                                    <div class="db-step-icon">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="db-step-text">접수완료</div>
+                                </div>
+                                <div class="db-step-line completed"></div>
+                                <div class="db-step completed">
+                                    <div class="db-step-icon">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="db-step-text">입금확인</div>
+                                </div>
+                                <div class="db-step-line active"></div>
+                                <div class="db-step active">
+                                    <div class="db-step-icon">
+                                        <div class="db-step-spinner"></div>
+                                    </div>
+                                    <div class="db-step-text">현지송금중</div>
+                                </div>
+                                <div class="db-step-line"></div>
+                                <div class="db-step">
+                                    <div class="db-step-icon">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                        </svg>
+                                    </div>
+                                    <div class="db-step-text">송금완료</div>
                                 </div>
                             </div>
-                            <div class="db-progress-bar">
-                                <div class="db-progress-fill" style="width: 66.6%;"></div>
-                            </div>
-                            <div class="db-progress-text">3단계 중 2단계</div>
                             <div class="db-ongoing-notice">약 10분 이내에 완료될 예정입니다.</div>
                         </div>
 
                         <!-- Notices Card -->
                         <div class="db-info-card db-notices-card">
-                            <h3 class="db-card-title">공지사항</h3>
+                            <div class="db-card-header">
+                                <h3 class="db-card-title">공지사항</h3>
+                                <a href="#" class="db-more-link">더 보기</a>
+                            </div>
                             <div class="db-notice-list">
                                 <a href="#" class="db-notice-item">
-                                    <span class="db-notice-badge">안내</span>
-                                    <span class="db-notice-text">1월 일본 은행 공휴일로 인한 송금 지연 안내</span>
+                                    <span class="db-notice-title">연말연시 영업일 안내</span>
+                                    <span class="db-notice-date">2025.12.29</span>
                                 </a>
                                 <a href="#" class="db-notice-item">
-                                    <span class="db-notice-badge update">업데이트</span>
-                                    <span class="db-notice-text">더 빨라진 실시간 환율 엔진 적용 완료</span>
+                                    <span class="db-notice-title">추석 연휴에도 하나송금은 정상근무합니다.</span>
+                                    <span class="db-notice-date">2025.10.03</span>
                                 </a>
                                 <a href="#" class="db-notice-item">
-                                    <span class="db-notice-badge event">이벤트</span>
-                                    <span class="db-notice-text">친구 초대하고 수수료 쿠폰 받으세요!</span>
+                                    <span class="db-notice-title">설 연휴 중 농협은행, 지역 농협은행 인터넷 뱅킹 중지 안내</span>
+                                    <span class="db-notice-date">2025.01.24</span>
                                 </a>
                             </div>
                         </div>
@@ -366,15 +407,8 @@
                                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                     </svg>
-                                    1:1 실시간 상담
+                                    1:1 상담
                                 </button>
-                            </div>
-                            <div class="db-help-status">
-                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#10b981" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                                <span>현재 상담이 원활합니다. (평균 답변 시간 5분 이내)</span>
                             </div>
                         </div>
                     </div>
