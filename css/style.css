@@ -745,29 +745,47 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-link { color: var(--primary-blue); text-decoration: none; font-weight: 500; white-space: nowrap; }
 .db-link:hover { text-decoration: underline; }
 
+/* Receipt Number Inquiry Card */
+.db-inquiry-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+.db-inquiry-inputs { display: flex; flex-direction: column; gap: 10px; }
+.db-inquiry-input { width: 100%; height: 44px; padding: 0 16px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; transition: border-color 0.2s; }
+.db-inquiry-input:focus { outline: none; border-color: var(--primary-blue); }
+
 /* Ongoing Transfer Card */
-.db-ongoing-info { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.db-ongoing-info { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
 .db-ongoing-row { display: flex; justify-content: space-between; align-items: center; }
 .db-ongoing-label { font-size: 0.9rem; color: var(--text-muted); }
 .db-ongoing-value { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); }
-.db-progress-bar { width: 100%; height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; margin-top: 16px; }
-.db-progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-blue), #60a5fa); border-radius: 4px; transition: width 0.3s; }
-.db-progress-text { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }
-.db-ongoing-notice { margin-top: 12px; padding: 12px; background: #eff6ff; border-radius: 8px; font-size: 0.9rem; color: #1e40af; text-align: center; }
+.db-status-steps { display: flex; align-items: center; justify-content: space-between; margin: 20px 0; }
+.db-step { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 0 0 auto; }
+.db-step-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #f3f4f6; border: 2px solid #e5e7eb; transition: all 0.3s; }
+.db-step.completed .db-step-icon { background: var(--primary-blue); border-color: var(--primary-blue); }
+.db-step.completed .db-step-icon svg { stroke: #fff; }
+.db-step.active .db-step-icon { background: #fff; border-color: var(--primary-blue); }
+.db-step-spinner { width: 20px; height: 20px; border: 3px solid #e5e7eb; border-top-color: var(--primary-blue); border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.db-step-line { flex: 1; height: 2px; background: #e5e7eb; margin: 0 4px; }
+.db-step-line.completed { background: var(--primary-blue); }
+.db-step-line.active { background: linear-gradient(90deg, var(--primary-blue), #e5e7eb); }
+.db-step-text { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; text-align: center; white-space: nowrap; }
+.db-step.completed .db-step-text { color: var(--primary-blue); font-weight: 600; }
+.db-step.active .db-step-text { color: var(--primary-blue); font-weight: 600; }
+.db-ongoing-notice { margin-top: 16px; padding: 12px; background: #eff6ff; border-radius: 8px; font-size: 0.9rem; color: #1e40af; text-align: center; }
 
 /* Notices Card */
-.db-notice-list { display: flex; flex-direction: column; gap: 10px; }
-.db-notice-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #f8fafc; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
-.db-notice-item:hover { background: #f1f5f9; }
-.db-notice-badge { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; flex-shrink: 0; background: #dbeafe; color: #1e40af; }
-.db-notice-badge.update { background: #d1fae5; color: #065f46; }
-.db-notice-badge.event { background: #fef3c7; color: #92400e; }
-.db-notice-text { font-size: 0.9rem; color: var(--text-dark); line-height: 1.5; }
+.db-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.db-card-header .db-card-title { margin-bottom: 0; }
+.db-more-link { font-size: 0.9rem; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.db-more-link:hover { color: var(--primary-blue); }
+.db-notice-list { display: flex; flex-direction: column; gap: 0; }
+.db-notice-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border-color); text-decoration: none; transition: background 0.2s; }
+.db-notice-item:last-child { border-bottom: none; }
+.db-notice-item:hover .db-notice-title { color: var(--primary-blue); }
+.db-notice-title { font-size: 0.9rem; color: var(--text-dark); flex: 1; }
+.db-notice-date { font-size: 0.85rem; color: var(--text-muted); white-space: nowrap; margin-left: 12px; }
 
 /* Help Card */
-.db-help-btns { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
-.db-help-status { display: flex; align-items: center; gap: 8px; padding: 12px; background: #f0fdf4; border-radius: 8px; font-size: 0.85rem; color: var(--text-muted); }
-.db-help-status svg { flex-shrink: 0; }
+.db-help-btns { display: flex; flex-direction: column; gap: 12px; }
 
 @media (max-width: 1024px) {
   .db-sidebar { position: fixed; left: -220px; height: 80vh; top: 80px; z-index: 1000; }
@@ -800,6 +818,9 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-transaction-table th, .db-transaction-table td { padding: 10px 6px; }
   .wallet-btns { flex-direction: column; }
   .wallet-btns .btn { width: 100%; }
+  .db-status-steps { gap: 2px; }
+  .db-step-text { font-size: 0.7rem; }
+  .db-step-icon { width: 36px; height: 36px; }
 }
 
 @media (max-width: 480px) {
@@ -836,4 +857,10 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-header-sticky .container { padding: 0 10px; }
   .db-header-sticky .lang-select { font-size: 11px; padding: 4px 6px; }
   .db-header-sticky .nav-right { gap: 8px; }
+  .db-status-steps { gap: 1px; }
+  .db-step-text { font-size: 0.65rem; }
+  .db-step-icon { width: 32px; height: 32px; }
+  .db-step-spinner { width: 16px; height: 16px; }
+  .db-notice-title { font-size: 0.85rem; }
+  .db-notice-date { font-size: 0.8rem; }
 }
