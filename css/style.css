@@ -719,10 +719,31 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-col-calc { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .db-card-title { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px; }
 
+/* Balance Card - Blue Style */
+.db-balance-card-blue { background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%); border: none; }
+.db-card-title-white { font-size: 1.25rem; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+.wallet-val-white { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 20px; }
+.db-linked-account-white { display: flex; align-items: center; gap: 8px; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+.db-linked-account-white svg { flex-shrink: 0; stroke: rgba(255,255,255,0.9); }
+
+/* White Button Styles for Blue Card */
+.btn-white { background: #fff; color: var(--primary-blue); border: none; font-weight: 600; transition: all 0.2s; }
+.btn-white:hover { background: #f8f9fa; transform: translateY(-1px); }
+.btn-white-outline { background: transparent; color: #fff; border: 2px solid #fff; font-weight: 600; transition: all 0.2s; }
+.btn-white-outline:hover { background: rgba(255,255,255,0.1); }
+
 /* Balance Card */
 .db-balance-card .db-main-wallet { margin-top: 0; }
 .db-linked-account { display: flex; align-items: center; gap: 8px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: var(--text-muted); }
 .db-linked-account svg { flex-shrink: 0; stroke: #10b981; }
+
+/* Limit Info Card */
+.db-limit-card { background: #f8fafc; }
+.db-limit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.db-limit-item { display: flex; flex-direction: column; gap: 6px; }
+.db-limit-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+.db-limit-value { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); }
+.db-limit-value.highlight { color: var(--primary-blue); }
 
 /* Frequent Accounts Card */
 .db-account-list { display: flex; flex-direction: column; gap: 12px; }
@@ -736,7 +757,25 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-add-account { display: inline-block; margin-top: 12px; color: var(--primary-blue); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: color 0.2s; }
 .db-add-account:hover { color: var(--primary-blue-dark); }
 
-/* Transactions List */
+/* Transactions List - New Design */
+.db-transaction-list-new { display: flex; flex-direction: column; gap: 0; }
+.db-transaction-item-new { display: flex; align-items: center; gap: 12px; padding: 16px 0; border-bottom: 1px solid #f0f0f0; transition: background 0.2s; }
+.db-transaction-item-new:last-child { border-bottom: none; }
+.db-trans-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.db-trans-icon.deposit { background: #e8f5e9; }
+.db-trans-icon.deposit svg { stroke: #2e7d32; }
+.db-trans-icon.withdraw { background: #ffebee; }
+.db-trans-icon.withdraw svg { stroke: #c62828; }
+.db-trans-info { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.db-trans-date-new { font-size: 0.9rem; color: var(--text-dark); font-weight: 500; }
+.db-trans-type-new { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+.db-trans-amounts { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.db-trans-amount-new { font-size: 1.05rem; font-weight: 700; }
+.db-trans-amount-new.deposit { color: #1565c0; }
+.db-trans-amount-new.withdraw { color: #212121; }
+.db-trans-balance-new { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Transactions List - Old */
 .db-transaction-list { display: flex; flex-direction: column; gap: 12px; }
 .db-transaction-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: #f8fafc; border-radius: 8px; transition: background 0.2s; }
 .db-transaction-item:hover { background: #f1f5f9; }
@@ -762,9 +801,12 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-ongoing-row { display: flex; justify-content: space-between; align-items: center; }
 .db-ongoing-label { font-size: 0.9rem; color: var(--text-muted); }
 .db-ongoing-value { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); }
+.db-ongoing-value.status-complete { color: var(--primary-blue); }
 .db-status-inline { display: flex; align-items: center; gap: 8px; }
 .db-status-icon-small { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--primary-blue); flex-shrink: 0; }
 .db-status-icon-small svg { stroke: #fff; }
+.db-status-icon-mini { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--primary-blue); flex-shrink: 0; }
+.db-status-icon-mini svg { stroke: #fff; }
 .db-ongoing-notice { padding: 12px; background: #eff6ff; border-radius: 8px; font-size: 0.9rem; color: #1e40af; text-align: center; }
 
 /* Notices Card */
@@ -773,8 +815,9 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-more-link { display: inline-block; padding: 6px 16px; background: #f3f4f6; color: var(--text-body); text-decoration: none; font-size: 0.85rem; font-weight: 600; border-radius: 6px; transition: all 0.2s; }
 .db-more-link:hover { background: #e5e7eb; color: var(--text-dark); }
 .db-notice-list { display: flex; flex-direction: column; gap: 0; }
-.db-notice-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border-color); text-decoration: none; transition: background 0.2s; }
+.db-notice-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 12px; margin: 0 -12px; border-bottom: 1px solid var(--border-color); text-decoration: none; transition: background 0.2s; border-radius: 8px; }
 .db-notice-item:last-child { border-bottom: none; }
+.db-notice-item:hover { background: #f8fafc; }
 .db-notice-item:hover .db-notice-title { color: var(--primary-blue); }
 .db-notice-title { font-size: 0.9rem; color: var(--text-dark); flex: 1; }
 .db-notice-date { font-size: 0.85rem; color: #9ca3af; white-space: nowrap; margin-left: 12px; }
