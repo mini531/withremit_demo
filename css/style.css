@@ -68,6 +68,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .btn-outline:hover { border-color: var(--text-muted); background: var(--bg-light); }
 .btn-primary { background: var(--primary-green); color: #fff; font-weight: 600; padding: 0 20px; }
 .btn-primary:hover { background: var(--primary-green-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,160,220,0.3); }
+.btn-primary .btn-text { color: #fff; }
 .btn-login-mobile { display: none; }
 .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; padding: 10px; }
 .mobile-menu-btn span { display: block; width: 22px; height: 2px; background: var(--text-dark); transition: var(--transition); border-radius: 1px; }
@@ -794,7 +795,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-trans-balance { font-size: 0.85rem; color: var(--text-muted); white-space: nowrap; }
 
 /* Receipt Number Inquiry Card */
-.db-inquiry-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+.db-inquiry-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 .db-inquiry-inputs { display: flex; flex-direction: column; gap: 10px; }
 .db-inquiry-input { width: 100%; height: 44px; padding: 0 16px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; transition: border-color 0.2s; }
 .db-inquiry-input:focus { outline: none; border-color: var(--primary-blue); }
@@ -850,6 +851,27 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-inquiry-text { flex: 1; }
 .db-inquiry-btn { width: auto; height: 40px; padding: 0 24px; margin-top: 12px; }
 
+/* Notice List Page */
+.db-page-header { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid var(--text-dark); }
+.db-page-title { font-size: 1.75rem; font-weight: 700; color: var(--text-dark); margin: 0; }
+.db-notice-list-page { background: #fff; border-radius: var(--radius); padding: 0; }
+.db-notice-table { width: 100%; border-collapse: collapse; }
+.db-notice-table thead { background: #f8f9fa; border-top: 2px solid var(--text-dark); border-bottom: 1px solid var(--border-color); }
+.db-notice-table th { padding: 16px 12px; font-size: 0.9rem; font-weight: 600; color: var(--text-dark); text-align: center; }
+.db-notice-table tbody tr { border-bottom: 1px solid #f0f0f0; transition: background-color 0.2s; }
+.db-notice-table tbody tr:hover { background: #f8f9fa; }
+.db-notice-table td { padding: 16px 12px; font-size: 0.9rem; color: var(--text-body); text-align: center; }
+.db-notice-table td.notice-title { text-align: left; }
+.db-notice-table td.notice-title a { color: var(--text-dark); transition: color 0.2s; }
+.db-notice-table td.notice-title a:hover { color: var(--primary-blue); }
+.db-pagination { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 30px; padding: 20px 0; }
+.db-page-btn { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid var(--border-color); background: #fff; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+.db-page-btn:hover { background: var(--bg-light); border-color: var(--primary-blue); }
+.db-page-btn svg { color: var(--text-muted); }
+.db-page-num { min-width: 32px; height: 32px; padding: 0 8px; border: 1px solid var(--border-color); background: #fff; border-radius: 6px; font-size: 0.9rem; font-weight: 500; color: var(--text-body); cursor: pointer; transition: all 0.2s; }
+.db-page-num:hover { background: var(--bg-light); border-color: var(--primary-blue); color: var(--primary-blue); }
+.db-page-num.active { background: var(--primary-blue); border-color: var(--primary-blue); color: #fff; font-weight: 600; }
+
 /* Contact Info Bar */
 .contact-info-bar { background: #f8fafc; border-top: 1px solid var(--border-color); padding: 14px 0; }
 .contact-info-items { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 20px; }
@@ -876,15 +898,15 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-grid { display: flex; flex-direction: column; gap: 15px; }
   .db-col-info, .db-col-calc { width: 100%; max-width: 100%; min-width: unset; display: contents; }
   .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; padding: 24px 20px; box-sizing: border-box; min-width: unset; }
-  .db-calculator-card { order: 1; }
-  .db-balance-card { order: 2; }
-  .db-limit-card { order: 3; }
-  .db-ongoing-card { order: 4; }
-  .db-transactions-card { order: 5; }
-  .db-accounts-card { order: 6; }
-  .db-inquiry-card { order: 7; }
-  .db-notices-card { order: 8; }
-  .db-help-card { order: 9; }
+  .db-calculator-card { order: 1; width: 100%; }
+  .db-balance-card { order: 2; width: 100%; }
+  .db-limit-card { order: 3; width: 100%; }
+  .db-ongoing-card { order: 4; width: 100%; }
+  .db-transactions-card { order: 5; width: 100%; }
+  .db-accounts-card { order: 6; width: 100%; }
+  .db-inquiry-card { order: 7; width: 100%; }
+  .db-notices-card { order: 8; width: 100%; }
+  .db-help-card { order: 9; width: 100%; }
   .db-calculator-card .calc-label { text-align: left; }
   .db-calculator-card .calculator-title { justify-content: flex-start; }
   .db-calculator-card .calc-input-group { width: 100%; }
@@ -914,17 +936,18 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-user-dropdown .btn { padding: 0 10px; min-width: 40px; }
   .db-user-dropdown .btn svg { margin: 0; }
   .db-user-dropdown .btn-text { display: none; }
+  .db-balance-display { display: none; }
   .db-grid { display: flex; flex-direction: column; min-width: 320px; gap: 15px; }
   .db-col-info, .db-col-calc { width: 100%; min-width: unset; display: contents; }
-  .db-calculator-card { order: 1; }
-  .db-balance-card { order: 2; }
-  .db-limit-card { order: 3; }
-  .db-ongoing-card { order: 4; }
-  .db-transactions-card { order: 5; }
-  .db-accounts-card { order: 6; }
-  .db-inquiry-card { order: 7; }
-  .db-notices-card { order: 8; }
-  .db-help-card { order: 9; }
+  .db-calculator-card { order: 1; width: 100%; }
+  .db-balance-card { order: 2; width: 100%; }
+  .db-limit-card { order: 3; width: 100%; }
+  .db-ongoing-card { order: 4; width: 100%; }
+  .db-transactions-card { order: 5; width: 100%; }
+  .db-accounts-card { order: 6; width: 100%; }
+  .db-inquiry-card { order: 7; width: 100%; }
+  .db-notices-card { order: 8; width: 100%; }
+  .db-help-card { order: 9; width: 100%; }
   .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; padding: 20px 16px; box-sizing: border-box; min-width: unset; }
   .db-calculator-card { width: 100% !important; max-width: 100% !important; padding: 20px 16px !important; min-width: unset; }
   .db-calculator-card .calculator-title { justify-content: flex-start; margin-bottom: 20px; }
@@ -961,4 +984,13 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-step-spinner { width: 16px; height: 16px; }
   .db-notice-title { font-size: 0.85rem; }
   .db-notice-date { font-size: 0.8rem; }
+  .db-page-title { font-size: 1.3rem; }
+  .db-notice-table th, .db-notice-table td { padding: 12px 6px; font-size: 0.8rem; }
+  .db-notice-table colgroup col:nth-child(1) { width: 50px; }
+  .db-notice-table colgroup col:nth-child(3) { width: 80px; }
+  .db-notice-table colgroup col:nth-child(4) { width: 85px; }
+  .db-notice-table colgroup col:nth-child(5) { width: 50px; }
+  .db-pagination { gap: 2px; flex-wrap: wrap; }
+  .db-page-num { min-width: 28px; height: 28px; font-size: 0.8rem; }
+  .db-page-btn { width: 28px; height: 28px; }
 }
