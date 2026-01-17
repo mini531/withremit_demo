@@ -685,8 +685,8 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-my-layer a { display: block; padding: 12px 20px; font-size: 14px; color: var(--text-dark); text-decoration: none; }
 .db-my-layer .logout-color { color: #ff5a5f; border-top: 1px solid #eee; }
 .db-main-container { padding: 20px 40px 40px; }
-.db-layout-flex { display: flex; gap: 15px; align-items: flex-start; position: relative; }
-.db-sidebar { width: 200px; background: transparent; border-radius: 0; border: none; box-shadow: none; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; overflow: visible; }
+.db-layout-flex { display: flex; align-items: flex-start; position: relative; }
+.db-sidebar { width: 200px; background: transparent; border-radius: 0; border: none; box-shadow: none; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; overflow: visible; padding-right: 15px; }
 .db-collapsed .db-sidebar { width: 0; overflow: hidden; opacity: 0;}
 .db-side-nav { padding: 0; }
 .db-nav-link { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 16px; color: var(--text-body); font-size: 14px; font-weight: 500; transition: 0.2s; white-space: nowrap; border-radius: 8px; margin-bottom: 2px; }
@@ -855,7 +855,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-content-card { background: #fff; border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
 .db-page-header { margin-bottom: 24px; }
 .db-page-title { font-size: 1.75rem; font-weight: 700; color: var(--text-dark); margin: 0; }
-.db-search-box { display: flex; gap: 8px; margin-bottom: 24px; align-items: center; }
+.db-search-box { display: flex; gap: 8px; margin-bottom: 24px; align-items: center; transition: max-height 0.3s ease, opacity 0.3s ease; overflow: hidden; }
 .db-search-type { padding: 10px 32px 10px 14px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-weight: 500; color: var(--text-dark); background: #fff; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8E96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; transition: var(--transition); min-width: 120px; }
 .db-search-type:hover, .db-search-type:focus { outline: none; border-color: var(--primary-blue); }
 .db-search-input { flex: 1; padding: 10px 16px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; transition: var(--transition); }
@@ -863,22 +863,23 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-search-btn { display: flex; align-items: center; gap: 6px; padding: 10px 20px; background: var(--primary-blue); color: #fff; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .db-search-btn:hover { background: var(--primary-blue-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(27,94,158,0.3); }
 .db-search-btn svg { flex-shrink: 0; }
-.db-reset-btn { display: flex; align-items: center; gap: 6px; padding: 10px 20px; background: transparent; color: var(--text-muted); border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.db-reset-btn { display: flex; align-items: center; justify-content: center; padding: 10px; background: transparent; color: var(--text-muted); border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .db-reset-btn:hover { border-color: var(--text-muted); color: var(--text-dark); background: var(--bg-light); }
 .db-reset-btn svg { flex-shrink: 0; }
 .db-table-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.db-mobile-search-toggle { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--primary-blue); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+.db-mobile-search-toggle { display: none; align-items: center; gap: 6px; padding: 8px 16px; background: var(--primary-blue); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 0.9rem; font-weight: 600; }
 .db-mobile-search-toggle:hover { background: var(--primary-blue-dark); }
-.db-mobile-search-toggle .close-icon { display: none; }
-.db-mobile-search-toggle.active .search-icon { display: none; }
-.db-mobile-search-toggle.active .close-icon { display: block; }
+.db-mobile-search-toggle .close-icon, .db-mobile-search-toggle .close-text { display: none; }
+.db-mobile-search-toggle.active .search-icon, .db-mobile-search-toggle.active .search-text { display: none; }
+.db-mobile-search-toggle.active .close-icon, .db-mobile-search-toggle.active .close-text { display: inline; }
+.db-mobile-search-toggle svg { flex-shrink: 0; }
 .db-total-count { font-size: 0.9rem; color: var(--text-muted); }
 .db-total-count strong { color: var(--text-dark); font-weight: 700; }
 .db-notice-list-page { background: transparent; border-radius: 0; padding: 0; }
 .db-notice-table { width: 100%; border-collapse: collapse; border-radius: var(--radius); overflow: hidden; border: 1.5px solid var(--border-color); }
 .db-notice-table thead { background: #f8fafa; border-bottom: 1.5px solid var(--border-color); }
 .db-notice-table th { padding: 14px 12px; font-size: 0.875rem; font-weight: 700; color: #555; text-align: center; }
-.db-notice-table tbody tr { border-bottom: 1px solid #eee; transition: background-color 0.2s; background: #fff; }
+.db-notice-table tbody tr { border-bottom: 1px solid #eee; transition: background-color 0.2s; background: #fff; cursor: pointer; }
 .db-notice-table tbody tr:hover { background: #f8fafa; }
 .db-notice-table tbody tr:last-child { border-bottom: none; }
 .db-notice-table td { padding: 12px; font-size: 0.9rem; color: var(--text-body); text-align: center; }
