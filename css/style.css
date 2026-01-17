@@ -852,19 +852,27 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-inquiry-btn { width: auto; height: 40px; padding: 0 24px; margin-top: 12px; }
 
 /* Notice List Page */
-.db-page-header { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid var(--text-dark); }
+.db-content-card { background: #fff; border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+.db-page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
 .db-page-title { font-size: 1.75rem; font-weight: 700; color: var(--text-dark); margin: 0; }
-.db-notice-list-page { background: #fff; border-radius: var(--radius); padding: 0; }
-.db-notice-table { width: 100%; border-collapse: collapse; }
-.db-notice-table thead { background: #f8f9fa; border-top: 2px solid var(--text-dark); border-bottom: 1px solid var(--border-color); }
-.db-notice-table th { padding: 16px 12px; font-size: 0.9rem; font-weight: 600; color: var(--text-dark); text-align: center; }
-.db-notice-table tbody tr { border-bottom: 1px solid #f0f0f0; transition: background-color 0.2s; }
-.db-notice-table tbody tr:hover { background: #f8f9fa; }
-.db-notice-table td { padding: 16px 12px; font-size: 0.9rem; color: var(--text-body); text-align: center; }
-.db-notice-table td.notice-title { text-align: left; }
-.db-notice-table td.notice-title a { color: var(--text-dark); transition: color 0.2s; }
+.db-list-controls { display: flex; align-items: center; gap: 16px; }
+.db-total-count { font-size: 0.9rem; color: var(--text-muted); }
+.db-total-count strong { color: var(--text-dark); font-weight: 700; }
+.db-rows-select { padding: 8px 32px 8px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); background: #fff; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8E96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; transition: var(--transition); }
+.db-rows-select:hover { border-color: var(--primary-blue); }
+.db-rows-select:focus { outline: none; border-color: var(--primary-blue); }
+.db-notice-list-page { background: transparent; border-radius: 0; padding: 0; }
+.db-notice-table { width: 100%; border-collapse: collapse; border-radius: var(--radius); overflow: hidden; border: 1.5px solid var(--border-color); }
+.db-notice-table thead { background: #f8fafa; border-bottom: 1.5px solid var(--border-color); }
+.db-notice-table th { padding: 14px 12px; font-size: 0.875rem; font-weight: 700; color: #555; text-align: center; }
+.db-notice-table tbody tr { border-bottom: 1px solid #eee; transition: background-color 0.2s; background: #fff; }
+.db-notice-table tbody tr:hover { background: #f8fafa; }
+.db-notice-table tbody tr:last-child { border-bottom: none; }
+.db-notice-table td { padding: 12px; font-size: 0.9rem; color: var(--text-body); text-align: center; }
+.db-notice-table td.notice-title { text-align: left; padding-left: 16px; }
+.db-notice-table td.notice-title a { color: var(--text-dark); font-weight: 500; transition: color 0.2s; }
 .db-notice-table td.notice-title a:hover { color: var(--primary-blue); }
-.db-pagination { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 30px; padding: 20px 0; }
+.db-pagination { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 20px; padding: 20px 0 0; }
 .db-page-btn { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid var(--border-color); background: #fff; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
 .db-page-btn:hover { background: var(--bg-light); border-color: var(--primary-blue); }
 .db-page-btn svg { color: var(--text-muted); }
@@ -924,6 +932,10 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-status-steps { gap: 2px; }
   .db-step-text { font-size: 0.7rem; }
   .db-step-icon { width: 36px; height: 36px; }
+  .db-content-card { padding: 24px 20px; }
+  .db-page-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .db-list-controls { width: 100%; justify-content: space-between; }
+  .db-notice-table th, .db-notice-table td { padding: 12px 8px; font-size: 0.875rem; }
 }
 
 @media (max-width: 480px) {
@@ -984,12 +996,19 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-step-spinner { width: 16px; height: 16px; }
   .db-notice-title { font-size: 0.85rem; }
   .db-notice-date { font-size: 0.8rem; }
+  .db-content-card { padding: 20px 16px; }
+  .db-page-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 20px; }
   .db-page-title { font-size: 1.3rem; }
-  .db-notice-table th, .db-notice-table td { padding: 12px 6px; font-size: 0.8rem; }
-  .db-notice-table colgroup col:nth-child(1) { width: 50px; }
-  .db-notice-table colgroup col:nth-child(3) { width: 80px; }
-  .db-notice-table colgroup col:nth-child(4) { width: 85px; }
-  .db-notice-table colgroup col:nth-child(5) { width: 50px; }
+  .db-list-controls { width: 100%; justify-content: space-between; }
+  .db-total-count { font-size: 0.85rem; }
+  .db-rows-select { font-size: 0.8rem; padding: 6px 28px 6px 10px; }
+  .db-notice-table { border: 1px solid var(--border-color); }
+  .db-notice-table th, .db-notice-table td { padding: 10px 8px; font-size: 0.85rem; }
+  .db-notice-table .th-num, .db-notice-table .td-num { display: none; }
+  .db-notice-table .th-author, .db-notice-table .td-author { display: none; }
+  .db-notice-table .th-views, .db-notice-table .td-views { display: none; }
+  .db-notice-table .col-num, .db-notice-table .col-author, .db-notice-table .col-views { display: none; }
+  .db-notice-table td.notice-title { padding-left: 10px; }
   .db-pagination { gap: 2px; flex-wrap: wrap; }
   .db-page-num { min-width: 28px; height: 28px; font-size: 0.8rem; }
   .db-page-btn { width: 28px; height: 28px; }
