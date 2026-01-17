@@ -88,98 +88,108 @@
             </aside>
 
             <div class="db-content">
-                <div class="db-page-header">
-                    <h2 class="db-page-title">공지사항</h2>
-                </div>
+                <div class="db-content-card">
+                    <div class="db-page-header">
+                        <h2 class="db-page-title">공지사항</h2>
+                        <div class="db-list-controls">
+                            <span class="db-total-count">총 <strong>135</strong>건</span>
+                            <select class="db-rows-select">
+                                <option value="10" selected>10개씩 보기</option>
+                                <option value="20">20개씩 보기</option>
+                                <option value="30">30개씩 보기</option>
+                                <option value="50">50개씩 보기</option>
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="db-notice-list-page">
-                    <table class="db-notice-table">
-                        <colgroup>
-                            <col style="width: 80px;">
-                            <col>
-                            <col style="width: 120px;">
-                            <col style="width: 100px;">
-                            <col style="width: 80px;">
-                        </colgroup>
-                        <thead>
+                    <div class="db-notice-list-page">
+                        <table class="db-notice-table">
+                            <colgroup>
+                                <col class="col-num" style="width: 80px;">
+                                <col class="col-title">
+                                <col class="col-author" style="width: 120px;">
+                                <col style="width: 100px;">
+                                <col class="col-views" style="width: 80px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th class="th-num">번호</th>
+                                    <th>제목</th>
+                                    <th class="th-author">작성자</th>
+                                    <th>작성일</th>
+                                    <th class="th-views">조회수</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                             <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                                <th>조회수</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>18</td>
+                                <td class="td-num">18</td>
                                 <td class="notice-title"><a href="#">연말연시 영업일 안내</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2025.12.29</td>
-                                <td>66</td>
+                                <td class="td-views">66</td>
                             </tr>
                             <tr>
-                                <td>17</td>
+                                <td class="td-num">17</td>
                                 <td class="notice-title"><a href="#">추석 연휴에도 하나송금은 정상근무합니다.</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2025.10.03</td>
-                                <td>50</td>
+                                <td class="td-views">50</td>
                             </tr>
                             <tr>
-                                <td>16</td>
+                                <td class="td-num">16</td>
                                 <td class="notice-title"><a href="#">설 연휴 중 농협은행, 지역 농협은행 인터넷 뱅킹 중지 안내</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2025.01.24</td>
-                                <td>126</td>
+                                <td class="td-views">126</td>
                             </tr>
                             <tr>
-                                <td>15</td>
+                                <td class="td-num">15</td>
                                 <td class="notice-title"><a href="#">2024년 12월 시스템 점검 안내</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2024.12.01</td>
-                                <td>89</td>
+                                <td class="td-views">89</td>
                             </tr>
                             <tr>
-                                <td>14</td>
+                                <td class="td-num">14</td>
                                 <td class="notice-title"><a href="#">환율 우대 이벤트 안내</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2024.11.15</td>
-                                <td>203</td>
+                                <td class="td-views">203</td>
                             </tr>
                             <tr>
-                                <td>13</td>
+                                <td class="td-num">13</td>
                                 <td class="notice-title"><a href="#">신규 수취국가 추가 안내 (베트남, 몽골)</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2024.10.20</td>
-                                <td>178</td>
+                                <td class="td-views">178</td>
                             </tr>
                             <tr>
-                                <td>12</td>
+                                <td class="td-num">12</td>
                                 <td class="notice-title"><a href="#">모바일 앱 업데이트 안내</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2024.09.05</td>
-                                <td>145</td>
+                                <td class="td-views">145</td>
                             </tr>
                             <tr>
-                                <td>11</td>
+                                <td class="td-num">11</td>
                                 <td class="notice-title"><a href="#">송금 한도 변경 안내</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2024.08.12</td>
-                                <td>267</td>
+                                <td class="td-views">267</td>
                             </tr>
                             <tr>
-                                <td>10</td>
+                                <td class="td-num">10</td>
                                 <td class="notice-title"><a href="#">고객센터 운영시간 변경 안내</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2024.07.28</td>
-                                <td>98</td>
+                                <td class="td-views">98</td>
                             </tr>
                             <tr>
-                                <td>9</td>
+                                <td class="td-num">9</td>
                                 <td class="notice-title"><a href="#">개인정보처리방침 변경 안내</a></td>
-                                <td>manager</td>
+                                <td class="td-author">manager</td>
                                 <td>2024.06.30</td>
-                                <td>156</td>
+                                <td class="td-views">156</td>
                             </tr>
                         </tbody>
                     </table>
@@ -208,6 +218,7 @@
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
                         </button>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
