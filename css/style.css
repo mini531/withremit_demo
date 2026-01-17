@@ -694,9 +694,9 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-nav-label { font-size: 10px; font-weight: 800; color: #b0bac9; text-transform: uppercase; padding: 15px 18px 5px; }
 .db-collapsed .nav-text, .db-collapsed .db-nav-label { display: none; }
 .db-content { flex: 1; }
-.db-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
-.db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; }
-.db-col-info { width: 100%; }
+.db-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: start; }
+.db-grid > .calculator-card { max-width: 100% !important; flex: 0 1 auto !important; }
+.db-col-info { min-width: 0; }
 .db-info-card { background: #fff; padding: 35px; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow); }
 .db-main-wallet { margin-top: 25px; }
 .wallet-val { font-size: 2.2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 20px; }
@@ -708,14 +708,14 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-balance-badge .badge-amount { font-size: 14px; font-weight: 700; }
 
 /* Dashboard Calculator Card Styles */
-.db-calculator-card { margin-left: 0 !important; max-width: 100% !important; width: 100%; }
+.db-calculator-card { margin-left: 0 !important; max-width: 100% !important; min-width: 0; }
 
 @media (max-width: 1024px) {
   .db-sidebar { position: fixed; left: -220px; height: 80vh; top: 80px; z-index: 1000; }
   .db-sidebar.mobile-open { left: 20px; }
   .db-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-  .db-col-info { width: auto; }
-  .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; }
+  .db-col-info { width: auto; min-width: unset; }
+  .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; min-width: unset; }
   .db-main-container { padding: 20px 15px 40px; }
   .db-balance-badge { display: none !important; }
   .db-header-sticky .nav-right { gap: 10px; }
@@ -725,8 +725,8 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-sidebar { position: fixed; left: -220px; height: 100vh; top: 80px; z-index: 1000; overflow-y: auto; }
   .db-sidebar.mobile-open { left: 0; }
   .db-grid { grid-template-columns: 1fr; gap: 15px; }
-  .db-col-info { width: 100%; max-width: 100%; }
-  .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; padding: 24px 20px; box-sizing: border-box; }
+  .db-col-info { width: 100%; max-width: 100%; min-width: unset; }
+  .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; padding: 24px 20px; box-sizing: border-box; min-width: unset; }
   .db-calculator-card .calc-label { text-align: left; }
   .db-calculator-card .calculator-title { justify-content: flex-start; }
   .db-calculator-card .calc-input-group { width: 100%; }
@@ -742,8 +742,8 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-sidebar { width: 100%; left: -100%; }
   .db-sidebar.mobile-open { left: 0; }
   .db-grid { grid-template-columns: 1fr; min-width: 320px; gap: 15px; }
-  .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; padding: 20px 16px; box-sizing: border-box; }
-  .db-calculator-card { width: 100% !important; max-width: 100% !important; padding: 20px 16px !important; }
+  .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; padding: 20px 16px; box-sizing: border-box; min-width: unset; }
+  .db-calculator-card { width: 100% !important; max-width: 100% !important; padding: 20px 16px !important; min-width: unset; }
   .db-calculator-card .calculator-title { justify-content: flex-start; margin-bottom: 20px; }
   .db-calculator-card .calc-label { text-align: left; display: block; width: 100%; margin-bottom: 8px; }
   .db-calculator-card .calc-input-group { width: 100%; display: flex; align-items: center; }
@@ -756,7 +756,7 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-calculator-card .calc-fee-box { padding: 12px; margin-bottom: 16px; text-align: left; }
   .db-calculator-card .calc-fee-total { font-size: 1rem; }
   .db-calculator-card .calc-compare { justify-content: flex-start; text-align: left; }
-  .db-col-info { width: 100%; }
+  .db-col-info { width: 100%; min-width: unset; }
   .db-main-container { padding: 20px 10px; min-height: 100vh; }
   .db-content { width: 100%; }
   .db-info-card { padding: 20px; }
