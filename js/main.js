@@ -1,0 +1,924 @@
+
+// ===== Translation Data =====
+const translations = {
+    ko: {
+        // Navigation
+        'nav.personal': '개인 송금',
+        'nav.business': '기업 송금',
+        'nav.service': '서비스 안내',
+        'nav.login': '로그인',
+        'nav.register': '회원가입',
+        'nav.language': '언어',
+        
+        // Hero
+        'hero.title': '해외송금,<br><span>더 현명하게</span>',
+        'hero.desc': '보내시는 분의 마음을 담아, 더 빠르고 더 저렴하게 전해드립니다.<br>숨겨진 수수료 없이 투명하게!',
+        'hero.badge1': '최단 5분 송금',
+        'hero.badge2': 'SGI 서울보증보험',
+        'hero.badge3': '기획재정부 인가 (2018-7)',
+        
+        // Calculator
+        'calc.title': '송금 시뮬레이션',
+        'calc.send': '보내실 금액',
+        'calc.rate': '실시간 환율 적용',
+        'calc.receive': '받으실 금액',
+        'calc.result': '상대방이 받는 금액',
+        'calc.savings': '은행 대비 약 {amount} 더 받으세요!',
+        'calc.btn': '지금 바로 송금하기',
+        'calc.deposit': '입금할 금액',
+        'calc.transferFee': '송금 수수료',
+        'calc.withdrawalFee': '출금 수수료',
+        'modal.limit.title': '송금 한도 초과',
+        'modal.limit.memo': '외환거래법령에 따라 건당 최대 <b>$5,000(USD)</b>까지 송금이 가능합니다. 현재 환율 기준 송금 가능액인 <b>{limit}원</b>으로 조정되었습니다.',
+        'modal.ok': '확인',
+        
+        // Features
+        'features.title': '왜 withremit인가요?',
+        'features.desc': '보내시는 분의 마음을 담아, 더 빠르고 더 저렴하게 전해드립니다.',
+        'features.fast.title': '더 빠르게',
+        'features.fast.desc': '최단 5분 내 송금 완료!<br>급한 송금도 걱정 없이 빠르게 전달됩니다.<br>실시간 송금 현황을 확인하세요.',
+        'features.cheap.title': '더 저렴하게',
+        'features.cheap.desc': '숨겨진 수수료 없이 투명한 환율!<br>은행보다 최대 5배 저렴한 수수료로<br>더 많은 금액을 전달하세요.',
+        'features.safe.title': '더 안전하게',
+        'features.safe.desc': 'SGI 서울보증보험의 이행보증금 설정!<br>기획재정부 정식 인가 업체(등록번호 2018-7)로 안심하고 이용하세요.',
+        
+        // Countries
+        'countries.title': '송금 가능 국가',
+        'countries.desc': '아시아 주요 국가로 빠르고 안전하게 송금하세요',
+        'country.japan': '일본',
+        'country.philippines': '필리핀',
+        'country.china': '중국',
+        'country.nepal': '네팔',
+        'country.australia': '호주',
+        'country.hongkong': '홍콩',
+        'country.mongolia': '몽골',
+        'country.vietnam': '베트남',
+        
+        // Trust
+        'trust.title': '신뢰할 수 있는 파트너',
+        'trust.desc': '기업 고객을 위한 맞춤형 B2B 해외송금 솔루션을 제공합니다',
+        'trust.business.title': '기업 전용 서비스',
+        'trust.business.desc': '대량 송금, 정기 송금, 급여 지급 등 기업 맞춤형 솔루션을 제공합니다.',
+        'trust.report.title': '투명한 리포트',
+        'trust.report.desc': '실시간 송금 현황과 상세 내역 리포트를 제공하여 관리가 편리합니다.',
+        'trust.support.title': '전담 고객지원',
+        'trust.support.desc': '기업 고객 전담팀이 1:1로 신속하고 정확한 지원을 해드립니다.',
+        
+        // CTA
+        'cta.title': '지금 바로 시작하세요',
+        'cta.desc': '회원가입 후 첫 송금 시 특별 혜택을 드립니다. 더 현명한 해외송금, withremit과 함께하세요.',
+        'cta.btn': '무료로 가입하기',
+        
+        // Contact
+        'contact.section.title': '고객센터',
+        'contact.section.desc': '궁금한 점이 있으시면 언제든지 문의해 주세요',
+        'contact.title': '연락처',
+        'contact.korean': '한국어 상담',
+        'contact.japanese': '日本語 相談',
+        'contact.email': '이메일',
+        'contact.hours': '상담 시간 안내',
+        'contact.weekday': '평일',
+        'contact.weekend': '토요일 · 공휴일',
+        'contact.closed': '* 일요일 휴무',
+        
+        // Footer
+        'footer.company': '회사소개',
+        'footer.privacy': '개인정보처리방침',
+        'footer.terms': '이용약관',
+        'footer.antisocial': '반사회적세력에 대한 방침',
+        'footer.settlement': '자금결제법에 근거한 표시',
+        'footer.fraud': '사기피해주의',
+        'footer.license': '기획재정부 인가 소액해외송금업체 (등록번호: 2018-7)'
+    },
+    en: {
+        // Navigation
+        'nav.personal': 'Personal',
+        'nav.business': 'Business',
+        'nav.service': 'Services',
+        'nav.login': 'Login',
+        'nav.register': 'Sign Up',
+        'nav.language': 'Language',
+        
+        // Hero
+        'hero.title': 'International Remittance,<br><span>Smarter Way</span>',
+        'hero.desc': 'We deliver your heartfelt money faster and cheaper.<br>Transparent with no hidden fees!',
+        'hero.badge1': '5 min transfer',
+        'hero.badge2': 'SGI Guaranteed',
+        'hero.badge3': 'Licensed (2018-7)',
+        
+        // Calculator
+        'calc.title': 'Transfer Simulation',
+        'calc.send': 'Send Amount',
+        'calc.rate': 'Real-time exchange rate',
+        'calc.receive': 'Receive Amount',
+        'calc.result': 'Recipient receives',
+        'calc.savings': 'Get about {amount} more than banks!',
+        'calc.btn': 'Send Money Now',
+        'calc.deposit': 'Deposit Amount',
+        'calc.transferFee': 'Transfer Fee',
+        'calc.withdrawalFee': 'Withdrawal Fee',
+        'modal.limit.title': 'Transfer Limit Exceeded',
+        'modal.limit.memo': 'Under the Foreign Exchange Transactions Act, you can transfer up to <b>$5,000(USD)</b> per transaction. The amount has been adjusted to <b>{limit} KRW</b> based on the current exchange rate.',
+        'modal.ok': 'Confirm',
+        
+        // Features
+        'features.title': 'Why withremit?',
+        'features.desc': 'We deliver your money with care, faster and cheaper.',
+        'features.fast.title': 'Faster',
+        'features.fast.desc': 'Transfer completed in as fast as 5 minutes. Track your transfer in real-time.',
+        'features.cheap.title': 'Cheaper',
+        'features.cheap.desc': 'Transparent rates with no hidden fees. Up to 5x cheaper than banks.',
+        'features.safe.title': 'Safer',
+        'features.safe.desc': 'Secured by SGI Seoul Guarantee Insurance. Licensed by Ministry of Economy and Finance.',
+        
+        // Countries
+        'countries.title': 'Available Countries',
+        'countries.desc': 'Send money safely to major Asian countries',
+        'country.japan': 'Japan',
+        'country.philippines': 'Philippines',
+        'country.china': 'China',
+        'country.nepal': 'Nepal',
+        'country.australia': 'Australia',
+        'country.hongkong': 'Hong Kong',
+        'country.mongolia': 'Mongolia',
+        'country.vietnam': 'Vietnam',
+        
+        // Trust
+        'trust.title': 'Trusted Partner',
+        'trust.desc': 'Customized B2B remittance solutions for business clients',
+        'trust.business.title': 'Business Service',
+        'trust.business.desc': 'Bulk transfers, recurring payments, and payroll solutions.',
+        'trust.report.title': 'Transparent Reports',
+        'trust.report.desc': 'Real-time status and detailed transaction reports.',
+        'trust.support.title': 'Dedicated Support',
+        'trust.support.desc': '1:1 dedicated support team for business clients.',
+        
+        // CTA
+        'cta.title': 'Get Started Today',
+        'cta.desc': 'Special benefits for your first transfer. Smart remittance with withremit.',
+        'cta.btn': 'Sign Up Free',
+        
+        // Contact
+        'contact.section.title': 'Contact Us',
+        'contact.section.desc': 'Feel free to contact us anytime',
+        'contact.title': 'Contact',
+        'contact.korean': 'Korean Support',
+        'contact.japanese': 'Japanese Support',
+        'contact.email': 'Email',
+        'contact.hours': 'Business Hours',
+        'contact.weekday': 'Weekdays',
+        'contact.weekend': 'Sat · Holidays',
+        'contact.closed': '* Closed on Sundays',
+        
+        // Footer
+        'footer.company': 'About Us',
+        'footer.privacy': 'Privacy Policy',
+        'footer.terms': 'Terms of Service',
+        'footer.antisocial': 'Anti-Social Forces Policy',
+        'footer.settlement': 'Payment Services Act',
+        'footer.fraud': 'Fraud Warning',
+        'footer.license': 'Licensed Remittance Provider (Reg. No: 2018-7)'
+    },
+    ja: {
+        // Navigation
+        'nav.personal': '個人送金',
+        'nav.business': '法人送金',
+        'nav.service': 'サービス案内',
+        'nav.login': 'ログイン',
+        'nav.register': '会員登録',
+        'nav.language': '言語',
+        
+        // Hero
+        'hero.title': '海外送金、<br><span>もっと賢く</span>',
+        'hero.desc': '送る方の気持ちを込めて、より早く、より安くお届けします。<br>隠れた手数料なし、透明に！',
+        'hero.badge1': '最短5分送金',
+        'hero.badge2': 'SGI保証保険',
+        'hero.badge3': '政府認可 (2018-7)',
+        
+        // Calculator
+        'calc.title': '送金シミュレーション',
+        'calc.send': '送金額',
+        'calc.rate': 'リアルタイム為替レート適用',
+        'calc.receive': '受取額',
+        'calc.result': '受取人が受け取る金額',
+        'calc.savings': '銀行より約{amount}多く受け取れます！',
+        'calc.btn': '今すぐ送金する',
+        'calc.deposit': '入金額',
+        'calc.transferFee': '送金手数料',
+        'calc.withdrawalFee': '出金手数料',
+        'modal.limit.title': '送金限度額超過',
+        'modal.limit.memo': '外国為替取引法に基づき、1回につき最大<b>5,000米ドル(USD)</b>까지 送金可能です。現在の為替レートに基づく送金可能額の <b>{limit}ウォン</b>に調整されました。',
+        'modal.ok': '確認',
+        
+        // Features
+        'features.title': 'なぜwithremit？',
+        'features.desc': '送る方の気持ちを込めて、より早く、より安くお届けします。',
+        'features.fast.title': 'より速く',
+        'features.fast.desc': '最短5分で送金完了。リアルタイムで送金状況を確認できます。',
+        'features.cheap.title': 'より安く',
+        'features.cheap.desc': '隠れた手数料なしの透明なレート。銀行より最大5倍お得。',
+        'features.safe.title': 'より安全に',
+        'features.safe.desc': 'SGIソウル保証保険で保護。政府正式認可業者。',
+        
+        // Countries
+        'countries.title': '送金可能国',
+        'countries.desc': 'アジア主要国へ安全に送金',
+        'country.japan': '日本',
+        'country.philippines': 'フィリピン',
+        'country.china': '中国',
+        'country.nepal': 'ネパール',
+        'country.australia': 'オーストラリア',
+        'country.hongkong': '香港',
+        'country.mongolia': 'モンゴル',
+        'country.vietnam': 'ベトナム',
+        
+        // Trust
+        'trust.title': '信頼できるパートナー',
+        'trust.desc': '法人向けB2B海外送金ソリューション',
+        'trust.business.title': '法人専用サービス',
+        'trust.business.desc': '大量送金、定期送金、給与支払いなど法人向けソリューション。',
+        'trust.report.title': '透明なレポート',
+        'trust.report.desc': 'リアルタイム送金状況と詳細レポートを提供。',
+        'trust.support.title': '専任サポート',
+        'trust.support.desc': '法人専任チームが1:1でサポート。',
+        
+        // CTA
+        'cta.title': '今すぐ始めよう',
+        'cta.desc': '会員登録後、初回送金で特典あり。withremitで賢く送金。',
+        'cta.btn': '無料で登録',
+        
+        // Contact
+        'contact.section.title': 'お問い合わせ',
+        'contact.section.desc': 'お気軽にお問い合わせください',
+        'contact.title': '連絡先',
+        'contact.korean': '韓国語サポート',
+        'contact.japanese': '日本語サポート',
+        'contact.email': 'メール',
+        'contact.hours': '営業時間',
+        'contact.weekday': '平日',
+        'contact.weekend': '土曜・祝日',
+        'contact.closed': '* 日曜休業',
+        
+        // Footer
+        'footer.company': '会社概要',
+        'footer.privacy': 'プライバシーポリシー',
+        'footer.terms': '利用規約',
+        'footer.antisocial': '反社会的勢力への方針',
+        'footer.settlement': '資金決済法に基づく表示',
+        'footer.fraud': '詐欺被害注意',
+        'footer.license': '政府認可送金業者 (登録番号: 2018-7)'
+    },
+    zh: {
+        // Navigation
+        'nav.personal': '个人汇款',
+        'nav.business': '企业汇款',
+        'nav.service': '服务介绍',
+        'nav.login': '登录',
+        'nav.register': '注册',
+        'nav.language': '语言',
+        
+        // Hero
+        'hero.title': '海外汇款，<br><span>更明智的选择</span>',
+        'hero.desc': '用心传递您的心意，更快更便宜。<br>无隐藏费用，透明公开！',
+        'hero.badge1': '最快5分钟',
+        'hero.badge2': 'SGI保险担保',
+        'hero.badge3': '政府许可 (2018-7)',
+        
+        // Calculator
+        'calc.title': '汇款模拟',
+        'calc.send': '汇款金额',
+        'calc.rate': '实时汇率',
+        'calc.receive': '收款金额',
+        'calc.result': '收款人收到',
+        'calc.savings': '比银行多收{amount}！',
+        'calc.btn': '立即汇款',
+        'calc.deposit': '存款金额',
+        'calc.transferFee': '汇款手续费',
+        'calc.withdrawalFee': '提款手续费',
+        'modal.limit.title': '汇款额度超限',
+        'modal.limit.memo': '根据外汇交易法令，单笔最高可汇款 <b>5,000 美元 (USD)</b>。已根据当前汇率调整为最高汇款额 <b>{limit} 韩元</b>。',
+        'modal.ok': '确认',
+        
+        // Features
+        'features.title': '为什么选择withremit？',
+        'features.desc': '用心传递您的心意，更快更便宜。',
+        'features.fast.title': '更快',
+        'features.fast.desc': '最快5分钟完成汇款。实时追踪汇款状态。',
+        'features.cheap.title': '更便宜',
+        'features.cheap.desc': '无隐藏费用，透明汇率。比银行便宜5倍。',
+        'features.safe.title': '更安全',
+        'features.safe.desc': 'SGI首尔保证保险保障。政府正式许可。',
+        
+        // Countries
+        'countries.title': '可汇款国家',
+        'countries.desc': '安全汇款至亚洲主要国家',
+        'country.japan': '日本',
+        'country.philippines': '菲律宾',
+        'country.china': '中国',
+        'country.nepal': '尼泊尔',
+        'country.australia': '澳大利亚',
+        'country.hongkong': '香港',
+        'country.mongolia': '蒙古',
+        'country.vietnam': '越南',
+        
+        // Trust
+        'trust.title': '可信赖的合作伙伴',
+        'trust.desc': '为企业客户提供定制化B2B汇款解决方案',
+        'trust.business.title': '企业专属服务',
+        'trust.business.desc': '批量汇款、定期汇款、工资支付等企业解决方案。',
+        'trust.report.title': '透明报告',
+        'trust.report.desc': '实时汇款状态和详细报告。',
+        'trust.support.title': '专属客服',
+        'trust.support.desc': '企业专属团队1对1支持。',
+        
+        // CTA
+        'cta.title': '立即开始',
+        'cta.desc': '注册后首次汇款享特惠。withremit智能汇款。',
+        'cta.btn': '免费注册',
+        
+        // Contact
+        'contact.section.title': '客服中心',
+        'contact.section.desc': '如有疑问请随时联系我们',
+        'contact.title': '联系方式',
+        'contact.korean': '韩语客服',
+        'contact.japanese': '日语客服',
+        'contact.email': '邮箱',
+        'contact.hours': '服务时间',
+        'contact.weekday': '工作日',
+        'contact.weekend': '周六·节假日',
+        'contact.closed': '* 周日休息',
+        
+        // Footer
+        'footer.company': '公司简介',
+        'footer.privacy': '隐私政策',
+        'footer.terms': '服务条款',
+        'footer.antisocial': '反社会势力政策',
+        'footer.settlement': '资金结算法相关说明',
+        'footer.fraud': '诈骗警示',
+        'footer.license': '政府许可汇款机构 (登记号: 2018-7)'
+    }
+};
+
+// 송금 한도 설정을 위한 상수 (기준: USD)
+const KRW_PER_USD = 1350; 
+const MAX_USD = 5000;
+const MAX_KRW_LIMIT = MAX_USD * KRW_PER_USD; // 6,750,000원
+
+// 모달 열기/닫기 함수
+function showLimitModal() {
+    const modal = document.getElementById('limitModal');
+    const msg = document.getElementById('modalMessage');
+    const key = msg.getAttribute('data-i18n');
+    const template = translations[currentLang][key];
+    msg.innerHTML = template.replace('{limit}', MAX_KRW_LIMIT.toLocaleString());
+    modal.classList.add('active');
+}
+
+function closeLimitModal() {
+    const modal = document.getElementById('limitModal');
+    modal.classList.remove('active');
+}
+
+// ===== Exchange Rates (Sample Data) =====
+const exchangeRates = {
+    JPY: { rate: 0.1112, name: '일본', currency: '엔', symbol: '¥', flagImg: 'jp' },
+    PHP: { rate: 0.0421, name: '필리핀', currency: '페소', symbol: '₱', flagImg: 'ph' },
+    CNY: { rate: 0.0054, name: '중국', currency: '위안', symbol: '¥', flagImg: 'cn' },
+    NPR: { rate: 0.1004, name: '네팔', currency: '루피', symbol: 'रू', flagImg: 'np' },
+    AUD: { rate: 0.0011, name: '호주', currency: '달러', symbol: 'A$', flagImg: 'au' },
+    HKD: { rate: 0.0059, name: '홍콩', currency: '달러', symbol: 'HK$', flagImg: 'hk' },
+    MNT: { rate: 2.5830, name: '몽골', currency: '투그릭', symbol: '₮', flagImg: 'mn' },
+    VND: { rate: 18.5200, name: '베트남', currency: '동', symbol: '₫', flagImg: 'vn' }
+};
+
+const currencySymbols = {
+    'JPY': '¥', 'PHP': '₱', 'CNY': '¥', 'NPR': 'रू', 'AUD': 'A$', 'HKD': 'HK$', 'MNT': '₮', 'VND': '₫'
+};
+
+const withdrawalFees = {
+    'JPY': 660,
+    'PHP': 40129,
+    'CNY': 4713,
+    'NPR': 97607,
+    'AUD': 0,
+    'HKD': 0,
+    'MNT': 0,
+    'VND': 0
+};
+
+let selectedCurrency = 'JPY';
+let currentLang = 'ko';
+
+// Bank comparison rates
+const bankFeePercent = 3.5;
+
+
+// 환율 안내 문구 업데이트 함수
+function updateRateDisplay() {
+    const exchangeRateEl = document.getElementById('exchangeRate');
+    if (exchangeRateEl) {
+        const rate = exchangeRates[selectedCurrency].rate;
+        exchangeRateEl.textContent = `1 KRW = ${rate.toFixed(4)} ${selectedCurrency}`;
+    }
+}
+
+// 보낼 금액 입력 시 호출
+function handleSendAmountInput(e) {
+    let rawValue = e.target.value.replace(/[^\d]/g, '');
+    if (!rawValue) {
+        e.target.value = '';
+        if(document.getElementById('receiveAmount')) document.getElementById('receiveAmount').value = '';
+        return;
+    }
+
+    let numValue = parseInt(rawValue);
+
+    if (numValue > MAX_KRW_LIMIT) {
+        numValue = MAX_KRW_LIMIT;
+        e.target.value = numValue.toLocaleString('ko-KR');
+        showLimitModal();
+    } else {
+        e.target.value = numValue.toLocaleString('ko-KR');
+    }
+
+    const rate = exchangeRates[selectedCurrency].rate;
+    const convertedAmount = Math.floor(numValue * rate);
+    
+    const receiveInput = document.getElementById('receiveAmount');
+    if (receiveInput) {
+        receiveInput.value = convertedAmount.toLocaleString('ko-KR');
+    }
+    
+    updateFees(numValue, convertedAmount);
+    updateRateDisplay();
+}
+
+function updateFees(krw, foreignAmount) {
+    const transferFeeRate = selectedCurrency === 'NPR' ? 0.005 : 0.01;
+    const transferFee = Math.floor(krw * transferFeeRate);
+    const depositTotal = krw + transferFee;
+    const withdrawalFee = withdrawalFees[selectedCurrency] || 0;
+    const symbol = currencySymbols[selectedCurrency] || '¥';
+
+    document.getElementById('depositAmount').textContent = `₩${depositTotal.toLocaleString()}`;
+    document.getElementById('transferFee').textContent = `₩${transferFee.toLocaleString()}`;
+    document.getElementById('withdrawalFee').textContent = `${symbol}${withdrawalFee.toLocaleString()}`;
+    
+    updateSavings(krw, foreignAmount);
+}
+
+// ===== DOM Elements =====
+const sendAmountInput = document.getElementById('sendAmount');
+const receiveCurrencySelect = document.getElementById('receiveCurrency');
+const receiveAmountEl = document.getElementById('receiveAmount');
+const exchangeRateEl = document.getElementById('exchangeRate');
+const savingsEl = document.getElementById('savings');
+const countryCards = document.querySelectorAll('.country-card');
+
+// Custom Dropdown Elements
+const currencyDropdown = document.getElementById('currencyDropdown');
+const currencyBtn = document.getElementById('currencyBtn');
+const currencyOptions = document.getElementById('currencyOptions');
+const currencyFlag = document.getElementById('receiveCurrencyFlag');
+const currencyCode = document.getElementById('receiveCurrencyCode');
+
+// ===== Translation Functions =====
+function t(key) {
+    return translations[currentLang][key] || translations['ko'][key] || key;
+}
+
+function applyTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const translation = t(key);
+        if (translation) el.innerHTML = translation;
+    });
+    document.documentElement.lang = currentLang;
+
+    const sendInput = document.getElementById('sendAmount');
+    if (sendInput && sendInput.value) {
+        handleSendAmountInput({ target: sendInput });
+    }
+}
+
+function changeLanguage(lang) {
+    currentLang = lang;
+    
+    const langSelect = document.getElementById('langSelect');
+    const mobileLangSelect = document.getElementById('mobileLangSelect');
+    if (langSelect) langSelect.value = lang;
+    if (mobileLangSelect) mobileLangSelect.value = lang;
+    
+    applyTranslations();
+
+    const sendInput = document.getElementById('sendAmount');
+    if (sendInput && sendInput.value) {
+        handleSendAmountInput({ target: sendInput });
+    }
+
+    localStorage.setItem('preferredLanguage', lang);
+}
+
+// ===== Calculator Functions =====
+function formatNumber(num, decimals = 0) {
+    return new Intl.NumberFormat('ko-KR', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    }).format(num);
+}
+
+function calculateTransfer() {
+    const sendAmount = parseFloat(sendAmountInput?.value.replace(/,/g, '')) || 0;
+    const selectedCurrency = receiveCurrencySelect?.value || 'JPY';
+    const rateInfo = exchangeRates[selectedCurrency];
+    
+    if (!rateInfo || sendAmount <= 0) {
+        if (receiveAmountEl) receiveAmountEl.textContent = `${rateInfo ? rateInfo.symbol : '¥'} 0`;
+        return;
+    }
+    
+    // Calculate receive amount
+    const receiveAmount = sendAmount / rateInfo.rate;
+    
+    // Calculate bank comparison
+    const bankReceiveAmount = receiveAmount * (1 - bankFeePercent / 100);
+    const savings = receiveAmount - bankReceiveAmount;
+    
+    // Update display
+    if (receiveAmountEl) {
+        receiveAmountEl.textContent = `${rateInfo.symbol} ${formatNumber(receiveAmount)}`;
+    }
+    if (exchangeRateEl) {
+        exchangeRateEl.textContent = `1 KRW = ${rateInfo.rate.toFixed(6)} ${selectedCurrency}`;
+    }
+    if (savingsEl) {
+        const compareText = t('calc.compare')
+            .replace('{amount}', formatNumber(savings))
+            .replace('{currency}', selectedCurrency);
+        savingsEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>${compareText}</span>`;
+    }
+    
+    // Update 상대방이 받는 금액
+    const receiveAmountDisplay = document.getElementById('receiveAmountDisplay');
+    if (receiveAmountDisplay) {
+        receiveAmountDisplay.textContent = `${rateInfo.symbol} ${formatNumber(receiveAmount)}`;
+    }
+}
+
+function handleAmountInput(e) {
+    let value = e.target.value.replace(/[^\d]/g, '');
+    if (value) {
+        value = formatNumber(parseInt(value));
+    }
+    e.target.value = value;
+    calculateTransfer();
+}
+
+function handleCurrencyChange(currency, flagUrl) {
+    selectedCurrency = currency; 
+    
+    const receiveCurrencyFlag = document.getElementById('receiveCurrencyFlag');
+    const receiveCurrencyCode = document.getElementById('receiveCurrencyCode');
+    const receiveCurrencySymbol = document.getElementById('receiveCurrencySymbol');
+    
+    if (receiveCurrencyFlag && flagUrl) receiveCurrencyFlag.src = flagUrl;
+    if (receiveCurrencyCode) receiveCurrencyCode.textContent = currency;
+    if (receiveCurrencySymbol) {
+        receiveCurrencySymbol.textContent = currencySymbols[currency] || '¥';
+    }
+    
+    // 계산 실행
+    const sendInput = document.getElementById('sendAmount');
+    if (sendInput) handleSendAmountInput({ target: sendInput });
+    
+    updateRateDisplay();
+}
+
+// Toggle dropdown
+function toggleCurrencyDropdown() {
+    if (currencyDropdown) {
+        currencyDropdown.classList.toggle('open');
+    }
+}
+
+// Close dropdown when clicking outside
+function closeCurrencyDropdown(e) {
+    if (currencyDropdown && !currencyDropdown.contains(e.target)) {
+        currencyDropdown.classList.remove('open');
+    }
+}
+
+// ===== Country Card Click Handler =====
+function handleCountryClick(e) {
+    const card = e.currentTarget;
+    const currency = card.dataset.currency;
+    
+    if (currency && exchangeRates[currency]) {
+        handleCurrencyChange(currency);
+        document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// ===== Header Scroll Effect =====
+function handleScroll() {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+}
+
+// ===== Mobile Menu Toggle =====
+function toggleMobileMenu() {
+    const mobileNav = document.querySelector('.mobile-nav');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    
+    if (mobileNav) {
+        mobileNav.classList.toggle('active');
+        menuBtn.classList.toggle('active');
+    }
+}
+
+// ===== Language Selection =====
+function handleLanguageChange(e) {
+    changeLanguage(e.target.value);
+}
+
+// ===== Intersection Observer for Animations =====
+function initAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.feature-card, .country-card, .trust-item').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// ===== Auto-detect Language =====
+function detectLanguage() {
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang && translations[savedLang]) {
+        changeLanguage(savedLang);
+        return;
+    }
+    
+    const userLang = navigator.language || navigator.userLanguage;
+    const langMap = { 'ko': 'ko', 'ja': 'ja', 'zh': 'zh', 'en': 'en' };
+    const detectedLang = langMap[userLang.split('-')[0]] || 'ko';
+    
+    changeLanguage(detectedLang);
+}
+
+// ===== Initialize =====
+document.addEventListener('DOMContentLoaded', () => {
+    // Calculator event listeners
+    const sendAmountInput = document.getElementById('sendAmount');
+    const receiveAmountInput = document.getElementById('receiveAmount');
+    
+    if (sendAmountInput) {
+        sendAmountInput.addEventListener('input', handleSendAmountInput);
+        sendAmountInput.value = '1,000,000';
+        // 초기 계산 실행
+        setTimeout(() => {
+            handleSendAmountInput({ target: sendAmountInput });
+        }, 100);
+    }
+    
+    if (receiveAmountInput) {
+        receiveAmountInput.addEventListener('input', handleReceiveAmountInput);
+    }
+    
+    // Custom currency dropdown
+    if (currencyBtn) {
+        currencyBtn.addEventListener('click', toggleCurrencyDropdown);
+    }
+    
+    // Currency options click
+    document.querySelectorAll('.calc-currency-option').forEach(option => {
+        option.addEventListener('click', () => {
+            const currency = option.dataset.value;
+            const flagUrl = option.querySelector('img').src; // 이미지 경로 추출
+            handleCurrencyChange(currency, flagUrl); // 두 값을 모두 보냄
+            document.getElementById('currencyDropdown').classList.remove('open');
+        });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', closeCurrencyDropdown);
+    
+    // Country cards click
+    countryCards.forEach(card => {
+        card.addEventListener('click', handleCountryClick);
+    });
+    
+    // Header scroll
+    window.addEventListener('scroll', handleScroll);
+    
+    // Mobile menu
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+    
+    // Language selection
+    const langSelect = document.getElementById('langSelect');
+    if (langSelect) {
+        langSelect.addEventListener('change', handleLanguageChange);
+    }
+    
+    const mobileLangSelect = document.getElementById('mobileLangSelect');
+    if (mobileLangSelect) {
+        mobileLangSelect.addEventListener('change', handleLanguageChange);
+    }
+    
+    // Initialize
+    detectLanguage();
+    initAnimations();
+    
+    // Set initial selected state
+    document.querySelector('.calc-currency-option[data-value="JPY"]')?.classList.add('selected');
+});
+
+// ===== Smooth Scroll =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+        // Close mobile menu if open
+        document.querySelector('.mobile-nav')?.classList.remove('active');
+    });
+});
+
+function handleReceiveAmountInput(e) {
+    let rawValue = e.target.value.replace(/[^\d]/g, '');
+    if (!rawValue) {
+        e.target.value = '';
+        document.getElementById('sendAmount').value = '';
+        return;
+    }
+
+    let numValue = parseInt(rawValue);
+    const rate = exchangeRates[selectedCurrency].rate;
+    let krwAmount = Math.floor(numValue / rate);
+
+    if (krwAmount > MAX_KRW_LIMIT) {
+        krwAmount = MAX_KRW_LIMIT;
+        numValue = Math.floor(MAX_KRW_LIMIT * rate);
+        e.target.value = numValue.toLocaleString('ko-KR');
+        showLimitModal();
+    } else {
+        e.target.value = numValue.toLocaleString('ko-KR');
+    }
+
+    document.getElementById('sendAmount').value = krwAmount.toLocaleString('ko-KR');
+    updateFees(krwAmount, numValue);
+}
+
+function updateSavings(krw, foreignAmount) {
+    const savingsElement = document.getElementById('savings');
+    if (!savingsElement) return;
+    
+    const currentRate = exchangeRates[selectedCurrency].rate;
+    const bankAmount = Math.floor(krw * (currentRate * 0.965)); 
+    const savings = foreignAmount - bankAmount;
+    const symbol = currencySymbols[selectedCurrency] || '¥';
+    
+    // 현재 언어의 템플릿 가져오기
+    const template = translations[currentLang]['calc.savings'] || translations['ko']['calc.savings'];
+    const savingsText = template.replace('{amount}', `<strong>${symbol} ${savings.toLocaleString()}</strong>`);
+    
+    savingsElement.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>${savingsText}</span>
+    `;
+}
+
+let keypadMode = 'abc'; 
+let isShift = false;
+const keyboardLayouts = {
+    num: ['1','2','3','4','5','6','7','8','9','0','Del'],
+    abc: [['q','w','e','r','t','y','u','i','o','p'],['a','s','d','f','g','h','j','k','l'],['Shift','z','x','c','v','b','n','m']],
+    spec: [['-','/',':',';','(',')','$','&','@','"'],['.','?','!',"'",',','_','\\','|','~','<'],['>','`','[',']','{','}','#','%','^','*']]
+};
+
+function toggleKeypad() {
+    // 보안 키패드의 표시 상태를 토글하며 중앙 정렬 상태로 렌더링함
+    const keypad = document.getElementById('securityKeypad');
+    if (!keypad) return;
+    keypad.classList.toggle('active');
+    if (keypad.classList.contains('active')) renderKeypad();
+}
+
+function switchMode(mode) {
+    // abc(영문) 모드와 spec(특수기호) 모드 사이를 전환함
+    keypadMode = (keypadMode === 'abc' && mode === 'spec') ? 'spec' : 'abc';
+    renderKeypad();
+}
+
+function toggleShift() {
+    // 영문 대소문자 입력 상태를 전환함
+    isShift = !isShift;
+    renderKeypad();
+}
+
+function renderKeypad() {
+    // Shift 텍스트를 고정하고 숫자와 영문이 포함된 키패드를 생성함
+    const container = document.getElementById('keypadContainer');
+    container.innerHTML = '';
+    const createBtn = (key, isFunc = false, className = "") => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `key-btn ${isFunc ? 'func-key' : ''} ${className}`;
+        if (key === 'Shift') {
+            btn.textContent = 'Shift';
+            btn.classList.toggle('active', isShift);
+            btn.onclick = toggleShift;
+        } else if (key === 'Del') {
+            btn.textContent = '←';
+            btn.onclick = () => { const p = document.getElementById('userPassword'); p.value = p.value.slice(0, -1); };
+        } else {
+            let char = (keypadMode === 'abc' && isShift) ? key.toUpperCase() : key;
+            btn.textContent = char;
+            btn.onclick = () => { document.getElementById('userPassword').value += char; };
+        }
+        return btn;
+    };
+    const numRow = document.createElement('div');
+    numRow.className = 'keypad-row';
+    keyboardLayouts.num.forEach(k => numRow.appendChild(createBtn(k, k === 'Del', k === 'Del' ? 'del-btn' : '')));
+    container.appendChild(numRow);
+    keyboardLayouts[keypadMode].forEach((row, idx) => {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = `keypad-row row-${idx}`;
+        row.forEach(key => {
+            if (key === 'Shift' && keypadMode !== 'abc') return;
+            rowDiv.appendChild(createBtn(key, key === 'Shift', key === 'Shift' ? 'shift-btn' : ''));
+        });
+        container.appendChild(rowDiv);
+    });
+    const bottomRow = document.createElement('div');
+    bottomRow.className = 'keypad-row';
+    const modeBtn = createBtn(keypadMode === 'abc' ? '!#1' : 'abc', true, 'mode-btn');
+    modeBtn.onclick = () => switchMode('spec');
+    bottomRow.appendChild(modeBtn);
+    const spaceBtn = createBtn('Space', false, 'space-btn');
+    spaceBtn.onclick = () => { document.getElementById('userPassword').value += ' '; };
+    bottomRow.appendChild(spaceBtn);
+    const confirmBtn = createBtn('확인', true, 'confirm-btn');
+    confirmBtn.onclick = toggleKeypad;
+    bottomRow.appendChild(confirmBtn);
+    container.appendChild(bottomRow);
+}
+
+const loginForm = document.querySelector('.login-form');
+if (loginForm) { // 로그인 폼이 존재하는 페이지(login.html)에서만 실행
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const fields = [
+            { id: 'userId', box: 'userIdBox', err: 'userIdError', msg: '아이디를 입력하세요.' },
+            { id: 'userPassword', box: 'userPasswordBox', err: 'userPasswordError', msg: '비밀번호를 입력하세요.' }
+        ];
+
+        let isValid = true;
+
+        fields.forEach(field => {
+            const input = document.getElementById(field.id);
+            const errorEl = document.getElementById(field.err);
+            const boxEl = document.getElementById(field.box);
+
+            if (!input.value.trim()) {
+                if (errorEl) {
+                    errorEl.textContent = field.msg;
+                    errorEl.style.display = 'block';
+                }
+                if (boxEl) boxEl.classList.add('error');
+                isValid = false;
+            } else {
+                if (errorEl) errorEl.style.display = 'none';
+                if (boxEl) boxEl.classList.remove('error');
+            }
+        });
+
+        if (isValid) {
+            this.submit(); // 모든 검증 통과 시 실제 제출
+        }
+    });
+}
