@@ -93,7 +93,7 @@
                         <h2 class="db-page-title">공지사항</h2>
                     </div>
 
-                    <div class="db-search-box">
+                    <div class="db-search-box" id="searchBox">
                         <select class="db-search-type">
                             <option value="all">제목+내용</option>
                             <option value="title">제목</option>
@@ -107,10 +107,29 @@
                             </svg>
                             검색
                         </button>
+                        <button class="db-reset-btn">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                                <path d="M21 3v5h-5"></path>
+                                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                                <path d="M3 21v-5h5"></path>
+                            </svg>
+                            초기화
+                        </button>
                     </div>
 
                     <div class="db-table-info">
                         <span class="db-total-count">총 <strong>135</strong>건</span>
+                        <button class="db-mobile-search-toggle" id="mobileSearchToggle">
+                            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <svg class="close-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
                     </div>
 
                     <div class="db-notice-list-page">
@@ -118,7 +137,6 @@
                             <colgroup>
                                 <col class="col-num" style="width: 80px;">
                                 <col class="col-title">
-                                <col class="col-author" style="width: 120px;">
                                 <col style="width: 100px;">
                                 <col class="col-views" style="width: 80px;">
                             </colgroup>
@@ -126,7 +144,6 @@
                                 <tr>
                                     <th class="th-num">번호</th>
                                     <th>제목</th>
-                                    <th class="th-author">작성자</th>
                                     <th>작성일</th>
                                     <th class="th-views">조회수</th>
                                 </tr>
@@ -135,70 +152,60 @@
                             <tr>
                                 <td class="td-num">18</td>
                                 <td class="notice-title"><a href="#">연말연시 영업일 안내</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2025.12.29</td>
                                 <td class="td-views">66</td>
                             </tr>
                             <tr>
                                 <td class="td-num">17</td>
                                 <td class="notice-title"><a href="#">추석 연휴에도 하나송금은 정상근무합니다.</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2025.10.03</td>
                                 <td class="td-views">50</td>
                             </tr>
                             <tr>
                                 <td class="td-num">16</td>
                                 <td class="notice-title"><a href="#">설 연휴 중 농협은행, 지역 농협은행 인터넷 뱅킹 중지 안내</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2025.01.24</td>
                                 <td class="td-views">126</td>
                             </tr>
                             <tr>
                                 <td class="td-num">15</td>
                                 <td class="notice-title"><a href="#">2024년 12월 시스템 점검 안내</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2024.12.01</td>
                                 <td class="td-views">89</td>
                             </tr>
                             <tr>
                                 <td class="td-num">14</td>
                                 <td class="notice-title"><a href="#">환율 우대 이벤트 안내</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2024.11.15</td>
                                 <td class="td-views">203</td>
                             </tr>
                             <tr>
                                 <td class="td-num">13</td>
                                 <td class="notice-title"><a href="#">신규 수취국가 추가 안내 (베트남, 몽골)</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2024.10.20</td>
                                 <td class="td-views">178</td>
                             </tr>
                             <tr>
                                 <td class="td-num">12</td>
                                 <td class="notice-title"><a href="#">모바일 앱 업데이트 안내</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2024.09.05</td>
                                 <td class="td-views">145</td>
                             </tr>
                             <tr>
                                 <td class="td-num">11</td>
                                 <td class="notice-title"><a href="#">송금 한도 변경 안내</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2024.08.12</td>
                                 <td class="td-views">267</td>
                             </tr>
                             <tr>
                                 <td class="td-num">10</td>
                                 <td class="notice-title"><a href="#">고객센터 운영시간 변경 안내</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2024.07.28</td>
                                 <td class="td-views">98</td>
                             </tr>
                             <tr>
                                 <td class="td-num">9</td>
                                 <td class="notice-title"><a href="#">개인정보처리방침 변경 안내</a></td>
-                                <td class="td-author">manager</td>
                                 <td>2024.06.30</td>
                                 <td class="td-views">156</td>
                             </tr>
@@ -309,5 +316,17 @@
 
     <script src="js/main.js"></script>
     <script src="js/sidebar.js"></script>
+    <script>
+        // Mobile search toggle
+        const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+        const searchBox = document.getElementById('searchBox');
+
+        if (mobileSearchToggle && searchBox) {
+            mobileSearchToggle.addEventListener('click', () => {
+                mobileSearchToggle.classList.toggle('active');
+                searchBox.classList.toggle('mobile-active');
+            });
+        }
+    </script>
 </body>
 </html>
