@@ -416,11 +416,9 @@
                             <h3 class="db-card-title">접수번호 조회</h3>
                             <div class="db-inquiry-content">
                                 <div class="db-inquiry-icon">
-                                    <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                        <circle cx="12" cy="12" r="8" stroke-width="1.5"/>
-                                        <line x1="15" y1="9" x2="9" y2="15" stroke-width="1.5"/>
-                                        <line x1="9" y1="9" x2="15" y2="15" stroke-width="1.5"/>
+                                    <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                     </svg>
                                 </div>
                                 <div class="db-inquiry-text">
@@ -522,35 +520,7 @@
     <div class="db-overlay-mask" id="dbOverlay"></div>
 
     <script src="js/main.js"></script>
-    <script>
-        // 사이드바 토글 로직
-        const sidebar = document.getElementById('dbSidebar');
-        const toggleBtn = document.getElementById('sidebarToggle');
-        const overlay = document.getElementById('dbOverlay');
-
-        toggleBtn.addEventListener('click', () => {
-            if (window.innerWidth > 1024) {
-                document.body.classList.toggle('db-collapsed');
-            } else {
-                sidebar.classList.toggle('mobile-open');
-                overlay.classList.toggle('active');
-            }
-        });
-
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('mobile-open');
-            overlay.classList.remove('active');
-        });
-
-        // MY 메뉴 레이어 토글
-        const myBtn = document.getElementById('myMenuBtn');
-        const myLayer = document.getElementById('myMenuLayer');
-        myBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            myLayer.classList.toggle('active');
-        });
-        document.addEventListener('click', () => myLayer.classList.remove('active'));
-    </script>
+    <script src="js/sidebar.js"></script>
 
     <div id="limitModal" class="modal-overlay">
         <div class="modal-content">
