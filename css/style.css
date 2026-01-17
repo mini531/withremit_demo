@@ -825,10 +825,23 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-notice-title { font-size: 0.9rem; color: var(--text-dark); flex: 1; }
 .db-notice-date { font-size: 0.85rem; color: #9ca3af; white-space: nowrap; margin-left: 12px; }
 
-/* Help Card */
+/* Help Card - Old */
 .db-help-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .db-help-btns .btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px 16px; }
 .db-help-btns .btn svg { width: 32px; height: 32px; }
+
+/* Help Card - New Design */
+.db-help-card-new { background: transparent; border: none; box-shadow: none; padding: 0; }
+.db-help-card-new .db-card-title { margin-bottom: 16px; }
+.db-help-btns-new { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.db-help-btn-new { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 30px 20px; border-radius: var(--radius); border: none; cursor: pointer; transition: all 0.2s; min-height: 160px; }
+.db-help-btn-outline { background: #f8f9fa; color: var(--text-dark); }
+.db-help-btn-outline:hover { background: #e9ecef; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.db-help-btn-primary { background: #f8f9fa; color: var(--text-dark); }
+.db-help-btn-primary:hover { background: #e9ecef; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.db-help-icon { width: 80px; height: 80px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.db-help-btn-new svg { stroke: var(--text-muted); }
+.db-help-btn-new span { font-size: 1rem; font-weight: 600; color: var(--text-dark); }
 
 /* Contact Info Bar */
 .contact-info-bar { background: #f8fafc; border-top: 1px solid var(--border-color); padding: 14px 0; }
@@ -850,7 +863,7 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 @media (max-width: 768px) {
-  .db-sidebar { position: fixed; left: -220px; width: 200px; height: 100vh; top: 0; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; }
+  .db-sidebar { position: fixed; left: -220px; width: 200px; height: calc(100vh - 55px); top: 55px; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; }
   .db-sidebar.mobile-open { left: 0; }
   .db-header-sticky .lang-select { min-width: 70px; font-size: 13px; }
   .db-grid { grid-template-columns: 1fr; gap: 15px; }
@@ -876,11 +889,15 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 @media (max-width: 480px) {
-  .db-sidebar { width: 240px; left: -100%; height: 100vh; top: 0; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; }
+  .db-sidebar { width: 240px; left: -100%; height: calc(100vh - 55px); top: 55px; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; }
   .db-sidebar.mobile-open { left: 0; }
   .db-limit-grid { grid-template-columns: 1fr; }
   .db-limit-item { gap: 10px; }
   .db-help-btns { grid-template-columns: 1fr; }
+  .db-help-btns-new { grid-template-columns: 1fr; }
+  .db-user-dropdown .btn { padding: 0 10px; min-width: 40px; }
+  .db-user-dropdown .btn svg { margin: 0; }
+  .db-user-dropdown .btn-text { display: none; }
   .db-grid { grid-template-columns: 1fr; min-width: 320px; gap: 15px; }
   .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; padding: 20px 16px; box-sizing: border-box; min-width: unset; }
   .db-calculator-card { width: 100% !important; max-width: 100% !important; padding: 20px 16px !important; min-width: unset; }
