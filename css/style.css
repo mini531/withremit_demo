@@ -720,7 +720,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-card-title { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px; }
 
 /* Balance Card - Blue Style */
-.db-balance-card-blue { background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%); border: none; }
+.db-balance-card-blue { background: linear-gradient(135deg, #1e88e5 0%, #0d3e76 100%); border: none; }
 .db-card-title-white { font-size: 1.25rem; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 20px; }
 .wallet-val-white { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 20px; }
 .db-linked-account-white { display: flex; align-items: center; gap: 8px; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; color: rgba(255,255,255,0.85); }
@@ -739,13 +739,13 @@ p { font-size: 1rem; color: var(--text-body); }
 
 /* Limit Info Card */
 .db-limit-card { background: linear-gradient(135deg, #37474f 0%, #263238 100%); border: none; }
-.db-limit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.db-limit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
 .db-limit-item { display: flex; align-items: flex-start; gap: 12px; }
 .db-limit-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .db-limit-icon svg { stroke: rgba(255,255,255,0.9); }
-.db-limit-content { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.db-limit-content { display: flex; flex-direction: column; gap: 3px; flex: 1; }
 .db-limit-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; }
-.db-limit-value { font-size: 1.1rem; font-weight: 700; color: #fff; }
+.db-limit-value { font-size: 1.1rem; font-weight: 700; color: #fff; white-space: nowrap; }
 .db-limit-value.highlight { color: #4fc3f7; }
 
 /* Frequent Accounts Card */
@@ -762,7 +762,7 @@ p { font-size: 1rem; color: var(--text-body); }
 
 /* Transactions List - New Design */
 .db-transaction-list-new { display: flex; flex-direction: column; gap: 0; }
-.db-transaction-item-new { display: flex; align-items: center; gap: 12px; padding: 16px 0; border-bottom: 1px solid #f0f0f0; transition: background 0.2s; }
+.db-transaction-item-new { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; transition: background 0.2s; }
 .db-transaction-item-new:last-child { border-bottom: none; }
 .db-trans-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .db-trans-icon.deposit { background: #e3f2fd; }
@@ -826,7 +826,9 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-notice-date { font-size: 0.85rem; color: #9ca3af; white-space: nowrap; margin-left: 12px; }
 
 /* Help Card */
-.db-help-btns { display: flex; flex-direction: column; gap: 12px; }
+.db-help-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.db-help-btns .btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px 16px; }
+.db-help-btns .btn svg { width: 32px; height: 32px; }
 
 /* Contact Info Bar */
 .contact-info-bar { background: #f8fafc; border-top: 1px solid var(--border-color); padding: 14px 0; }
@@ -844,11 +846,13 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-main-container { padding: 20px 15px 40px; }
   .db-balance-badge { display: none !important; }
   .db-header-sticky .nav-right { gap: 10px; }
+  .db-header-sticky .lang-select { min-width: 65px; }
 }
 
 @media (max-width: 768px) {
-  .db-sidebar { position: fixed; left: -220px; width: 200px; height: 100vh; top: 0; z-index: 1000; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; }
+  .db-sidebar { position: fixed; left: -220px; width: 200px; height: 100vh; top: 0; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; }
   .db-sidebar.mobile-open { left: 0; }
+  .db-header-sticky .lang-select { min-width: 70px; font-size: 13px; }
   .db-grid { grid-template-columns: 1fr; gap: 15px; }
   .db-col-info { width: 100%; max-width: 100%; min-width: unset; }
   .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; padding: 24px 20px; box-sizing: border-box; min-width: unset; }
@@ -872,10 +876,11 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 @media (max-width: 480px) {
-  .db-sidebar { width: 240px; left: -100%; height: 100vh; top: 0; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; }
+  .db-sidebar { width: 240px; left: -100%; height: 100vh; top: 0; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; }
   .db-sidebar.mobile-open { left: 0; }
   .db-limit-grid { grid-template-columns: 1fr; }
   .db-limit-item { gap: 10px; }
+  .db-help-btns { grid-template-columns: 1fr; }
   .db-grid { grid-template-columns: 1fr; min-width: 320px; gap: 15px; }
   .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; padding: 20px 16px; box-sizing: border-box; min-width: unset; }
   .db-calculator-card { width: 100% !important; max-width: 100% !important; padding: 20px 16px !important; min-width: unset; }
