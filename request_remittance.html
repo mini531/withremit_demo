@@ -39,7 +39,7 @@
                         </div>
                         <div class="limit-info-item">
                             <div class="limit-label">송금액</div>
-                            <div class="limit-value">$ 0</div>
+                            <div class="limit-value">$ 50,000.00</div>
                         </div>
                         <div class="limit-info-item highlight">
                             <div class="limit-label">송금 가능 금액</div>
@@ -57,7 +57,7 @@
                             <div class="field-item">
                                 <label class="field-label">국가</label>
                                 <select class="login-input select-styled" id="remitCountry">
-                                    <option value="" disabled selected>SELECT</option>
+                                    <option value="" disabled selected>선택</option>
                                     <option value="JP">일본 (JPY)</option>
                                     <option value="PH">필리핀 (PHP)</option>
                                     <option value="CN">중국 (CNY)</option>
@@ -72,24 +72,32 @@
                             <div class="field-item">
                                 <label class="field-label">서비스 선택</label>
                                 <select class="login-input select-styled" id="remitService" disabled>
-                                    <option value="" disabled selected>SELECT</option>
+                                    <option value="" disabled selected>선택</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="field-item top-level">
-                            <label class="field-label">송금액 설정</label>
-                            <div class="field-flex h-52">
-                                <label class="radio-wrap">
-                                    <input type="radio" name="amountType" value="send" checked>
-                                    <span class="custom-radio"></span>
-                                    <span>송금액 기준</span>
-                                </label>
-                                <label class="radio-wrap">
-                                    <input type="radio" name="amountType" value="receive">
-                                    <span class="custom-radio"></span>
-                                    <span>수취금액 기준</span>
-                                </label>
+                        <div class="form-row-2">
+                            <div class="field-item">
+                                <label class="field-label">송금액 설정</label>
+                                <div class="field-flex h-52">
+                                    <label class="radio-wrap">
+                                        <input type="radio" name="amountType" value="send" checked>
+                                        <span class="custom-radio"></span>
+                                        <span>송금액 기준</span>
+                                    </label>
+                                    <label class="radio-wrap">
+                                        <input type="radio" name="amountType" value="receive">
+                                        <span class="custom-radio"></span>
+                                        <span>수취금액 기준</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="field-item" id="exchangeRateDisplay" style="display: none;">
+                                <label class="field-label">환율</label>
+                                <div class="login-input" style="display: flex; align-items: center; background: var(--bg-light); border-color: transparent; font-weight: 600; color: var(--text-dark);">
+                                    <span id="exchangeRate">-</span>
+                                </div>
                             </div>
                         </div>
 
@@ -102,11 +110,6 @@
                                 </div>
                                 <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산</button>
                             </div>
-                        </div>
-
-                        <div id="exchangeRateDisplay" style="display: none; margin-top: 12px; padding: 12px 16px; background: var(--bg-light); border-radius: 8px; border-left: 3px solid var(--primary-blue);">
-                            <span style="font-size: 14px; color: var(--text-muted); margin-right: 12px;">환율</span>
-                            <span id="exchangeRate" style="font-size: 14px; font-weight: 600; color: var(--text-dark);">-</span>
                         </div>
 
                         <div class="remit-calc-result" id="calcResult" style="display: none;">
@@ -141,18 +144,14 @@
                             <div class="field-item">
                                 <label class="field-label">입금 은행</label>
                                 <select class="login-input select-styled" id="depositBank">
-                                    <option value="" disabled selected>SELECT</option>
-                                    <option value="kb">국민은행</option>
-                                    <option value="shinhan">신한은행</option>
-                                    <option value="woori">우리은행</option>
-                                    <option value="hana">하나은행</option>
-                                    <option value="nh">농협은행</option>
-                                    <option value="ibk">기업은행</option>
+                                    <option value="" disabled selected>선택</option>
+                                    <option value="ibk">기업은행 (IBK)</option>
+                                    <option value="nh">농협은행 (NONGHYUP BANK)</option>
                                 </select>
                             </div>
                             <div class="field-item">
                                 <label class="field-label">입금자 명</label>
-                                <input type="text" placeholder="입금자 명을 입력하세요" class="login-input" id="depositorName">
+                                <input type="text" placeholder="입금자 명을 입력하세요" class="login-input" id="depositorName" value="홍길동">
                             </div>
                         </div>
 
@@ -182,7 +181,7 @@
                             <div class="field-item">
                                 <label class="field-label">수취인과의 관계</label>
                                 <select class="login-input select-styled" id="relationship">
-                                    <option value="">SELECT</option>
+                                    <option value="">선택</option>
                                     <option value="R01">본인</option>
                                     <option value="R02">자식</option>
                                     <option value="R03">부모</option>
@@ -200,7 +199,7 @@
                             <div class="field-item">
                                 <label class="field-label">수취 은행</label>
                                 <select class="login-input select-styled" id="beneficiaryBank">
-                                    <option value="">SELECT</option>
+                                    <option value="">선택</option>
                                 </select>
                             </div>
                             <div class="field-item">
@@ -217,7 +216,7 @@
                             <div class="field-item">
                                 <label class="field-label">수취 계좌 타입</label>
                                 <select class="login-input select-styled" id="accountType">
-                                    <option value="">SELECT</option>
+                                    <option value="">선택</option>
                                     <option value="1">Futuu 저축계좌</option>
                                     <option value="2">Touza 당좌계좌</option>
                                 </select>
@@ -228,7 +227,7 @@
                             <div class="field-item">
                                 <label class="field-label">송금 목적</label>
                                 <select class="login-input select-styled" id="remitPurpose">
-                                    <option value="" disabled selected>SELECT</option>
+                                    <option value="" disabled selected>선택</option>
                                     <option value="family">가족 송금</option>
                                     <option value="education">교육비</option>
                                     <option value="living">생활비</option>
@@ -242,7 +241,7 @@
                             <div class="field-item">
                                 <label class="field-label">자금 출처</label>
                                 <select class="login-input select-styled" id="fundSource">
-                                    <option value="">SELECT</option>
+                                    <option value="">선택</option>
                                     <option value="SF01">월급</option>
                                     <option value="SF02">부동산/동산 판매이익</option>
                                     <option value="SF03">저축</option>
@@ -352,7 +351,7 @@
         // 국가별 은행 목록 (일본은 전체 목록)
         const banksByCountry = {
             JP: [
-                { value: '', text: 'SELECT' },
+                { value: '', text: '선택' },
                 { value: '0117', text: '青森みちのく銀行/아오모리미츠노쿠은행' },
                 { value: '0125', text: '七十七銀行/시찌쥬시찌은행' },
                 { value: '0310', text: 'GMO あおぞら銀行/GMO아오조라은행' },
@@ -481,56 +480,56 @@
                 { value: '905', text: 'SBJ銀行 / 신한일본은행' }
             ],
             PH: [
-                { value: '', text: 'SELECT' },
+                { value: '', text: '선택' },
                 { value: 'BDO', text: 'BDO' },
                 { value: 'BPI', text: 'BPI' },
                 { value: 'METRO', text: 'Metrobank' },
                 { value: 'SECURITY', text: 'Security Bank' }
             ],
             CN: [
-                { value: '', text: 'SELECT' },
+                { value: '', text: '선택' },
                 { value: 'ICBC', text: '중국공상은행' },
                 { value: 'CCB', text: '중국건설은행' },
                 { value: 'BOC', text: '중국은행' },
                 { value: 'ABC', text: '중국농업은행' }
             ],
             NP: [
-                { value: '', text: 'SELECT' },
+                { value: '', text: '선택' },
                 { value: 'NBL', text: 'Nepal Bank' },
                 { value: 'RBB', text: 'Rastriya Banijya Bank' },
                 { value: 'NABIL', text: 'Nabil Bank' },
                 { value: 'SCB', text: 'Standard Chartered' }
             ],
             AU: [
-                { value: '', text: 'SELECT' },
+                { value: '', text: '선택' },
                 { value: 'CBA', text: 'Commonwealth Bank' },
                 { value: 'WBC', text: 'Westpac' },
                 { value: 'ANZ', text: 'ANZ' },
                 { value: 'NAB', text: 'NAB' }
             ],
             HK: [
-                { value: '', text: 'SELECT' },
+                { value: '', text: '선택' },
                 { value: 'HSBC', text: 'HSBC' },
                 { value: 'SCB', text: 'Standard Chartered' },
                 { value: 'BOC', text: 'Bank of China (HK)' },
                 { value: 'HSB', text: 'Hang Seng Bank' }
             ],
             MN: [
-                { value: '', text: 'SELECT' },
+                { value: '', text: '선택' },
                 { value: 'KHAN', text: 'Khan Bank' },
                 { value: 'GOLOMT', text: 'Golomt Bank' },
                 { value: 'TDB', text: 'Trade and Development Bank' },
                 { value: 'STATE', text: 'State Bank' }
             ],
             VN: [
-                { value: '', text: 'SELECT' },
+                { value: '', text: '선택' },
                 { value: 'VCB', text: 'Vietcombank' },
                 { value: 'BIDV', text: 'BIDV' },
                 { value: 'VTB', text: 'VietinBank' },
                 { value: 'AGB', text: 'Agribank' }
             ],
             LK: [
-                { value: '', text: 'SELECT' },
+                { value: '', text: '선택' },
                 { value: 'BOC', text: 'Bank of Ceylon' },
                 { value: 'PB', text: 'People\'s Bank' },
                 { value: 'COM', text: 'Commercial Bank' },
@@ -582,8 +581,9 @@
             const exchangeRateDisplay = document.getElementById('exchangeRateDisplay');
             if (exchangeRates[country]) {
                 const rateInfo = exchangeRates[country];
+                const rateFor1000 = (rateInfo.rate * 1000).toLocaleString('ko-KR', {minimumFractionDigits: 3, maximumFractionDigits: 3});
                 document.getElementById('exchangeRate').textContent =
-                    `1 KRW = ${rateInfo.rate.toFixed(4)} ${rateInfo.currency}`;
+                    `₩ 1,000 = ${rateInfo.symbol} ${rateFor1000}`;
                 exchangeRateDisplay.style.display = 'block';
             } else {
                 exchangeRateDisplay.style.display = 'none';
