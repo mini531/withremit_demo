@@ -499,7 +499,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .modal-btn-warning { background-color: #f59e0b; border: none; color: #ffffff; width: 100%; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem; transition: all 0.2s; cursor: pointer; }
 .modal-btn-warning:hover { background-color: #d97706; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
 .modal-btn-success { background-color: var(--primary-green); border: none; color: #ffffff; width: 100%; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem; transition: all 0.2s; cursor: pointer; }
-.modal-btn-success:hover { background-color: #059669; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+.modal-btn-success:hover { background-color: #0088BE; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
 @keyframes modalFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 
