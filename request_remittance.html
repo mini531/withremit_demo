@@ -26,8 +26,6 @@
 
                 <div class="db-content-card">
                     <!-- 한도액 안내 -->
-                    <div class="remit-limit-section">
-                        <h2 class="form-sec-head" style="border-left: none; padding-left: 0;">한도액 안내</h2>
                     <div class="limit-info-grid">
                         <div class="limit-info-item">
                             <div class="limit-label">1회 한도액</div>
@@ -46,7 +44,6 @@
                             <div class="limit-value">$ 50,000.00</div>
                         </div>
                     </div>
-                </div>
 
                 <!-- 송금 정보 입력 -->
                 <div class="remit-form-section">
@@ -89,7 +86,7 @@
                                     <label class="radio-wrap">
                                         <input type="radio" name="amountType" value="receive">
                                         <span class="custom-radio"></span>
-                                        <span>수취금액 기준</span>
+                                        <span>수취 금액 기준</span>
                                     </label>
                                 </div>
                             </div>
@@ -102,11 +99,11 @@
                         </div>
 
                         <div class="field-item top-level">
-                            <label class="field-label">송금 금액</label>
+                            <label class="field-label" id="amountLabel">송금 금액</label>
                             <div class="field-flex">
                                 <div style="position: relative; flex: 1; display: flex; align-items: center;">
-                                    <span id="currencySymbol" style="position: absolute; left: 16px; font-weight: 700; font-size: 1.1rem; color: var(--text-dark);">₩</span>
-                                    <input type="text" placeholder="송금 금액을 입력하세요" class="login-input" id="sendAmount" style="padding-left: 40px;">
+                                    <span id="currencySymbol" style="position: absolute; left: 16px; font-weight: 700; font-size: 1rem; color: var(--text-dark); max-width: 50px; overflow: hidden; text-overflow: ellipsis;">₩</span>
+                                    <input type="text" placeholder="송금 금액을 입력하세요" class="login-input" id="sendAmount" style="padding-left: 58px;">
                                 </div>
                                 <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산</button>
                             </div>
@@ -122,13 +119,18 @@
                                     <span class="calc-label">송금 수수료</span>
                                     <span class="calc-value" id="remitFee">-</span>
                                 </div>
-                                <div class="calc-result-item">
+                                <div class="calc-result-item highlight">
+                                    <span class="calc-label">입금액</span>
+                                    <span class="calc-value" id="depositAmount">-</span>
+                                </div>
+                            </div>
+                            <div class="calc-receive-section">
+                                <div class="calc-receive-header">
                                     <span class="calc-label">수취 금액</span>
                                     <span class="calc-value" id="receiveAmount">-</span>
                                 </div>
-                                <div class="calc-result-item">
-                                    <span class="calc-label">입금액</span>
-                                    <span class="calc-value" id="depositAmount">-</span>
+                                <div class="calc-fee-note" id="withdrawalFeeNote" style="display: none;">
+                                    <span id="withdrawalFeeText">-</span>
                                 </div>
                             </div>
                         </div>
@@ -589,7 +591,7 @@
                 exchangeRateDisplay.style.display = 'none';
             }
 
-            // 통화 기호 업데이트 (수취금액 기준이 선택된 경우)
+            // 통화 기호 업데이트 (수취 금액 기준이 선택된 경우)
             const amountType = document.querySelector('input[name="amountType"]:checked').value;
             const currencySymbol = document.getElementById('currencySymbol');
             if (amountType === 'receive' && exchangeRates[country]) {
@@ -597,22 +599,53 @@
             }
         });
 
-        // 송금액 기준 라디오 버튼 변경 시 통화 기호 업데이트
+        // 송금액 기준 라디오 버튼 변경 시 통화 기호 및 라벨 업데이트
         document.querySelectorAll('input[name="amountType"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 const country = document.getElementById('remitCountry').value;
                 const currencySymbol = document.getElementById('currencySymbol');
+                const amountLabel = document.getElementById('amountLabel');
 
                 if (this.value === 'send') {
                     currencySymbol.textContent = '₩';
+                    amountLabel.textContent = '송금 금액';
                 } else if (this.value === 'receive') {
                     if (country && exchangeRates[country]) {
                         currencySymbol.textContent = exchangeRates[country].symbol;
                     } else {
                         currencySymbol.textContent = '₩';
                     }
+                    amountLabel.textContent = '수취 금액';
                 }
             });
+        });
+
+        // 입력 금액 제한 (최대 $50,000)
+        document.getElementById('sendAmount').addEventListener('input', function() {
+            const MAX_LIMIT = 50000;
+            const KRW_PER_USD = 1350;
+            const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD;
+
+            const country = document.getElementById('remitCountry').value;
+            const amountType = document.querySelector('input[name="amountType"]:checked').value;
+
+            let inputValue = this.value.replace(/,/g, '');
+            let numValue = parseFloat(inputValue);
+
+            if (!isNaN(numValue)) {
+                if (amountType === 'send') {
+                    // 송금액 기준: KRW 최대값
+                    if (numValue > MAX_KRW_LIMIT) {
+                        this.value = MAX_KRW_LIMIT.toLocaleString();
+                    }
+                } else if (amountType === 'receive' && country && exchangeRates[country]) {
+                    // 수취 금액 기준: 외화 최대값
+                    const foreignLimit = MAX_KRW_LIMIT * exchangeRates[country].rate;
+                    if (numValue > foreignLimit) {
+                        this.value = Math.floor(foreignLimit).toLocaleString();
+                    }
+                }
+            }
         });
 
         // 송금 금액 계산
@@ -640,6 +673,24 @@
 
             const rateInfo = exchangeRates[country];
             const feeRate = country === 'NP' ? 0.005 : 0.01;
+            const MAX_LIMIT = 50000; // $50,000
+            const KRW_PER_USD = 1350;
+            const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD;
+
+            // 한도 검증
+            if (amountType === 'send' && inputAmount > MAX_KRW_LIMIT) {
+                showWarning(`송금 금액은 최대 $${MAX_LIMIT.toLocaleString()} (약 ₩${MAX_KRW_LIMIT.toLocaleString()})까지 가능합니다.`);
+                return;
+            }
+
+            // 수취 금액 기준일 때 외화 한도 검증
+            if (amountType === 'receive') {
+                const foreignLimit = MAX_KRW_LIMIT * rateInfo.rate;
+                if (inputAmount > foreignLimit) {
+                    showWarning(`수취 금액은 최대 ${rateInfo.symbol}${foreignLimit.toLocaleString('ko-KR', {maximumFractionDigits: 0})} (약 $${MAX_LIMIT.toLocaleString()})까지 가능합니다.`);
+                    return;
+                }
+            }
 
             let sendAmount, fee, receiveAmtBeforeFee, withdrawalFee, receiveAmt, depositAmount;
 
@@ -652,7 +703,7 @@
                 receiveAmt = receiveAmtBeforeFee - withdrawalFee;
                 depositAmount = sendAmount + fee;
             } else {
-                // 수취금액 기준
+                // 수취 금액 기준
                 receiveAmt = inputAmount;
                 withdrawalFee = rateInfo.withdrawalFee;
                 receiveAmtBeforeFee = receiveAmt + withdrawalFee;
@@ -667,11 +718,20 @@
                 `₩ ${sendAmount.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
             document.getElementById('remitFee').textContent =
                 `₩ ${fee.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
-            document.getElementById('receiveAmount').textContent =
-                `${rateInfo.symbol} ${receiveAmt.toLocaleString('ko-KR', {maximumFractionDigits: 0})}` +
-                (withdrawalFee > 0 ? `  (수취수수료:${rateInfo.symbol}${withdrawalFee.toLocaleString('ko-KR')})` : '');
             document.getElementById('depositAmount').textContent =
                 `₩ ${depositAmount.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
+            document.getElementById('receiveAmount').textContent =
+                `${rateInfo.symbol} ${receiveAmt.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
+
+            // 출금 수수료 표시
+            const withdrawalFeeNote = document.getElementById('withdrawalFeeNote');
+            const withdrawalFeeText = document.getElementById('withdrawalFeeText');
+            if (withdrawalFee > 0) {
+                withdrawalFeeText.textContent = `출금 수수료: ${rateInfo.symbol} ${withdrawalFee.toLocaleString('ko-KR')}`;
+                withdrawalFeeNote.style.display = 'block';
+            } else {
+                withdrawalFeeNote.style.display = 'none';
+            }
 
             document.getElementById('calcResult').style.display = 'block';
         }
@@ -741,6 +801,34 @@
             let value = e.target.value.replace(/,/g, '');
             if (!isNaN(value) && value !== '') {
                 e.target.value = parseFloat(value).toLocaleString('ko-KR');
+            }
+        });
+
+        // URL 파라미터에서 금액과 국가 읽어서 자동 설정
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const amount = urlParams.get('amount');
+            const country = urlParams.get('country');
+
+            if (amount && country) {
+                // 국가 선택
+                const countrySelect = document.getElementById('remitCountry');
+                countrySelect.value = country;
+
+                // 국가 선택 이벤트 트리거 (서비스, 은행, 환율 업데이트)
+                const event = new Event('change');
+                countrySelect.dispatchEvent(event);
+
+                // 금액 입력
+                setTimeout(function() {
+                    const sendAmountInput = document.getElementById('sendAmount');
+                    sendAmountInput.value = parseFloat(amount).toLocaleString('ko-KR');
+
+                    // 자동 계산 실행
+                    setTimeout(function() {
+                        calculateRemit();
+                    }, 100);
+                }, 100);
             }
         });
     </script>
