@@ -1393,38 +1393,17 @@ p { font-size: 1rem; color: var(--text-body); }
     justify-content: space-between;
     align-items: center;
     padding: 12px 14px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    border-right: 1px solid var(--border-color);
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border-color);
   }
 
-  .calc-col-item:nth-child(1),
-  .calc-col-item:nth-child(2) {
-    flex: 0 0 calc(50% - 6px);
+  .calc-col-item:last-child {
+    border-bottom: none;
   }
 
-  .calc-col-item:nth-child(3) {
-    flex: 0 0 calc(50% - 6px);
-  }
-
-  .calc-col-item:nth-child(4) {
-    flex: 0 0 calc(50% - 6px);
-  }
-
-  .calc-col-item:nth-child(5) {
-    flex: 0 0 calc(50% - 6px);
-  }
-
-  /* 출금 수수료가 있을 경우 레이아웃 */
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(1),
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(2),
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(3) {
-    flex: 0 0 calc(33.333% - 8px);
-  }
-
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(4),
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(5) {
-    flex: 0 0 calc(50% - 6px);
+  .calc-col-item {
+    flex: 0 0 100%;
   }
 
   .calc-col-label {
@@ -1488,12 +1467,19 @@ p { font-size: 1rem; color: var(--text-body); }
   }
 
   .calc-result-cols {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .calc-col-item {
-    padding: 8px 4px;
+    padding: 10px 12px;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .calc-col-item:last-child {
+    border-bottom: none;
   }
 
   .calc-col-label {
