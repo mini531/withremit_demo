@@ -1194,52 +1194,47 @@ p { font-size: 1rem; color: var(--text-body); }
   font-size: 1rem;
 }
 
-.calc-result-simple {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+.calc-result-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
 }
 
-.calc-simple-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 4px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.calc-simple-row:last-child {
-  border-bottom: none;
-}
-
-.calc-simple-row.highlight {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+.calc-grid-item {
+  text-align: center;
+  padding: 12px 8px;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  padding: 12px 10px;
-  margin-top: 6px;
-  border-bottom: none;
+  background: #fff;
 }
 
-.calc-simple-label {
-  font-size: 0.9rem;
+.calc-grid-item.highlight {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-color: var(--primary-blue);
+}
+
+.calc-item-label {
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-muted);
+  margin-bottom: 6px;
 }
 
-.calc-simple-row.highlight .calc-simple-label {
+.calc-grid-item.highlight .calc-item-label {
   font-weight: 600;
   color: var(--primary-blue);
 }
 
-.calc-simple-value {
-  font-size: 1rem;
+.calc-item-value {
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-dark);
+  word-break: break-all;
 }
 
-.calc-simple-row.highlight .calc-simple-value {
+.calc-grid-item.highlight .calc-item-value {
   color: var(--primary-blue);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 /* Responsive styles for remittance page */
@@ -1265,6 +1260,11 @@ p { font-size: 1rem; color: var(--text-body); }
 
   .limit-info-item.highlight .limit-value {
     font-size: 1.05rem;
+  }
+
+  .calc-result-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
   }
 }
 
@@ -1301,24 +1301,21 @@ p { font-size: 1rem; color: var(--text-body); }
     margin-top: 14px;
   }
 
-  .calc-simple-row {
-    padding: 10px 2px;
+  .calc-result-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 
-  .calc-simple-label {
-    font-size: 0.85rem;
+  .calc-grid-item {
+    padding: 10px 6px;
   }
 
-  .calc-simple-value {
-    font-size: 0.95rem;
+  .calc-item-label {
+    font-size: 0.8rem;
   }
 
-  .calc-simple-row.highlight {
-    padding: 10px 8px;
-  }
-
-  .calc-simple-row.highlight .calc-simple-value {
-    font-size: 1.05rem;
+  .calc-item-value {
+    font-size: 0.9rem;
   }
 
   .remit-action-btns {
