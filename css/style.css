@@ -1145,10 +1145,15 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 .remit-calc-result {
+  display: none;
   background: var(--bg-light);
   border-radius: 10px;
   padding: 20px;
   margin-top: 20px;
+}
+
+.remit-calc-result.active {
+  display: block;
 }
 
 .calc-result-row {
@@ -1268,7 +1273,7 @@ p { font-size: 1rem; color: var(--text-body); }
   display: none;
 }
 
-#withdrawalFeeRow {
+.calc-col-item.hidden {
   display: none;
 }
 
@@ -1276,6 +1281,10 @@ p { font-size: 1rem; color: var(--text-body); }
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
+}
+
+.calc-result-cols.four-items {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .calc-col-item {

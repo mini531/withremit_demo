@@ -636,7 +636,7 @@
             // 국가 변경 시 계산 결과 영역 숨기기
             const calcResult = document.getElementById('calcResult');
             if (calcResult) {
-                calcResult.style.display = 'none';
+                calcResult.classList.remove('active');
             }
 
             // 빠른 금액 버튼 업데이트
@@ -763,19 +763,18 @@
             const withdrawalFeeRow = document.getElementById('withdrawalFeeRow');
             const withdrawalFeeAmount = document.getElementById('withdrawalFeeAmount');
             const calcResultCols = document.querySelector('.calc-result-cols');
+            const calcResult = document.getElementById('calcResult');
 
             if (withdrawalFee > 0) {
                 withdrawalFeeAmount.textContent = `${rateInfo.symbol} ${withdrawalFee.toLocaleString('ko-KR')}`;
-                withdrawalFeeRow.style.display = '';  // CSS 기본값 사용
-                // 5개 항목이므로 5열 그리드
-                calcResultCols.style.gridTemplateColumns = 'repeat(5, 1fr)';
+                withdrawalFeeRow.classList.remove('hidden');
+                calcResultCols.classList.remove('four-items');
             } else {
-                withdrawalFeeRow.style.display = 'none';
-                // 4개 항목이므로 4열 그리드
-                calcResultCols.style.gridTemplateColumns = 'repeat(4, 1fr)';
+                withdrawalFeeRow.classList.add('hidden');
+                calcResultCols.classList.add('four-items');
             }
 
-            document.getElementById('calcResult').style.display = 'block';
+            calcResult.classList.add('active');
         }
 
         // 송금 신청
