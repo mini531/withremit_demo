@@ -699,6 +699,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-grid > .calculator-card { max-width: 100% !important; flex: 0 1 auto !important; }
 .db-col-info { min-width: 0; }
 .db-info-card { background: #fff; padding: 35px; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow); }
+.db-inquiry-card { background: #eff6ff !important; }
 .db-main-wallet { margin-top: 25px; }
 .wallet-val { font-size: 2.2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 20px; }
 .wallet-btns { display: flex; gap: 12px; }
@@ -922,7 +923,7 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 @media (max-width: 768px) {
-  .db-sidebar { position: fixed; left: -220px; width: 200px; height: calc(100vh - 55px); top: 55px; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding: 20px 0 40px 0; }
+  .db-sidebar { position: fixed; left: -220px; width: 200px; height: calc(100vh - 55px); max-height: calc(100vh - 55px); top: 55px; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 20px 0 60px 0; }
   .db-sidebar.mobile-open { left: 0; }
   .db-side-nav { padding: 0 10px; }
   .db-header-sticky .lang-select { min-width: 70px; font-size: 13px; }
@@ -969,7 +970,7 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-limit-grid { grid-template-columns: 1fr; }
   .db-limit-item { gap: 10px; }
   .db-help-btns { grid-template-columns: 1fr; }
-  .db-help-btns-new { grid-template-columns: 1fr; }
+  .db-help-btns-new { grid-template-columns: 1fr 1fr; }
   .db-user-dropdown .btn { padding: 0 10px; min-width: 40px; }
   .db-user-dropdown .btn svg { margin: 0; }
   .db-user-dropdown .btn-text { display: none; }
