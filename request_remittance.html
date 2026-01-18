@@ -107,6 +107,14 @@
                                 </div>
                                 <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산</button>
                             </div>
+                            <div class="quick-amount-buttons" id="quickAmountButtons" style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
+                                <button type="button" class="quick-btn" onclick="setQuickAmount(1000000)">₩ 1,000,000</button>
+                                <button type="button" class="quick-btn" onclick="setQuickAmount(2000000)">₩ 2,000,000</button>
+                                <button type="button" class="quick-btn" onclick="setQuickAmount(3000000)">₩ 3,000,000</button>
+                                <button type="button" class="quick-btn" onclick="setQuickAmount(4000000)">₩ 4,000,000</button>
+                                <button type="button" class="quick-btn" onclick="setQuickAmount(5000000)">₩ 5,000,000</button>
+                                <button type="button" class="quick-btn" onclick="setQuickAmount(6000000)">₩ 6,000,000</button>
+                            </div>
                         </div>
 
                         <div class="remit-calc-result" id="calcResult" style="display: none;">
@@ -615,6 +623,9 @@
             if (amountType === 'receive' && exchangeRates[country]) {
                 currencySymbol.textContent = exchangeRates[country].symbol;
             }
+
+            // 빠른 금액 버튼 업데이트
+            updateQuickAmountButtons();
         });
 
         // 송금액 기준 라디오 버튼 변경 시 통화 기호 및 라벨 업데이트
@@ -635,6 +646,9 @@
                     }
                     amountLabel.textContent = '수취 금액';
                 }
+
+                // 빠른 금액 버튼 업데이트
+                updateQuickAmountButtons();
             });
         });
 
@@ -865,6 +879,67 @@
 
             e.target.value = numValue.toLocaleString('ko-KR');
         });
+
+        // 빠른 금액 버튼 클릭 시
+        function setQuickAmount(amount) {
+            const sendAmountInput = document.getElementById('sendAmount');
+            sendAmountInput.value = amount.toLocaleString('ko-KR');
+
+            // 입력 이벤트 트리거하여 유효성 검사 및 자동 계산
+            const event = new Event('input', { bubbles: true });
+            sendAmountInput.dispatchEvent(event);
+        }
+
+        // 빠른 금액 버튼 업데이트
+        function updateQuickAmountButtons() {
+            const country = document.getElementById('remitCountry').value;
+            const amountType = document.querySelector('input[name="amountType"]:checked').value;
+            const quickButtonsContainer = document.getElementById('quickAmountButtons');
+
+            if (!country || !exchangeRates[country]) {
+                quickButtonsContainer.innerHTML = '';
+                return;
+            }
+
+            const rateInfo = exchangeRates[country];
+            let buttonsHtml = '';
+
+            if (amountType === 'send') {
+                // 송금액 기준: KRW 버튼 (한도 내에서만 표시)
+                const amounts = [1000000, 2000000, 3000000, 4000000, 5000000, 6000000];
+                amounts.forEach(amount => {
+                    if (amount <= MAX_KRW_LIMIT) {
+                        buttonsHtml += `<button type="button" class="quick-btn" onclick="setQuickAmount(${amount})">₩ ${amount.toLocaleString('ko-KR')}</button>`;
+                    }
+                });
+            } else {
+                // 수취 금액 기준: 외화 버튼 (국가별 적절한 금액)
+                const quickAmounts = {
+                    JP: [100000, 300000, 500000, 700000, 1000000],
+                    PH: [10000, 30000, 50000, 70000, 100000],
+                    CN: [5000, 10000, 20000, 30000, 40000],
+                    NP: [100000, 300000, 500000, 700000, 1000000],
+                    AU: [1000, 2000, 3000, 4000, 5000],
+                    HK: [10000, 30000, 50000, 70000, 100000],
+                    MN: [2000000, 5000000, 10000000, 15000000, 20000000],
+                    VN: [20000000, 50000000, 100000000, 150000000, 200000000],
+                    LK: [200000, 500000, 1000000, 1500000, 2000000]
+                };
+
+                // 해당 국가의 외화 한도 계산
+                const foreignLimit = MAX_KRW_LIMIT * rateInfo.rate;
+
+                const amounts = quickAmounts[country] || [100000, 300000, 500000];
+                amounts.forEach(amount => {
+                    // 한도 내의 금액만 표시
+                    if (amount <= foreignLimit) {
+                        buttonsHtml += `<button type="button" class="quick-btn" onclick="setQuickAmount(${amount})">${rateInfo.symbol} ${amount.toLocaleString('ko-KR')}</button>`;
+                    }
+                });
+            }
+
+            quickButtonsContainer.innerHTML = buttonsHtml;
+        }
 
         // URL 파라미터에서 금액과 국가 읽어서 자동 설정
         window.addEventListener('DOMContentLoaded', function() {
