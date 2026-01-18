@@ -696,7 +696,8 @@
             }
 
             if (!sendAmountInput) {
-                showWarning('송금 금액을 입력해주세요.');
+                const message = amountType === 'send' ? '송금 금액을 입력해주세요.' : '수취 금액을 입력해주세요.';
+                showWarning(message);
                 return;
             }
 
