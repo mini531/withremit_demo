@@ -1,5 +1,17 @@
 // Load HTML includes
 function loadIncludes() {
+    let headerLoaded = false;
+    let sidebarLoaded = false;
+
+    // Function to initialize sidebar when both header and sidebar are loaded
+    function tryInitSidebar() {
+        if (headerLoaded && (sidebarLoaded || !document.getElementById('sidebarContainer'))) {
+            if (typeof initSidebar === 'function') {
+                initSidebar();
+            }
+        }
+    }
+
     // Load header
     const headerContainer = document.getElementById('headerContainer');
     if (headerContainer) {
@@ -7,12 +19,12 @@ function loadIncludes() {
             .then(response => response.text())
             .then(data => {
                 headerContainer.innerHTML = data;
-                // Initialize sidebar after header is loaded (for MY button functionality)
-                if (typeof initSidebar === 'function') {
-                    initSidebar();
-                }
+                headerLoaded = true;
+                tryInitSidebar();
             })
             .catch(error => console.error('Error loading header:', error));
+    } else {
+        headerLoaded = true;
     }
 
     // Load sidebar
@@ -30,8 +42,12 @@ function loadIncludes() {
                         navNotice.classList.add('active');
                     }
                 }
+                sidebarLoaded = true;
+                tryInitSidebar();
             })
             .catch(error => console.error('Error loading sidebar:', error));
+    } else {
+        sidebarLoaded = true;
     }
 
     // Load contact
