@@ -360,6 +360,11 @@
         // window 객체에 등록하여 전역 접근 가능하게
         window.exchangeRates = exchangeRates;
 
+        // 송금 한도 상수 정의 (전역)
+        const MAX_LIMIT = 50000; // USD
+        const KRW_PER_USD = 1350;
+        const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD; // 67,500,000원
+
         // 국가별 서비스 옵션 (서비스명과 변경가능 여부)
         const servicesByCountry = {
             JP: [{ value: 'JP_REMIT', text: '일본 송금', locked: true }],
@@ -652,34 +657,6 @@
             });
         });
 
-        // 입력 금액 제한 (최대 $50,000)
-        document.getElementById('sendAmount').addEventListener('input', function() {
-            const MAX_LIMIT = 50000;
-            const KRW_PER_USD = 1350;
-            const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD;
-
-            const country = document.getElementById('remitCountry').value;
-            const amountType = document.querySelector('input[name="amountType"]:checked').value;
-
-            let inputValue = this.value.replace(/,/g, '');
-            let numValue = parseFloat(inputValue);
-
-            if (!isNaN(numValue)) {
-                if (amountType === 'send') {
-                    // 송금액 기준: KRW 최대값
-                    if (numValue > MAX_KRW_LIMIT) {
-                        this.value = MAX_KRW_LIMIT.toLocaleString();
-                    }
-                } else if (amountType === 'receive' && country && exchangeRates[country]) {
-                    // 수취 금액 기준: 외화 최대값
-                    const foreignLimit = MAX_KRW_LIMIT * exchangeRates[country].rate;
-                    if (numValue > foreignLimit) {
-                        this.value = Math.floor(foreignLimit).toLocaleString();
-                    }
-                }
-            }
-        });
-
         // 송금 금액 계산
         function calculateRemit() {
             const country = document.getElementById('remitCountry').value;
@@ -846,10 +823,6 @@
 
         // 송금액 입력 포맷팅 및 검증
         document.getElementById('sendAmount').addEventListener('input', function(e) {
-            const MAX_LIMIT = 50000;
-            const KRW_PER_USD = 1350;
-            const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD;
-
             // 숫자만 허용
             let value = e.target.value.replace(/[^0-9]/g, '');
 
