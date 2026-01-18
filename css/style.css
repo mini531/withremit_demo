@@ -1096,16 +1096,17 @@ p { font-size: 1rem; color: var(--text-body); }
 .remit-limit-section {
   background: linear-gradient(135deg, #1B5E9E 0%, #00A0DC 100%);
   border-radius: 12px;
-  padding: 32px;
-  margin-bottom: 32px;
+  padding: 16px;
+  margin-bottom: 24px;
   box-shadow: 0 4px 20px rgba(27, 94, 158, 0.15);
 }
 
-.remit-limit-section .section-title {
-  font-size: 1.3rem;
+.remit-limit-section .form-sec-head {
+  font-size: 1.1rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  border-left-color: rgba(255, 255, 255, 0.6);
 }
 
 .limit-info-grid {
@@ -1118,7 +1119,7 @@ p { font-size: 1rem; color: var(--text-body); }
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  padding: 20px;
+  padding: 12px;
   text-align: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -1135,10 +1136,10 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 .limit-info-item .limit-label {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .limit-info-item.highlight .limit-label {
@@ -1146,7 +1147,7 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 .limit-info-item .limit-value {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.5px;
@@ -1154,20 +1155,11 @@ p { font-size: 1rem; color: var(--text-body); }
 
 .limit-info-item.highlight .limit-value {
   color: var(--primary-green);
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 
 .remit-form-section {
-  margin-bottom: 32px;
-}
-
-.remit-form-section .section-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--primary-blue);
+  margin-bottom: 24px;
 }
 
 .remit-calc-result {
@@ -1212,128 +1204,91 @@ p { font-size: 1rem; color: var(--text-body); }
   display: flex;
   gap: 16px;
   justify-content: flex-end;
-  margin-top: 40px;
-  padding-top: 32px;
-  border-top: 2px solid var(--border-color);
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
 }
 
-.btn-remit-cancel {
+.remit-action-btns .btn {
   min-width: 140px;
-  padding: 14px 32px;
+  height: 48px;
+  padding: 0 32px;
   font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-body);
-  background: #ffffff;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-remit-cancel:hover {
-  background: var(--bg-light);
-  border-color: var(--text-muted);
-  color: var(--text-dark);
-}
-
-.btn-remit-submit {
-  min-width: 140px;
-  padding: 14px 32px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-green) 100%);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(27, 94, 158, 0.2);
-}
-
-.btn-remit-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(27, 94, 158, 0.3);
-}
-
-.btn-remit-submit:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(27, 94, 158, 0.2);
 }
 
 /* Responsive styles for remittance page */
 @media (max-width: 1024px) {
   .limit-info-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 14px;
   }
 
   .remit-limit-section {
-    padding: 28px;
+    padding: 14px;
   }
 
-  .remit-limit-section .section-title {
-    font-size: 1.2rem;
+  .remit-limit-section .form-sec-head {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .limit-info-item {
+    padding: 10px;
   }
 
   .limit-info-item .limit-value {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .limit-info-item.highlight .limit-value {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 768px) {
   .limit-info-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 
   .remit-limit-section {
-    padding: 24px 20px;
-    margin-bottom: 24px;
-  }
-
-  .remit-limit-section .section-title {
-    font-size: 1.1rem;
+    padding: 12px 10px;
     margin-bottom: 20px;
   }
 
-  .limit-info-item {
-    padding: 16px;
-  }
-
-  .limit-info-item .limit-label {
-    font-size: 0.85rem;
+  .remit-limit-section .form-sec-head {
+    font-size: 0.95rem;
     margin-bottom: 10px;
   }
 
+  .limit-info-item {
+    padding: 10px;
+  }
+
+  .limit-info-item .limit-label {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+
   .limit-info-item .limit-value {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .limit-info-item.highlight .limit-value {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .remit-form-section {
-    margin-bottom: 24px;
-  }
-
-  .remit-form-section .section-title {
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .remit-calc-result {
-    padding: 16px;
-    margin-top: 16px;
+    padding: 14px;
+    margin-top: 14px;
   }
 
   .calc-result-row {
-    padding: 10px 0;
+    padding: 8px 0;
   }
 
   .calc-result-row .calc-label {
@@ -1345,14 +1300,14 @@ p { font-size: 1rem; color: var(--text-body); }
   }
 
   .remit-action-btns {
-    margin-top: 32px;
-    padding-top: 24px;
+    margin-top: 24px;
+    padding-top: 20px;
   }
 
-  .btn-remit-cancel,
-  .btn-remit-submit {
-    min-width: 120px;
-    padding: 12px 24px;
+  .remit-action-btns .btn {
+    min-width: 110px;
+    height: 44px;
+    padding: 0 24px;
     font-size: 0.95rem;
   }
 }
@@ -1363,66 +1318,60 @@ p { font-size: 1rem; color: var(--text-body); }
   }
 
   .remit-limit-section {
-    padding: 20px 16px;
-    margin-bottom: 20px;
-  }
-
-  .remit-limit-section .section-title {
-    font-size: 1rem;
+    padding: 10px 8px;
     margin-bottom: 16px;
   }
 
-  .limit-info-item {
-    padding: 14px;
-  }
-
-  .limit-info-item .limit-label {
-    font-size: 0.8rem;
+  .remit-limit-section .form-sec-head {
+    font-size: 0.9rem;
     margin-bottom: 8px;
   }
 
+  .limit-info-item {
+    padding: 8px;
+  }
+
+  .limit-info-item .limit-label {
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+  }
+
   .limit-info-item .limit-value {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
 
   .limit-info-item.highlight .limit-value {
-    font-size: 1.2rem;
-  }
-
-  .remit-form-section .section-title {
     font-size: 1rem;
-    margin-bottom: 14px;
-    padding-bottom: 8px;
   }
 
   .remit-calc-result {
-    padding: 14px;
+    padding: 12px;
   }
 
   .calc-result-row {
-    padding: 8px 0;
+    padding: 6px 0;
   }
 
   .calc-result-row .calc-label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .calc-result-row .calc-value {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .remit-action-btns {
     flex-direction: column;
-    gap: 12px;
-    margin-top: 28px;
-    padding-top: 20px;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 16px;
   }
 
-  .btn-remit-cancel,
-  .btn-remit-submit {
+  .remit-action-btns .btn {
     width: 100%;
     min-width: auto;
-    padding: 12px 20px;
+    height: 42px;
+    padding: 0 20px;
     font-size: 0.9rem;
   }
 }
