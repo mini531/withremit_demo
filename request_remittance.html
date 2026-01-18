@@ -829,11 +829,14 @@
             // 출금 수수료 표시
             const withdrawalFeeRow = document.getElementById('withdrawalFeeRow');
             const withdrawalFeeAmount = document.getElementById('withdrawalFeeAmount');
+            const calcResultGrid = document.querySelector('.calc-result-grid');
             if (withdrawalFee > 0) {
                 withdrawalFeeAmount.textContent = `${rateInfo.symbol} ${withdrawalFee.toLocaleString('ko-KR')}`;
                 withdrawalFeeRow.style.display = 'flex';
+                calcResultGrid.classList.remove('no-withdrawal-fee');
             } else {
                 withdrawalFeeRow.style.display = 'none';
+                calcResultGrid.classList.add('no-withdrawal-fee');
             }
 
             document.getElementById('calcResult').style.display = 'block';
