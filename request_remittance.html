@@ -119,13 +119,18 @@
                                     <span class="calc-label">송금 수수료</span>
                                     <span class="calc-value" id="remitFee">-</span>
                                 </div>
-                                <div class="calc-result-item">
+                                <div class="calc-result-item highlight">
+                                    <span class="calc-label">입금액</span>
+                                    <span class="calc-value" id="depositAmount">-</span>
+                                </div>
+                            </div>
+                            <div class="calc-receive-section">
+                                <div class="calc-receive-header">
                                     <span class="calc-label">수취 금액</span>
                                     <span class="calc-value" id="receiveAmount">-</span>
                                 </div>
-                                <div class="calc-result-item">
-                                    <span class="calc-label">입금액</span>
-                                    <span class="calc-value" id="depositAmount">-</span>
+                                <div class="calc-fee-note" id="withdrawalFeeNote" style="display: none;">
+                                    <span id="withdrawalFeeText">-</span>
                                 </div>
                             </div>
                         </div>
@@ -713,11 +718,20 @@
                 `₩ ${sendAmount.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
             document.getElementById('remitFee').textContent =
                 `₩ ${fee.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
-            document.getElementById('receiveAmount').textContent =
-                `${rateInfo.symbol} ${receiveAmt.toLocaleString('ko-KR', {maximumFractionDigits: 0})}` +
-                (withdrawalFee > 0 ? `  (수취수수료:${rateInfo.symbol}${withdrawalFee.toLocaleString('ko-KR')})` : '');
             document.getElementById('depositAmount').textContent =
                 `₩ ${depositAmount.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
+            document.getElementById('receiveAmount').textContent =
+                `${rateInfo.symbol} ${receiveAmt.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
+
+            // 출금 수수료 표시
+            const withdrawalFeeNote = document.getElementById('withdrawalFeeNote');
+            const withdrawalFeeText = document.getElementById('withdrawalFeeText');
+            if (withdrawalFee > 0) {
+                withdrawalFeeText.textContent = `출금 수수료: ${rateInfo.symbol} ${withdrawalFee.toLocaleString('ko-KR')}`;
+                withdrawalFeeNote.style.display = 'block';
+            } else {
+                withdrawalFeeNote.style.display = 'none';
+            }
 
             document.getElementById('calcResult').style.display = 'block';
         }
