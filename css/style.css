@@ -1414,3 +1414,39 @@ p { font-size: 1rem; color: var(--text-body); }
     font-size: 0.9rem;
   }
 }
+/* Quick amount buttons */
+.quick-amount-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.quick-btn {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-btn:hover {
+  background: var(--primary-blue);
+  color: #fff;
+  border-color: var(--primary-blue);
+}
+
+.quick-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .quick-btn {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+}
