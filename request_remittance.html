@@ -57,7 +57,7 @@
                             <div class="field-item">
                                 <label class="field-label">국가</label>
                                 <select class="login-input select-styled" id="remitCountry">
-                                    <option value="" disabled selected>송금 국가 선택</option>
+                                    <option value="" disabled selected>SELECT</option>
                                     <option value="JP">일본 (JPY)</option>
                                     <option value="PH">필리핀 (PHP)</option>
                                     <option value="CN">중국 (CNY)</option>
@@ -72,7 +72,7 @@
                             <div class="field-item">
                                 <label class="field-label">서비스 선택</label>
                                 <select class="login-input select-styled" id="remitService" disabled>
-                                    <option value="" disabled selected>국가를 선택해주세요</option>
+                                    <option value="" disabled selected>SELECT</option>
                                 </select>
                             </div>
                         </div>
@@ -104,6 +104,11 @@
                             </div>
                         </div>
 
+                        <div id="exchangeRateDisplay" style="display: none; margin-top: 12px; padding: 12px 16px; background: var(--bg-light); border-radius: 8px; border-left: 3px solid var(--primary-blue);">
+                            <span style="font-size: 14px; color: var(--text-muted); margin-right: 12px;">환율</span>
+                            <span id="exchangeRate" style="font-size: 14px; font-weight: 600; color: var(--text-dark);">-</span>
+                        </div>
+
                         <div class="remit-calc-result" id="calcResult" style="display: none;">
                             <div class="calc-result-grid">
                                 <div class="calc-result-item">
@@ -123,10 +128,6 @@
                                     <span class="calc-value" id="depositAmount">-</span>
                                 </div>
                             </div>
-                            <div class="calc-result-row" style="margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 12px;">
-                                <span class="calc-label">환율</span>
-                                <span class="calc-value" id="exchangeRate">-</span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,7 +141,7 @@
                             <div class="field-item">
                                 <label class="field-label">입금 은행</label>
                                 <select class="login-input select-styled" id="depositBank">
-                                    <option value="" disabled selected>은행 선택</option>
+                                    <option value="" disabled selected>SELECT</option>
                                     <option value="kb">국민은행</option>
                                     <option value="shinhan">신한은행</option>
                                     <option value="woori">우리은행</option>
@@ -199,7 +200,7 @@
                             <div class="field-item">
                                 <label class="field-label">수취 은행</label>
                                 <select class="login-input select-styled" id="beneficiaryBank">
-                                    <option value="">국가를 선택해주세요</option>
+                                    <option value="">SELECT</option>
                                 </select>
                             </div>
                             <div class="field-item">
@@ -227,7 +228,7 @@
                             <div class="field-item">
                                 <label class="field-label">송금 목적</label>
                                 <select class="login-input select-styled" id="remitPurpose">
-                                    <option value="" disabled selected>송금 목적 선택</option>
+                                    <option value="" disabled selected>SELECT</option>
                                     <option value="family">가족 송금</option>
                                     <option value="education">교육비</option>
                                     <option value="living">생활비</option>
@@ -578,10 +579,21 @@
             }
 
             // 환율 표시 업데이트
+            const exchangeRateDisplay = document.getElementById('exchangeRateDisplay');
             if (exchangeRates[country]) {
                 const rateInfo = exchangeRates[country];
                 document.getElementById('exchangeRate').textContent =
                     `1 KRW = ${rateInfo.rate.toFixed(4)} ${rateInfo.currency}`;
+                exchangeRateDisplay.style.display = 'block';
+            } else {
+                exchangeRateDisplay.style.display = 'none';
+            }
+
+            // 통화 기호 업데이트 (수취금액 기준이 선택된 경우)
+            const amountType = document.querySelector('input[name="amountType"]:checked').value;
+            const currencySymbol = document.getElementById('currencySymbol');
+            if (amountType === 'receive' && exchangeRates[country]) {
+                currencySymbol.textContent = exchangeRates[country].symbol;
             }
         });
 
@@ -634,7 +646,7 @@
             if (amountType === 'send') {
                 // 송금액 기준
                 sendAmount = inputAmount;
-                fee = sendAmount * feeRate;
+                fee = Math.floor(sendAmount * feeRate);
                 receiveAmtBeforeFee = (sendAmount - fee) * rateInfo.rate;
                 withdrawalFee = rateInfo.withdrawalFee;
                 receiveAmt = receiveAmtBeforeFee - withdrawalFee;
@@ -646,7 +658,7 @@
                 receiveAmtBeforeFee = receiveAmt + withdrawalFee;
                 const beforeFee = receiveAmtBeforeFee / rateInfo.rate;
                 sendAmount = beforeFee / (1 - feeRate);
-                fee = sendAmount * feeRate;
+                fee = Math.floor(sendAmount * feeRate);
                 depositAmount = sendAmount + fee;
             }
 
