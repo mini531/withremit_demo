@@ -105,7 +105,7 @@
                                     <span id="currencySymbol" style="position: absolute; left: 16px; font-weight: 700; font-size: 1rem; color: var(--text-dark); max-width: 50px; overflow: hidden; text-overflow: ellipsis;">₩</span>
                                     <input type="text" placeholder="송금 금액을 입력하세요" class="login-input" id="sendAmount" style="padding-left: 58px;">
                                 </div>
-                                <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산</button>
+                                <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산하기</button>
                             </div>
                             <div class="quick-amount-buttons" id="quickAmountButtons" style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
                                 <button type="button" class="quick-btn" onclick="setQuickAmount(1000000)">₩ 1,000,000</button>
@@ -629,6 +629,10 @@
                 currencySymbol.textContent = exchangeRates[country].symbol;
             }
 
+            // 국가 변경 시 송금 금액/수취 금액 초기화
+            const sendAmountInput = document.getElementById('sendAmount');
+            sendAmountInput.value = '';
+
             // 빠른 금액 버튼 업데이트
             updateQuickAmountButtons();
         });
@@ -639,10 +643,20 @@
                 const country = document.getElementById('remitCountry').value;
                 const currencySymbol = document.getElementById('currencySymbol');
                 const amountLabel = document.getElementById('amountLabel');
+                const sendAmountInput = document.getElementById('sendAmount');
+                const currentAmount = sendAmountInput.value.replace(/,/g, '');
+                const numValue = parseInt(currentAmount);
 
                 if (this.value === 'send') {
                     currencySymbol.textContent = '₩';
                     amountLabel.textContent = '송금 금액';
+                    sendAmountInput.placeholder = '송금 금액을 입력하세요';
+
+                    // 수취 금액 → 송금 금액 변환 (외화를 KRW로)
+                    if (country && exchangeRates[country] && !isNaN(numValue) && numValue > 0) {
+                        const krwAmount = Math.floor(numValue / exchangeRates[country].rate);
+                        sendAmountInput.value = krwAmount.toLocaleString('ko-KR');
+                    }
                 } else if (this.value === 'receive') {
                     if (country && exchangeRates[country]) {
                         currencySymbol.textContent = exchangeRates[country].symbol;
@@ -650,6 +664,13 @@
                         currencySymbol.textContent = '₩';
                     }
                     amountLabel.textContent = '수취 금액';
+                    sendAmountInput.placeholder = '수취 금액을 입력하세요';
+
+                    // 송금 금액 → 수취 금액 변환 (KRW를 외화로)
+                    if (country && exchangeRates[country] && !isNaN(numValue) && numValue > 0) {
+                        const foreignAmount = Math.floor(numValue * exchangeRates[country].rate);
+                        sendAmountInput.value = foreignAmount.toLocaleString('ko-KR');
+                    }
                 }
 
                 // 빠른 금액 버튼 업데이트
@@ -886,17 +907,18 @@
                     }
                 });
             } else {
-                // 수취 금액 기준: 외화 버튼 (국가별 적절한 금액)
+                // 수취 금액 기준: 외화 버튼 (국가별 한도액에 근사한 5단계 금액)
+                // 각 국가별 한도: 20%, 40%, 60%, 80%, ~95%
                 const quickAmounts = {
-                    JP: [100000, 300000, 500000, 700000, 1000000],
-                    PH: [10000, 30000, 50000, 70000, 100000],
-                    CN: [5000, 10000, 20000, 30000, 40000],
-                    NP: [100000, 300000, 500000, 700000, 1000000],
-                    AU: [1000, 2000, 3000, 4000, 5000],
-                    HK: [10000, 30000, 50000, 70000, 100000],
-                    MN: [2000000, 5000000, 10000000, 15000000, 20000000],
-                    VN: [20000000, 50000000, 100000000, 150000000, 200000000],
-                    LK: [200000, 500000, 1000000, 1500000, 2000000]
+                    JP: [1500000, 3000000, 4500000, 6000000, 7000000],        // 한도: 7,506,000엔
+                    PH: [500000, 1000000, 1500000, 2000000, 2500000],         // 한도: 2,841,750페소
+                    CN: [70000, 140000, 210000, 280000, 350000],              // 한도: 364,500위안
+                    NP: [1300000, 2600000, 3900000, 5200000, 6500000],        // 한도: 6,777,000루피
+                    AU: [15000, 30000, 45000, 60000, 70000],                  // 한도: 74,250호주달러
+                    HK: [80000, 160000, 240000, 320000, 380000],              // 한도: 398,250홍콩달러
+                    MN: [35000000, 70000000, 105000000, 140000000, 170000000], // 한도: 174,352,500투그릭
+                    VN: [250000000, 500000000, 750000000, 1000000000, 1200000000], // 한도: 1,250,100,000동
+                    LK: [3000000, 6000000, 9000000, 12000000, 16000000]       // 한도: 16,537,500루피
                 };
 
                 // 해당 국가의 외화 한도 계산
