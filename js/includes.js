@@ -48,6 +48,12 @@ function loadIncludes() {
                         navRemittance.classList.add('active');
                     }
                 }
+                if (currentPage === 'remittance_list.html') {
+                    const navRemittanceList = document.getElementById('navRemittanceList');
+                    if (navRemittanceList) {
+                        navRemittanceList.classList.add('active');
+                    }
+                }
                 sidebarLoaded = true;
                 tryInitSidebar();
             })
