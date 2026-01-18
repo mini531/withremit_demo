@@ -686,9 +686,9 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-my-layer .logout-color { color: #ff5a5f; border-top: 1px solid #eee; }
 .db-main-container { padding: 20px 40px 40px; }
 .db-layout-flex { display: flex; align-items: flex-start; position: relative; }
-.db-sidebar { width: 200px; background: transparent; border-radius: 0; border: none; box-shadow: none; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; overflow: visible; padding-right: 15px; }
+.db-sidebar { width: 200px; background: transparent; border-radius: 0; border: none; box-shadow: none; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; overflow: visible; }
 .db-collapsed .db-sidebar { width: 0; overflow: hidden; opacity: 0;}
-.db-side-nav { padding: 0; }
+.db-side-nav { padding: 0; padding-right: 15px; }
 .db-nav-link { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 16px; color: var(--text-body); font-size: 14px; font-weight: 500; transition: 0.2s; white-space: nowrap; border-radius: 8px; margin-bottom: 2px; }
 .db-nav-link:hover { background: #f8fafc; color: var(--primary-blue); }
 .db-nav-link.active { background: #e3f2fd; color: var(--primary-blue); font-weight: 600; border-right: none; }
