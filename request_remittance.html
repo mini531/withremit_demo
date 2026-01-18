@@ -123,7 +123,7 @@
                                     <div class="calc-item-label">수취 금액</div>
                                     <div class="calc-item-value" id="receiveAmount">-</div>
                                 </div>
-                                <div class="calc-grid-item" id="withdrawalFeeRow" style="display: none;">
+                                <div class="calc-grid-item" id="withdrawalFeeRow">
                                     <div class="calc-item-label">출금 수수료</div>
                                     <div class="calc-item-value" id="withdrawalFeeAmount">-</div>
                                 </div>
@@ -832,7 +832,7 @@
             const calcResultGrid = document.querySelector('.calc-result-grid');
             if (withdrawalFee > 0) {
                 withdrawalFeeAmount.textContent = `${rateInfo.symbol} ${withdrawalFee.toLocaleString('ko-KR')}`;
-                withdrawalFeeRow.style.display = 'flex';
+                withdrawalFeeRow.style.display = 'block';
                 calcResultGrid.classList.remove('no-withdrawal-fee');
             } else {
                 withdrawalFeeRow.style.display = 'none';

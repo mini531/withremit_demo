@@ -1214,6 +1214,10 @@ p { font-size: 1rem; color: var(--text-body); }
   border-right: none;
 }
 
+#withdrawalFeeRow {
+  display: none;
+}
+
 .calc-item-label {
   font-size: 0.85rem;
   font-weight: 500;
@@ -1254,12 +1258,12 @@ p { font-size: 1rem; color: var(--text-body); }
   }
 
   .calc-result-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0;
   }
 
   .calc-result-grid.no-withdrawal-fee {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1297,24 +1301,36 @@ p { font-size: 1rem; color: var(--text-body); }
   }
 
   .calc-result-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 0;
   }
 
   .calc-result-grid.no-withdrawal-fee {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .calc-grid-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 12px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+  }
+
+  .calc-grid-item:last-child {
+    border-bottom: none;
   }
 
   .calc-item-label {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    margin-bottom: 0;
   }
 
   .calc-item-value {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    text-align: right;
   }
 
   .remit-action-btns {
