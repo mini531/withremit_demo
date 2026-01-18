@@ -162,7 +162,7 @@
                             <span>은행 대비 약 <strong>322,581 JPY</strong> 더 받으세요!</span>
                         </div>
 
-                        <button class="calc-btn" data-i18n="calc.btn">지금 바로 송금하기</button>
+                        <button class="calc-btn" data-i18n="calc.btn" onclick="goToRemittance()">지금 바로 송금하기</button>
                         </div>
 
                         <!-- Ongoing Transfer Card -->
@@ -498,5 +498,31 @@
             <button data-i18n="modal.ok" class="modal-btn-warning" onclick="closeLimitModal()">확인</button>
         </div>
     </div>
+
+    <script>
+    function goToRemittance() {
+        // 통화 코드를 국가 코드로 매핑
+        const currencyToCountry = {
+            'JPY': 'JP',
+            'PHP': 'PH',
+            'CNY': 'CN',
+            'NPR': 'NP',
+            'AUD': 'AU',
+            'HKD': 'HK',
+            'MNT': 'MN',
+            'VND': 'VN'
+        };
+
+        const sendAmountInput = document.getElementById('sendAmount');
+        const receiveCurrencyInput = document.getElementById('receiveCurrency');
+
+        const amount = sendAmountInput.value.replace(/,/g, '');
+        const currency = receiveCurrencyInput.value;
+        const country = currencyToCountry[currency] || 'JP';
+
+        // URL 파라미터로 전달
+        window.location.href = `request_remittance.html?amount=${amount}&country=${country}`;
+    }
+    </script>
 </body>
 </html>
