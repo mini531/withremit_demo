@@ -33,9 +33,5 @@ function initSidebar() {
     }
 }
 
-// DOM이 이미 로드된 경우 즉시 실행, 아니면 DOMContentLoaded 이벤트 대기
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSidebar);
-} else {
-    initSidebar();
-}
+// initSidebar will be called by includes.js after header and sidebar are loaded
+// No auto-initialization to prevent race conditions

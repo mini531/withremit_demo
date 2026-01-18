@@ -1,5 +1,20 @@
 // Load HTML includes
 function loadIncludes() {
+    // Load header
+    const headerContainer = document.getElementById('headerContainer');
+    if (headerContainer) {
+        fetch('includes/header.html')
+            .then(response => response.text())
+            .then(data => {
+                headerContainer.innerHTML = data;
+                // Initialize sidebar after header is loaded (for MY button functionality)
+                if (typeof initSidebar === 'function') {
+                    initSidebar();
+                }
+            })
+            .catch(error => console.error('Error loading header:', error));
+    }
+
     // Load sidebar
     const sidebarContainer = document.getElementById('sidebarContainer');
     if (sidebarContainer) {
@@ -14,10 +29,6 @@ function loadIncludes() {
                     if (navNotice) {
                         navNotice.classList.add('active');
                     }
-                }
-                // Initialize sidebar after loading
-                if (typeof initSidebar === 'function') {
-                    initSidebar();
                 }
             })
             .catch(error => console.error('Error loading sidebar:', error));
