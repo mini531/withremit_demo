@@ -816,10 +816,22 @@
             }
 
             // 송금 금액 검증
-            const sendAmount = parseFloat(document.getElementById('sendAmount').value.replace(/,/g, ''));
+            const amountType = document.querySelector('input[name="amountType"]:checked').value;
+            const inputAmount = parseFloat(document.getElementById('sendAmount').value.replace(/,/g, ''));
             const maxKRW = 50000 * 1350; // $50,000 한도
 
-            if (sendAmount > maxKRW) {
+            let actualSendAmount; // 실제 송금 금액 (KRW)
+
+            if (amountType === 'send') {
+                // 송금액 기준: 입력값이 곧 송금 금액
+                actualSendAmount = inputAmount;
+            } else {
+                // 수취 금액 기준: 계산된 송금 금액 사용
+                const displaySendAmount = document.getElementById('displaySendAmount').textContent;
+                actualSendAmount = parseFloat(displaySendAmount.replace(/[^\d]/g, ''));
+            }
+
+            if (actualSendAmount > maxKRW) {
                 showWarning(`1회 송금 한도(${maxKRW.toLocaleString('ko-KR')}원)를 초과했습니다.`);
                 return;
             }
