@@ -498,6 +498,8 @@ p { font-size: 1rem; color: var(--text-body); }
 .modal-content p { font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 2rem; word-break: keep-all; }
 .modal-btn-warning { background-color: #f59e0b; border: none; color: #ffffff; width: 100%; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem; transition: all 0.2s; cursor: pointer; }
 .modal-btn-warning:hover { background-color: #d97706; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+.modal-btn-success { background-color: var(--primary-green); border: none; color: #ffffff; width: 100%; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem; transition: all 0.2s; cursor: pointer; }
+.modal-btn-success:hover { background-color: #059669; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
 @keyframes modalFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 
@@ -1194,6 +1196,43 @@ p { font-size: 1rem; color: var(--text-body); }
   font-size: 1rem;
 }
 
+/* Exchange rate display */
+.exchange-rate-display {
+  display: none;
+}
+
+.exchange-rate-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg-light);
+  border-color: transparent;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Amount input wrapper */
+.amount-input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol-fixed {
+  position: absolute;
+  left: 16px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-dark);
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.amount-input {
+  padding-left: 58px;
+}
+
 /* Quick amount buttons */
 .quick-amount-buttons {
   display: flex;
@@ -1222,6 +1261,15 @@ p { font-size: 1rem; color: var(--text-body); }
 
 .quick-btn:active {
   transform: scale(0.98);
+}
+
+/* Calculation result */
+#calcResult {
+  display: none;
+}
+
+#withdrawalFeeRow {
+  display: none;
 }
 
 .calc-result-cols {
@@ -1335,24 +1383,64 @@ p { font-size: 1rem; color: var(--text-body); }
   }
 
   .calc-result-cols {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .calc-col-item {
-    padding: 8px 4px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    border-right: 1px solid var(--border-color);
+  }
+
+  .calc-col-item:nth-child(1),
+  .calc-col-item:nth-child(2) {
+    flex: 0 0 calc(50% - 6px);
+  }
+
+  .calc-col-item:nth-child(3) {
+    flex: 0 0 calc(50% - 6px);
+  }
+
+  .calc-col-item:nth-child(4) {
+    flex: 0 0 calc(50% - 6px);
+  }
+
+  .calc-col-item:nth-child(5) {
+    flex: 0 0 calc(50% - 6px);
+  }
+
+  /* 출금 수수료가 있을 경우 레이아웃 */
+  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(1),
+  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(2),
+  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(3) {
+    flex: 0 0 calc(33.333% - 8px);
+  }
+
+  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(4),
+  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(5) {
+    flex: 0 0 calc(50% - 6px);
   }
 
   .calc-col-label {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    text-align: left;
   }
 
   .calc-col-value {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: right;
   }
 
   .calc-col-item.highlight .calc-col-value {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .remit-action-btns {

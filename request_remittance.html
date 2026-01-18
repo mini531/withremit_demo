@@ -90,9 +90,9 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="field-item" id="exchangeRateDisplay" style="display: none;">
+                            <div class="field-item exchange-rate-display" id="exchangeRateDisplay">
                                 <label class="field-label">환율</label>
-                                <div class="login-input" style="display: flex; align-items: center; background: var(--bg-light); border-color: transparent; font-weight: 600; color: var(--text-dark);">
+                                <div class="login-input exchange-rate-box">
                                     <span id="exchangeRate">-</span>
                                 </div>
                             </div>
@@ -101,13 +101,13 @@
                         <div class="field-item top-level">
                             <label class="field-label" id="amountLabel">송금 금액</label>
                             <div class="field-flex">
-                                <div style="position: relative; flex: 1; display: flex; align-items: center;">
-                                    <span id="currencySymbol" style="position: absolute; left: 16px; font-weight: 700; font-size: 1rem; color: var(--text-dark); max-width: 50px; overflow: hidden; text-overflow: ellipsis;">₩</span>
-                                    <input type="text" placeholder="송금 금액을 입력하세요" class="login-input" id="sendAmount" style="padding-left: 58px;">
+                                <div class="amount-input-wrapper">
+                                    <span id="currencySymbol" class="currency-symbol-fixed">₩</span>
+                                    <input type="text" placeholder="송금 금액을 입력하세요" class="login-input amount-input" id="sendAmount">
                                 </div>
                                 <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산하기</button>
                             </div>
-                            <div class="quick-amount-buttons" id="quickAmountButtons" style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
+                            <div class="quick-amount-buttons" id="quickAmountButtons">
                                 <button type="button" class="quick-btn" onclick="setQuickAmount(1000000)">₩ 1,000,000</button>
                                 <button type="button" class="quick-btn" onclick="setQuickAmount(2000000)">₩ 2,000,000</button>
                                 <button type="button" class="quick-btn" onclick="setQuickAmount(3000000)">₩ 3,000,000</button>
@@ -117,7 +117,7 @@
                             </div>
                         </div>
 
-                        <div class="remit-calc-result" id="calcResult" style="display: none;">
+                        <div class="remit-calc-result" id="calcResult">
                             <div class="calc-result-cols">
                                 <div class="calc-col-item">
                                     <span class="calc-col-label">송금 금액</span>
@@ -131,7 +131,7 @@
                                     <span class="calc-col-label">수취 금액</span>
                                     <span class="calc-col-value" id="receiveAmount">-</span>
                                 </div>
-                                <div class="calc-col-item" id="withdrawalFeeRow" style="display: none;">
+                                <div class="calc-col-item" id="withdrawalFeeRow">
                                     <span class="calc-col-label">출금 수수료</span>
                                     <span class="calc-col-value" id="withdrawalFeeAmount">-</span>
                                 </div>
@@ -305,7 +305,7 @@
             </div>
             <h3>송금 신청 완료</h3>
             <p>송금 신청이 정상적으로 접수되었습니다.<br>처리 결과는 SMS 및 이메일로 안내드립니다.</p>
-            <button class="modal-btn-warning" style="background-color: var(--primary-green);" onclick="closeRemitModal()">확인</button>
+            <button class="modal-btn-success" onclick="closeRemitModal()">확인</button>
         </div>
     </div>
 
