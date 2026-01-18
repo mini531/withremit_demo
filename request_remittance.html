@@ -27,11 +27,11 @@
                 <div class="db-content-card">
                     <!-- 한도액 안내 -->
                     <div class="remit-limit-section">
-                        <h2 class="form-sec-head">한도액 안내</h2>
+                        <h2 class="form-sec-head" style="border-left: none; padding-left: 0;">한도액 안내</h2>
                     <div class="limit-info-grid">
                         <div class="limit-info-item">
                             <div class="limit-label">1회 한도액</div>
-                            <div class="limit-value">$ 5,000</div>
+                            <div class="limit-value">$ 50,000</div>
                         </div>
                         <div class="limit-info-item">
                             <div class="limit-label">1년 한도액</div>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="limit-info-item highlight">
                             <div class="limit-label">송금 가능 금액</div>
-                            <div class="limit-value">$ 100,000.00</div>
+                            <div class="limit-value">$ 50,000.00</div>
                         </div>
                     </div>
                 </div>
@@ -66,14 +66,13 @@
                                     <option value="HK">홍콩 (HKD)</option>
                                     <option value="MN">몽골 (MNT)</option>
                                     <option value="VN">베트남 (VND)</option>
+                                    <option value="LK">스리랑카 (LKR)</option>
                                 </select>
                             </div>
                             <div class="field-item">
                                 <label class="field-label">서비스 선택</label>
-                                <select class="login-input select-styled" id="remitService">
-                                    <option value="" disabled selected>송금 서비스 선택</option>
-                                    <option value="standard">일반 송금</option>
-                                    <option value="express">빠른 송금</option>
+                                <select class="login-input select-styled" id="remitService" disabled>
+                                    <option value="" disabled selected>국가를 선택해주세요</option>
                                 </select>
                             </div>
                         </div>
@@ -97,23 +96,36 @@
                         <div class="field-item top-level">
                             <label class="field-label">송금 금액</label>
                             <div class="field-flex">
-                                <input type="text" placeholder="송금 금액을 입력하세요" class="login-input" id="sendAmount">
+                                <div style="position: relative; flex: 1; display: flex; align-items: center;">
+                                    <span id="currencySymbol" style="position: absolute; left: 16px; font-weight: 700; font-size: 1.1rem; color: var(--text-dark);">₩</span>
+                                    <input type="text" placeholder="송금 금액을 입력하세요" class="login-input" id="sendAmount" style="padding-left: 40px;">
+                                </div>
                                 <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산</button>
                             </div>
                         </div>
 
-                        <div class="remit-calc-result">
-                            <div class="calc-result-row">
-                                <span class="calc-label">송금 수수료</span>
-                                <span class="calc-value" id="remitFee">-</span>
+                        <div class="remit-calc-result" id="calcResult" style="display: none;">
+                            <div class="calc-result-grid">
+                                <div class="calc-result-item">
+                                    <span class="calc-label">송금 금액</span>
+                                    <span class="calc-value" id="displaySendAmount">-</span>
+                                </div>
+                                <div class="calc-result-item">
+                                    <span class="calc-label">송금 수수료</span>
+                                    <span class="calc-value" id="remitFee">-</span>
+                                </div>
+                                <div class="calc-result-item">
+                                    <span class="calc-label">수취 금액</span>
+                                    <span class="calc-value" id="receiveAmount">-</span>
+                                </div>
+                                <div class="calc-result-item">
+                                    <span class="calc-label">입금액</span>
+                                    <span class="calc-value" id="depositAmount">-</span>
+                                </div>
                             </div>
-                            <div class="calc-result-row">
-                                <span class="calc-label">수취 금액</span>
-                                <span class="calc-value" id="receiveAmount">-</span>
-                            </div>
-                            <div class="calc-result-row">
+                            <div class="calc-result-row" style="margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 12px;">
                                 <span class="calc-label">환율</span>
-                                <span class="calc-value" id="exchangeRate">국가를 선택해주세요.</span>
+                                <span class="calc-value" id="exchangeRate">-</span>
                             </div>
                         </div>
                     </div>
@@ -169,11 +181,16 @@
                             <div class="field-item">
                                 <label class="field-label">수취인과의 관계</label>
                                 <select class="login-input select-styled" id="relationship">
-                                    <option value="" disabled selected>관계 선택</option>
-                                    <option value="self">본인</option>
-                                    <option value="family">가족</option>
-                                    <option value="friend">친구</option>
-                                    <option value="business">비즈니스</option>
+                                    <option value="">SELECT</option>
+                                    <option value="R01">본인</option>
+                                    <option value="R02">자식</option>
+                                    <option value="R03">부모</option>
+                                    <option value="R04">형제</option>
+                                    <option value="R05">조카</option>
+                                    <option value="R06">친척</option>
+                                    <option value="R07">사업파트너</option>
+                                    <option value="R08">친구</option>
+                                    <option value="R09">배우자</option>
                                 </select>
                             </div>
                         </div>
@@ -182,7 +199,7 @@
                             <div class="field-item">
                                 <label class="field-label">수취 은행</label>
                                 <select class="login-input select-styled" id="beneficiaryBank">
-                                    <option value="" disabled selected>국가를 선택해주세요</option>
+                                    <option value="">국가를 선택해주세요</option>
                                 </select>
                             </div>
                             <div class="field-item">
@@ -199,9 +216,9 @@
                             <div class="field-item">
                                 <label class="field-label">수취 계좌 타입</label>
                                 <select class="login-input select-styled" id="accountType">
-                                    <option value="" disabled selected>계좌 타입 선택</option>
-                                    <option value="savings">저축예금</option>
-                                    <option value="checking">당좌예금</option>
+                                    <option value="">SELECT</option>
+                                    <option value="1">Futuu 저축계좌</option>
+                                    <option value="2">Touza 당좌계좌</option>
                                 </select>
                             </div>
                         </div>
@@ -224,13 +241,13 @@
                             <div class="field-item">
                                 <label class="field-label">자금 출처</label>
                                 <select class="login-input select-styled" id="fundSource">
-                                    <option value="" disabled selected>자금 출처 선택</option>
-                                    <option value="salary">급여</option>
-                                    <option value="business">사업소득</option>
-                                    <option value="savings">저축</option>
-                                    <option value="investment">투자수익</option>
-                                    <option value="loan">대출</option>
-                                    <option value="other">기타</option>
+                                    <option value="">SELECT</option>
+                                    <option value="SF01">월급</option>
+                                    <option value="SF02">부동산/동산 판매이익</option>
+                                    <option value="SF03">저축</option>
+                                    <option value="SF04">투자이익</option>
+                                    <option value="SF05">연금</option>
+                                    <option value="SF06">사업수입</option>
                                 </select>
                             </div>
                         </div>
@@ -304,42 +321,258 @@
     <script>
         // 환율 데이터
         const exchangeRates = {
-            JP: { rate: 0.1112, name: '일본', currency: '엔', symbol: '¥' },
-            PH: { rate: 0.0421, name: '필리핀', currency: '페소', symbol: '₱' },
-            CN: { rate: 0.0054, name: '중국', currency: '위안', symbol: '¥' },
-            NP: { rate: 0.1004, name: '네팔', currency: '루피', symbol: 'रू' },
-            AU: { rate: 0.0011, name: '호주', currency: '달러', symbol: 'A$' },
-            HK: { rate: 0.0059, name: '홍콩', currency: '달러', symbol: 'HK$' },
-            MN: { rate: 2.5830, name: '몽골', currency: '투그릭', symbol: '₮' },
-            VN: { rate: 18.5200, name: '베트남', currency: '동', symbol: '₫' }
+            JP: { rate: 0.1112, name: '일본', currency: '엔', symbol: '¥', withdrawalFee: 660 },
+            PH: { rate: 0.0421, name: '필리핀', currency: '페소', symbol: '₱', withdrawalFee: 40129 },
+            CN: { rate: 0.0054, name: '중국', currency: '위안', symbol: '¥', withdrawalFee: 4713 },
+            NP: { rate: 0.1004, name: '네팔', currency: '루피', symbol: 'रू', withdrawalFee: 97607 },
+            AU: { rate: 0.0011, name: '호주', currency: '달러', symbol: 'A$', withdrawalFee: 0 },
+            HK: { rate: 0.0059, name: '홍콩', currency: '달러', symbol: 'HK$', withdrawalFee: 0 },
+            MN: { rate: 2.5830, name: '몽골', currency: '투그릭', symbol: '₮', withdrawalFee: 0 },
+            VN: { rate: 18.5200, name: '베트남', currency: '동', symbol: '₫', withdrawalFee: 0 },
+            LK: { rate: 0.2450, name: '스리랑카', currency: '루피', symbol: 'Rs', withdrawalFee: 0 }
         };
 
-        // 국가별 은행 목록
+        // 국가별 서비스 옵션 (서비스명과 변경가능 여부)
+        const servicesByCountry = {
+            JP: [{ value: 'JP_REMIT', text: '일본 송금', locked: true }],
+            PH: [
+                { value: 'PH_BANK', text: '필리핀은행 송금', locked: false },
+                { value: 'PH_PICKUP', text: '필리핀 Pickup', locked: false }
+            ],
+            CN: [{ value: 'CN_REMIT', text: '중국 송금', locked: true }],
+            NP: [{ value: 'NP_REMIT', text: '네팔 송금', locked: true }],
+            AU: [{ value: 'AU_REMIT', text: '호주 송금', locked: true }],
+            HK: [{ value: 'HK_REMIT', text: '홍콩 송금', locked: true }],
+            MN: [{ value: 'MN_REMIT', text: '몽고 송금', locked: true }],
+            VN: [{ value: 'VN_REMIT', text: '베트남 송금', locked: true }],
+            LK: [{ value: 'LK_REMIT', text: '스리랑카 송금', locked: true }]
+        };
+
+        // 국가별 은행 목록 (일본은 전체 목록)
         const banksByCountry = {
-            JP: ['미쓰비시UFJ은행', '미즈호은행', '스미토모미쓰이은행', '리소나은행'],
-            PH: ['BDO', 'BPI', 'Metrobank', 'Security Bank'],
-            CN: ['중국공상은행', '중국건설은행', '중국은행', '중국농업은행'],
-            NP: ['Nepal Bank', 'Rastriya Banijya Bank', 'Nabil Bank', 'Standard Chartered'],
-            AU: ['Commonwealth Bank', 'Westpac', 'ANZ', 'NAB'],
-            HK: ['HSBC', 'Standard Chartered', 'Bank of China (HK)', 'Hang Seng Bank'],
-            MN: ['Khan Bank', 'Golomt Bank', 'Trade and Development Bank', 'State Bank'],
-            VN: ['Vietcombank', 'BIDV', 'VietinBank', 'Agribank']
+            JP: [
+                { value: '', text: 'SELECT' },
+                { value: '0117', text: '青森みちのく銀行/아오모리미츠노쿠은행' },
+                { value: '0125', text: '七十七銀行/시찌쥬시찌은행' },
+                { value: '0310', text: 'GMO あおぞら銀行/GMO아오조라은행' },
+                { value: '0397', text: 'SBI新生銀行 / SBI신세이은행' },
+                { value: '100', text: 'ゆうちょ銀行 / 유쵸은행' },
+                { value: '101', text: '三菱UFJ銀行 / 미츠비시UFJ은행' },
+                { value: '102', text: '三井住友銀行 / 미쓰이스미토모은행' },
+                { value: '103', text: 'みずほ銀行 / 미즈호 은행' },
+                { value: '1336', text: '西京信用金庫/사이쿄신용금고' },
+                { value: '201', text: '住信ＳＢＩネット銀行 / 스미신SBI네트은행' },
+                { value: '202', text: '楽天銀行 / 락텐은행' },
+                { value: '203', text: 'セブン銀行 / 세븐은행' },
+                { value: '204', text: 'ソニー銀行 / 쏘니은행' },
+                { value: '205', text: 'ＰａｙＰａｙ銀行 / PAYPAY은행（旧ジャパンネット銀行）' },
+                { value: '206', text: 'イオン銀行 / 이온은행' },
+                { value: '207', text: 'AUじぶん銀行 / AU지분은행' },
+                { value: '301', text: 'スルガ銀行 / 스루가은행' },
+                { value: '303', text: 'りそな銀行 / 리소나은행' },
+                { value: '304', text: '阿波銀行 / 아와은행' },
+                { value: '305', text: '伊予銀行 / 이요은행' },
+                { value: '306', text: '横浜銀行 / 요코하마은행' },
+                { value: '307', text: '沖縄銀行 / 오키나와은행' },
+                { value: '308', text: '岩手銀行 / 이와테은행' },
+                { value: '309', text: '紀陽銀行 / 키요은행' },
+                { value: '310', text: '宮崎銀行 / 미야자키은행' },
+                { value: '311', text: '京都銀行 / 교토은행' },
+                { value: '313', text: '群馬銀行 / 군마은행' },
+                { value: '314', text: '広島銀行 / 히로시마은행' },
+                { value: '315', text: '佐賀銀行 / 사가은행' },
+                { value: '316', text: '埼玉りそな銀行 / 사이타마 리소나 은행' },
+                { value: '318', text: '山陰合同銀行 / 산인고도은행' },
+                { value: '319', text: '山形銀行 / 야마가타은행' },
+                { value: '320', text: '山口銀行 / 야마구치은행' },
+                { value: '321', text: '山梨中央銀行 / 야마나시추오은행' },
+                { value: '322', text: '四国銀行 / 시코쿠은행' },
+                { value: '323', text: '滋賀銀行 / 시가은행' },
+                { value: '324', text: '鹿児島銀行 / 카고시마은행' },
+                { value: '326', text: '秋田銀行 / 아키타은행' },
+                { value: '328', text: '十六銀行 / 쥬로쿠은행' },
+                { value: '329', text: '常陽銀行 / 조요은행' },
+                { value: '330', text: '親和銀行 / 신와은행' },
+                { value: '331', text: '清水銀行 / 시미즈은행' },
+                { value: '332', text: '西日本シティ銀行 / 니시니폰씨티은행' },
+                { value: '334', text: '静岡銀行 / 시즈오카은행' },
+                { value: '335', text: '千葉興業銀行 / 치바코교은행' },
+                { value: '336', text: '千葉銀行 / 치바은행' },
+                { value: '337', text: '荘内銀行 / 쇼나이은행' },
+                { value: '338', text: '足利銀行 / 아시카가은행' },
+                { value: '339', text: '大垣共立銀行 / 오오가키쿄리츠은행' },
+                { value: '340', text: '大分銀行 / 오이타은행' },
+                { value: '341', text: '第四北越銀行 / 다이시호쿠에츠은행' },
+                { value: '342', text: '但馬銀行 / 타지마은행' },
+                { value: '343', text: '池田泉州銀行 / 이케다센슈은행' },
+                { value: '344', text: '筑波銀行 / 츠쿠바은행' },
+                { value: '345', text: '筑邦銀行 / 치쿠호은행' },
+                { value: '346', text: '中国銀行 / 추고쿠은행' },
+                { value: '347', text: '鳥取銀行 / 돗토리은행' },
+                { value: '349', text: '東邦銀行 / 도호은행' },
+                { value: '350', text: '東北銀行 / 도호쿠은행' },
+                { value: '351', text: '南都銀行 / 난토은행' },
+                { value: '352', text: '八十二銀行 / 하치쥬니은행' },
+                { value: '353', text: '肥後銀行 / 히고은행' },
+                { value: '354', text: '百五銀行 / 햐쿠고은행' },
+                { value: '355', text: '百十四銀行 / 햐쿠쥬시은행' },
+                { value: '356', text: '富山銀行 / 도야마은행' },
+                { value: '357', text: '武蔵野銀行 / 무사시노은행' },
+                { value: '358', text: '福井銀行 / 후쿠이은행' },
+                { value: '359', text: '福岡銀行 / 후쿠오카은행' },
+                { value: '361', text: '北海道銀行 / 홋카이도은행' },
+                { value: '362', text: '北九州銀行 / 기타큐슈은행' },
+                { value: '363', text: '北都銀行 / 호쿠토은행' },
+                { value: '364', text: '北陸銀行 / 호쿠리쿠은행' },
+                { value: '365', text: '北國銀行 / 홋코쿠은행' },
+                { value: '366', text: '琉球銀行 / 류큐은행' },
+                { value: '605', text: 'みずほ信託銀行 / 미즈호신탁은행' },
+                { value: '606', text: '三井住友信託銀行 / 미츠이스미토모신탁은행' },
+                { value: '607', text: '三菱ＵＦＪ信託銀行 / 미쓰비시 UFJ 신탁은행' },
+                { value: '612', text: '日本マスタートラスト信託銀行 / 일본마스터토라스토신탁은행' },
+                { value: '614', text: '野村信託銀行 / 노무라신탁은행' },
+                { value: '615', text: '京葉銀行 / 게이요은행' },
+                { value: '616', text: '東日本銀行 / 히가시니폰은행' },
+                { value: '617', text: '東京スター銀行 / 도쿄스타은행' },
+                { value: '618', text: '神奈川銀行 / 카나가와은행' },
+                { value: '619', text: '大光銀行 / 다이코은행' },
+                { value: '620', text: '長野銀行 / 나가노은행' },
+                { value: '621', text: '富山第一銀行 / 토야마다이이치은행' },
+                { value: '622', text: '福邦銀行 / 후쿠호은행' },
+                { value: '623', text: '静岡中央銀行 / 시즈오카추오은행' },
+                { value: '624', text: '愛知銀行 / 아이치은행' },
+                { value: '625', text: '名古屋銀行 / 나고야은행' },
+                { value: '626', text: '中京銀行 / 추쿄은행' },
+                { value: '628', text: '関西みらい銀行 / 간사이미라이은행' },
+                { value: '630', text: 'みなと銀行 / 미나토은행' },
+                { value: '631', text: '島根銀行 / 시마네은행' },
+                { value: '632', text: 'トマト銀行 / 토마토은행' },
+                { value: '633', text: 'もみじ銀行 / 모미지은행' },
+                { value: '635', text: '徳島銀行 / 토쿠시마은행' },
+                { value: '636', text: '香川銀行 / 카가와은행' },
+                { value: '637', text: '愛媛銀行 / 에히메은행' },
+                { value: '638', text: '高知銀行 / 고치은행' },
+                { value: '639', text: '福岡中央銀行 / 후쿠오카추오은행' },
+                { value: '640', text: '佐賀共栄銀行 / 사가쿄에은행' },
+                { value: '641', text: '長崎銀行 / 나가사키은행' },
+                { value: '642', text: 'オリックス銀行 / 오릭스은행' },
+                { value: '643', text: '豊和銀行 / 호와은행' },
+                { value: '644', text: '宮崎太陽銀行 / 미야자키타이요은행' },
+                { value: '645', text: '南日本銀行 / 미나미니폰은행' },
+                { value: '646', text: '沖縄海邦銀行 / 오키나와카이호은행' },
+                { value: '649', text: '大和ネクスト銀行 / 다이와넥스트은행' },
+                { value: '714', text: 'ジェー・ピー・モルガン・チェース・バンク・ナショナル・アソシエーション / JP모건체이스은행' },
+                { value: '715', text: 'シティバンク銀行 / 씨티은행' },
+                { value: '719', text: 'ドイツ銀行 / 도이치은행' },
+                { value: '723', text: 'バンク・オブ・アメリカ・エヌ・エイ / 뱅크오브아메리카' },
+                { value: '726', text: 'ビー・エヌ・ピー・パリバ銀行 / BNP 파리바 은행' },
+                { value: '736', text: '香港上海銀行 / 홍콩상하이은행(HSBC)' },
+                { value: '806', text: 'あおぞら銀行 / 아오조라은행' },
+                { value: '807', text: '北洋銀行 / 호쿠요은행' },
+                { value: '808', text: 'きらやか銀行 / 키라야카은행' },
+                { value: '809', text: '北日本銀行 / 기타니폰은행' },
+                { value: '810', text: '仙台銀行 / 센다이은행' },
+                { value: '811', text: '福島銀行 / 후쿠시마은행' },
+                { value: '812', text: '大東銀行 / 다이토은행' },
+                { value: '813', text: '東和銀行 / 토와은행' },
+                { value: '814', text: '栃木銀行 / 토치기은행' },
+                { value: '842', text: '熊本銀行 / 쿠마모토은행' },
+                { value: '905', text: 'SBJ銀行 / 신한일본은행' }
+            ],
+            PH: [
+                { value: '', text: 'SELECT' },
+                { value: 'BDO', text: 'BDO' },
+                { value: 'BPI', text: 'BPI' },
+                { value: 'METRO', text: 'Metrobank' },
+                { value: 'SECURITY', text: 'Security Bank' }
+            ],
+            CN: [
+                { value: '', text: 'SELECT' },
+                { value: 'ICBC', text: '중국공상은행' },
+                { value: 'CCB', text: '중국건설은행' },
+                { value: 'BOC', text: '중국은행' },
+                { value: 'ABC', text: '중국농업은행' }
+            ],
+            NP: [
+                { value: '', text: 'SELECT' },
+                { value: 'NBL', text: 'Nepal Bank' },
+                { value: 'RBB', text: 'Rastriya Banijya Bank' },
+                { value: 'NABIL', text: 'Nabil Bank' },
+                { value: 'SCB', text: 'Standard Chartered' }
+            ],
+            AU: [
+                { value: '', text: 'SELECT' },
+                { value: 'CBA', text: 'Commonwealth Bank' },
+                { value: 'WBC', text: 'Westpac' },
+                { value: 'ANZ', text: 'ANZ' },
+                { value: 'NAB', text: 'NAB' }
+            ],
+            HK: [
+                { value: '', text: 'SELECT' },
+                { value: 'HSBC', text: 'HSBC' },
+                { value: 'SCB', text: 'Standard Chartered' },
+                { value: 'BOC', text: 'Bank of China (HK)' },
+                { value: 'HSB', text: 'Hang Seng Bank' }
+            ],
+            MN: [
+                { value: '', text: 'SELECT' },
+                { value: 'KHAN', text: 'Khan Bank' },
+                { value: 'GOLOMT', text: 'Golomt Bank' },
+                { value: 'TDB', text: 'Trade and Development Bank' },
+                { value: 'STATE', text: 'State Bank' }
+            ],
+            VN: [
+                { value: '', text: 'SELECT' },
+                { value: 'VCB', text: 'Vietcombank' },
+                { value: 'BIDV', text: 'BIDV' },
+                { value: 'VTB', text: 'VietinBank' },
+                { value: 'AGB', text: 'Agribank' }
+            ],
+            LK: [
+                { value: '', text: 'SELECT' },
+                { value: 'BOC', text: 'Bank of Ceylon' },
+                { value: 'PB', text: 'People\'s Bank' },
+                { value: 'COM', text: 'Commercial Bank' },
+                { value: 'HNB', text: 'Hatton National Bank' }
+            ]
         };
 
-        // 국가 선택 시 은행 목록 업데이트
+        // 국가 선택 시 처리
         document.getElementById('remitCountry').addEventListener('change', function() {
             const country = this.value;
+            const serviceSelect = document.getElementById('remitService');
             const bankSelect = document.getElementById('beneficiaryBank');
 
-            // 은행 목록 초기화
-            bankSelect.innerHTML = '<option value="" disabled selected>은행 선택</option>';
+            // 서비스 선택 업데이트
+            serviceSelect.disabled = false;
+            serviceSelect.innerHTML = '';
 
-            // 선택된 국가의 은행 목록 추가
+            if (servicesByCountry[country]) {
+                servicesByCountry[country].forEach((service, index) => {
+                    const option = document.createElement('option');
+                    option.value = service.value;
+                    option.textContent = service.text;
+                    if (index === 0) option.selected = true;
+                    serviceSelect.appendChild(option);
+                });
+
+                // 변경 불가능한 경우 disabled 처리
+                if (servicesByCountry[country][0].locked && servicesByCountry[country].length === 1) {
+                    serviceSelect.disabled = true;
+                }
+            }
+
+            // 은행 목록 업데이트
+            bankSelect.innerHTML = '';
             if (banksByCountry[country]) {
                 banksByCountry[country].forEach(bank => {
                     const option = document.createElement('option');
-                    option.value = bank;
-                    option.textContent = bank;
+                    option.value = bank.value;
+                    option.textContent = bank.text;
+                    if (bank.value === '') {
+                        option.disabled = true;
+                        option.selected = true;
+                    }
                     bankSelect.appendChild(option);
                 });
             }
@@ -352,13 +585,32 @@
             }
         });
 
+        // 송금액 기준 라디오 버튼 변경 시 통화 기호 업데이트
+        document.querySelectorAll('input[name="amountType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const country = document.getElementById('remitCountry').value;
+                const currencySymbol = document.getElementById('currencySymbol');
+
+                if (this.value === 'send') {
+                    currencySymbol.textContent = '₩';
+                } else if (this.value === 'receive') {
+                    if (country && exchangeRates[country]) {
+                        currencySymbol.textContent = exchangeRates[country].symbol;
+                    } else {
+                        currencySymbol.textContent = '₩';
+                    }
+                }
+            });
+        });
+
         // 송금 금액 계산
         function calculateRemit() {
             const country = document.getElementById('remitCountry').value;
             const sendAmountInput = document.getElementById('sendAmount').value;
+            const amountType = document.querySelector('input[name="amountType"]:checked').value;
 
             if (!country) {
-                showWarning('송금 국가를 먼저 선택해주세요.');
+                showWarning('송금 국가를 선택해주세요.');
                 return;
             }
 
@@ -367,26 +619,49 @@
                 return;
             }
 
-            const sendAmount = parseFloat(sendAmountInput.replace(/,/g, ''));
+            const inputAmount = parseFloat(sendAmountInput.replace(/,/g, ''));
 
-            if (isNaN(sendAmount) || sendAmount <= 0) {
+            if (isNaN(inputAmount) || inputAmount <= 0) {
                 showWarning('올바른 금액을 입력해주세요.');
                 return;
             }
 
-            // 수수료 계산 (1%)
+            const rateInfo = exchangeRates[country];
             const feeRate = country === 'NP' ? 0.005 : 0.01;
-            const fee = sendAmount * feeRate;
 
-            // 환율 적용
-            const rate = exchangeRates[country].rate;
-            const receiveAmt = (sendAmount - fee) * rate;
+            let sendAmount, fee, receiveAmtBeforeFee, withdrawalFee, receiveAmt, depositAmount;
+
+            if (amountType === 'send') {
+                // 송금액 기준
+                sendAmount = inputAmount;
+                fee = sendAmount * feeRate;
+                receiveAmtBeforeFee = (sendAmount - fee) * rateInfo.rate;
+                withdrawalFee = rateInfo.withdrawalFee;
+                receiveAmt = receiveAmtBeforeFee - withdrawalFee;
+                depositAmount = sendAmount + fee;
+            } else {
+                // 수취금액 기준
+                receiveAmt = inputAmount;
+                withdrawalFee = rateInfo.withdrawalFee;
+                receiveAmtBeforeFee = receiveAmt + withdrawalFee;
+                const beforeFee = receiveAmtBeforeFee / rateInfo.rate;
+                sendAmount = beforeFee / (1 - feeRate);
+                fee = sendAmount * feeRate;
+                depositAmount = sendAmount + fee;
+            }
 
             // 결과 표시
+            document.getElementById('displaySendAmount').textContent =
+                `₩ ${sendAmount.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
             document.getElementById('remitFee').textContent =
-                fee.toLocaleString('ko-KR') + ' KRW';
+                `₩ ${fee.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
             document.getElementById('receiveAmount').textContent =
-                receiveAmt.toLocaleString('ko-KR', {maximumFractionDigits: 2}) + ' ' + exchangeRates[country].currency;
+                `${rateInfo.symbol} ${receiveAmt.toLocaleString('ko-KR', {maximumFractionDigits: 0})}` +
+                (withdrawalFee > 0 ? `  (수취수수료:${rateInfo.symbol}${withdrawalFee.toLocaleString('ko-KR')})` : '');
+            document.getElementById('depositAmount').textContent =
+                `₩ ${depositAmount.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
+
+            document.getElementById('calcResult').style.display = 'block';
         }
 
         // 송금 신청
@@ -394,7 +669,7 @@
             // 필수 항목 검증
             const requiredFields = [
                 { id: 'remitCountry', name: '국가' },
-                { id: 'remitService', name: '서비스 선택' },
+                { id: 'remitService', name: '서비스' },
                 { id: 'sendAmount', name: '송금 금액' },
                 { id: 'depositBank', name: '입금 은행' },
                 { id: 'depositorName', name: '입금자 명' },
@@ -414,7 +689,7 @@
             for (const field of requiredFields) {
                 const element = document.getElementById(field.id);
                 if (!element.value || element.value.trim() === '') {
-                    showWarning(`${field.name}을(를) 입력해주세요.`);
+                    showWarning(`${field.name}를 입력해주세요.`);
                     element.focus();
                     return;
                 }
@@ -422,7 +697,7 @@
 
             // 송금 금액 검증
             const sendAmount = parseFloat(document.getElementById('sendAmount').value.replace(/,/g, ''));
-            const maxKRW = 5000 * 1350; // $5,000 한도
+            const maxKRW = 50000 * 1350; // $50,000 한도
 
             if (sendAmount > maxKRW) {
                 showWarning(`1회 송금 한도(${maxKRW.toLocaleString('ko-KR')}원)를 초과했습니다.`);

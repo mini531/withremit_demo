@@ -1205,8 +1205,6 @@ p { font-size: 1rem; color: var(--text-body); }
   gap: 16px;
   justify-content: flex-end;
   margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border-color);
 }
 
 .remit-action-btns .btn {
@@ -1214,6 +1212,34 @@ p { font-size: 1rem; color: var(--text-body); }
   height: 48px;
   padding: 0 32px;
   font-size: 1rem;
+}
+
+.calc-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.calc-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.calc-result-item .calc-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.calc-result-item .calc-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-blue);
 }
 
 /* Responsive styles for remittance page */
@@ -1287,6 +1313,23 @@ p { font-size: 1rem; color: var(--text-body); }
     margin-top: 14px;
   }
 
+  .calc-result-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .calc-result-item {
+    padding: 10px;
+  }
+
+  .calc-result-item .calc-label {
+    font-size: 0.9rem;
+  }
+
+  .calc-result-item .calc-value {
+    font-size: 0.95rem;
+  }
+
   .calc-result-row {
     padding: 8px 0;
   }
@@ -1301,7 +1344,6 @@ p { font-size: 1rem; color: var(--text-body); }
 
   .remit-action-btns {
     margin-top: 24px;
-    padding-top: 20px;
   }
 
   .remit-action-btns .btn {
@@ -1348,6 +1390,23 @@ p { font-size: 1rem; color: var(--text-body); }
     padding: 12px;
   }
 
+  .calc-result-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .calc-result-item {
+    padding: 8px;
+  }
+
+  .calc-result-item .calc-label {
+    font-size: 0.8rem;
+  }
+
+  .calc-result-item .calc-value {
+    font-size: 0.9rem;
+  }
+
   .calc-result-row {
     padding: 6px 0;
   }
@@ -1364,7 +1423,6 @@ p { font-size: 1rem; color: var(--text-body); }
     flex-direction: column;
     gap: 10px;
     margin-top: 20px;
-    padding-top: 16px;
   }
 
   .remit-action-btns .btn {
