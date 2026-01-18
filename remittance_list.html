@@ -107,115 +107,155 @@
                     <div class="db-notice-list-page">
                         <table class="db-notice-table remit-table">
                             <colgroup>
+                                <col style="width: 120px;">
+                                <col style="width: 140px;">
+                                <col style="width: 110px;">
+                                <col style="width: 110px;">
+                                <col style="width: 90px;">
                                 <col style="width: 100px;">
                                 <col style="width: 120px;">
-                                <col style="width: 100px;">
-                                <col>
-                                <col style="width: 120px;">
-                                <col style="width: 120px;">
-                                <col class="col-status" style="width: 100px;">
+                                <col style="width: 90px;">
+                                <col style="width: 110px;">
+                                <col style="width: 90px;">
                             </colgroup>
                             <thead>
                                 <tr>
-                                    <th>접수일자</th>
-                                    <th>접수번호</th>
-                                    <th>수취국가</th>
+                                    <th rowspan="2">접수번호</th>
+                                    <th colspan="2">송금정보</th>
+                                    <th rowspan="2">입금액</th>
+                                    <th colspan="4">수취정보</th>
+                                    <th rowspan="2">총금액</th>
+                                    <th rowspan="2">송금하기</th>
+                                </tr>
+                                <tr>
+                                    <th>결제일시</th>
+                                    <th>송금액</th>
                                     <th>수취인</th>
-                                    <th>송금액 (KRW)</th>
-                                    <th>수취액</th>
-                                    <th>송금 상태</th>
+                                    <th>이름</th>
+                                    <th>은행명</th>
+                                    <th>수취국</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>2026.01.18</td>
                                 <td class="remit-receipt-num">RMT20260118001</td>
-                                <td>일본</td>
-                                <td class="remit-receiver">田中太郎</td>
-                                <td class="remit-amount">500,000</td>
-                                <td class="remit-foreign">¥5,555</td>
-                                <td><span class="remit-status status-success">거래 성공</span></td>
+                                <td class="remit-datetime">2026.01.18<br>14:23</td>
+                                <td class="remit-send-amount">500,000원</td>
+                                <td class="remit-deposit">¥5,555</td>
+                                <td class="remit-recipient-type">본인</td>
+                                <td class="remit-name">田中太郎</td>
+                                <td class="remit-bank">MUFG</td>
+                                <td class="remit-country">일본</td>
+                                <td class="remit-total">506,660원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                             <tr>
-                                <td>2026.01.17</td>
                                 <td class="remit-receipt-num">RMT20260117002</td>
-                                <td>필리핀</td>
-                                <td class="remit-receiver">Maria Santos</td>
-                                <td class="remit-amount">1,000,000</td>
-                                <td class="remit-foreign">₱19,230</td>
-                                <td><span class="remit-status status-success">거래 성공</span></td>
+                                <td class="remit-datetime">2026.01.17<br>10:15</td>
+                                <td class="remit-send-amount">1,000,000원</td>
+                                <td class="remit-deposit">₱19,230</td>
+                                <td class="remit-recipient-type">가족</td>
+                                <td class="remit-name">Maria Santos</td>
+                                <td class="remit-bank">BDO</td>
+                                <td class="remit-country">필리핀</td>
+                                <td class="remit-total">1,040,129원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                             <tr>
-                                <td>2026.01.16</td>
                                 <td class="remit-receipt-num">RMT20260116003</td>
-                                <td>중국</td>
-                                <td class="remit-receiver">王小明</td>
-                                <td class="remit-amount">800,000</td>
-                                <td class="remit-foreign">¥4,444</td>
-                                <td><span class="remit-status status-complete">입금 완료</span></td>
+                                <td class="remit-datetime">2026.01.16<br>16:42</td>
+                                <td class="remit-send-amount">800,000원</td>
+                                <td class="remit-deposit">¥4,444</td>
+                                <td class="remit-recipient-type">지인</td>
+                                <td class="remit-name">王小明</td>
+                                <td class="remit-bank">ICBC</td>
+                                <td class="remit-country">중국</td>
+                                <td class="remit-total">804,713원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                             <tr>
-                                <td>2026.01.15</td>
                                 <td class="remit-receipt-num">RMT20260115004</td>
-                                <td>네팔</td>
-                                <td class="remit-receiver">Ram Prasad</td>
-                                <td class="remit-amount">600,000</td>
-                                <td class="remit-foreign">रू9,600</td>
-                                <td><span class="remit-status status-processing">접수 완료</span></td>
+                                <td class="remit-datetime">2026.01.15<br>11:28</td>
+                                <td class="remit-send-amount">600,000원</td>
+                                <td class="remit-deposit">रू9,600</td>
+                                <td class="remit-recipient-type">가족</td>
+                                <td class="remit-name">Ram Prasad</td>
+                                <td class="remit-bank">NIC Asia</td>
+                                <td class="remit-country">네팔</td>
+                                <td class="remit-total">697,607원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                             <tr>
-                                <td>2026.01.14</td>
                                 <td class="remit-receipt-num">RMT20260114005</td>
-                                <td>일본</td>
-                                <td class="remit-receiver">佐藤花子</td>
-                                <td class="remit-amount">300,000</td>
-                                <td class="remit-foreign">¥3,333</td>
-                                <td><span class="remit-status status-success">거래 성공</span></td>
+                                <td class="remit-datetime">2026.01.14<br>09:55</td>
+                                <td class="remit-send-amount">300,000원</td>
+                                <td class="remit-deposit">¥3,333</td>
+                                <td class="remit-recipient-type">본인</td>
+                                <td class="remit-name">佐藤花子</td>
+                                <td class="remit-bank">Mizuho</td>
+                                <td class="remit-country">일본</td>
+                                <td class="remit-total">303,330원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                             <tr>
-                                <td>2026.01.13</td>
                                 <td class="remit-receipt-num">RMT20260113006</td>
-                                <td>필리핀</td>
-                                <td class="remit-receiver">Juan Dela Cruz</td>
-                                <td class="remit-amount">1,200,000</td>
-                                <td class="remit-foreign">₱23,076</td>
-                                <td><span class="remit-status status-success">거래 성공</span></td>
+                                <td class="remit-datetime">2026.01.13<br>15:37</td>
+                                <td class="remit-send-amount">1,200,000원</td>
+                                <td class="remit-deposit">₱23,076</td>
+                                <td class="remit-recipient-type">지인</td>
+                                <td class="remit-name">Juan Dela Cruz</td>
+                                <td class="remit-bank">Metrobank</td>
+                                <td class="remit-country">필리핀</td>
+                                <td class="remit-total">1,248,155원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                             <tr>
-                                <td>2026.01.12</td>
                                 <td class="remit-receipt-num">RMT20260112007</td>
-                                <td>중국</td>
-                                <td class="remit-receiver">李明</td>
-                                <td class="remit-amount">900,000</td>
-                                <td class="remit-foreign">¥5,000</td>
-                                <td><span class="remit-status status-pending">거래 보류</span></td>
+                                <td class="remit-datetime">2026.01.12<br>13:21</td>
+                                <td class="remit-send-amount">900,000원</td>
+                                <td class="remit-deposit">¥5,000</td>
+                                <td class="remit-recipient-type">본인</td>
+                                <td class="remit-name">李明</td>
+                                <td class="remit-bank">Bank of China</td>
+                                <td class="remit-country">중국</td>
+                                <td class="remit-total">905,300원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                             <tr>
-                                <td>2026.01.11</td>
                                 <td class="remit-receipt-num">RMT20260111008</td>
-                                <td>네팔</td>
-                                <td class="remit-receiver">Sita Sharma</td>
-                                <td class="remit-amount">700,000</td>
-                                <td class="remit-foreign">रू11,200</td>
-                                <td><span class="remit-status status-success">거래 성공</span></td>
+                                <td class="remit-datetime">2026.01.11<br>10:48</td>
+                                <td class="remit-send-amount">700,000원</td>
+                                <td class="remit-deposit">रू11,200</td>
+                                <td class="remit-recipient-type">가족</td>
+                                <td class="remit-name">Sita Sharma</td>
+                                <td class="remit-bank">Himalayan</td>
+                                <td class="remit-country">네팔</td>
+                                <td class="remit-total">813,875원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                             <tr>
-                                <td>2026.01.10</td>
                                 <td class="remit-receipt-num">RMT20260110009</td>
-                                <td>일본</td>
-                                <td class="remit-receiver">山田次郎</td>
-                                <td class="remit-amount">450,000</td>
-                                <td class="remit-foreign">¥5,000</td>
-                                <td><span class="remit-status status-success">거래 성공</span></td>
+                                <td class="remit-datetime">2026.01.10<br>14:52</td>
+                                <td class="remit-send-amount">450,000원</td>
+                                <td class="remit-deposit">¥5,000</td>
+                                <td class="remit-recipient-type">본인</td>
+                                <td class="remit-name">山田次郎</td>
+                                <td class="remit-bank">SMBC</td>
+                                <td class="remit-country">일본</td>
+                                <td class="remit-total">454,995원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                             <tr>
-                                <td>2026.01.09</td>
                                 <td class="remit-receipt-num">RMT20260109010</td>
-                                <td>필리핀</td>
-                                <td class="remit-receiver">Ana Garcia</td>
-                                <td class="remit-amount">850,000</td>
-                                <td class="remit-foreign">₱16,346</td>
-                                <td><span class="remit-status status-failed">거래 실패</span></td>
+                                <td class="remit-datetime">2026.01.09<br>11:33</td>
+                                <td class="remit-send-amount">850,000원</td>
+                                <td class="remit-deposit">₱16,346</td>
+                                <td class="remit-recipient-type">지인</td>
+                                <td class="remit-name">Ana Garcia</td>
+                                <td class="remit-bank">BPI</td>
+                                <td class="remit-country">필리핀</td>
+                                <td class="remit-total">884,110원</td>
+                                <td><button class="remit-action-btn">송금하기</button></td>
                             </tr>
                         </tbody>
                     </table>
