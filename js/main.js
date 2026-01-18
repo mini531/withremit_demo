@@ -44,7 +44,7 @@ const translations = {
         
         // Countries
         'countries.title': '송금 가능 국가',
-        'countries.desc': '아시아 주요 국가로 빠르고 안전하게 송금하세요',
+        'countries.desc': '9개 주요 국가로 빠르고 안전하게 송금하세요',
         'country.japan': '일본',
         'country.philippines': '필리핀',
         'country.china': '중국',
@@ -53,6 +53,7 @@ const translations = {
         'country.hongkong': '홍콩',
         'country.mongolia': '몽골',
         'country.vietnam': '베트남',
+        'country.srilanka': '스리랑카',
         
         // Trust
         'trust.title': '신뢰할 수 있는 파트너',
@@ -133,7 +134,7 @@ const translations = {
         
         // Countries
         'countries.title': 'Available Countries',
-        'countries.desc': 'Send money safely to major Asian countries',
+        'countries.desc': 'Send money safely to 9 major countries',
         'country.japan': 'Japan',
         'country.philippines': 'Philippines',
         'country.china': 'China',
@@ -142,6 +143,7 @@ const translations = {
         'country.hongkong': 'Hong Kong',
         'country.mongolia': 'Mongolia',
         'country.vietnam': 'Vietnam',
+        'country.srilanka': 'Sri Lanka',
         
         // Trust
         'trust.title': 'Trusted Partner',
@@ -222,7 +224,7 @@ const translations = {
         
         // Countries
         'countries.title': '送金可能国',
-        'countries.desc': 'アジア主要国へ安全に送金',
+        'countries.desc': '9カ国の主要国へ安全に送金',
         'country.japan': '日本',
         'country.philippines': 'フィリピン',
         'country.china': '中国',
@@ -231,6 +233,7 @@ const translations = {
         'country.hongkong': '香港',
         'country.mongolia': 'モンゴル',
         'country.vietnam': 'ベトナム',
+        'country.srilanka': 'スリランカ',
         
         // Trust
         'trust.title': '信頼できるパートナー',
@@ -311,7 +314,7 @@ const translations = {
         
         // Countries
         'countries.title': '可汇款国家',
-        'countries.desc': '安全汇款至亚洲主要国家',
+        'countries.desc': '安全汇款至9个主要国家',
         'country.japan': '日本',
         'country.philippines': '菲律宾',
         'country.china': '中国',
@@ -320,6 +323,7 @@ const translations = {
         'country.hongkong': '香港',
         'country.mongolia': '蒙古',
         'country.vietnam': '越南',
+        'country.srilanka': '斯里兰卡',
         
         // Trust
         'trust.title': '可信赖的合作伙伴',
@@ -388,11 +392,12 @@ const exchangeRates = {
     AUD: { rate: 0.0011, name: '호주', currency: '달러', symbol: 'A$', flagImg: 'au' },
     HKD: { rate: 0.0059, name: '홍콩', currency: '달러', symbol: 'HK$', flagImg: 'hk' },
     MNT: { rate: 2.5830, name: '몽골', currency: '투그릭', symbol: '₮', flagImg: 'mn' },
-    VND: { rate: 18.5200, name: '베트남', currency: '동', symbol: '₫', flagImg: 'vn' }
+    VND: { rate: 18.5200, name: '베트남', currency: '동', symbol: '₫', flagImg: 'vn' },
+    LKR: { rate: 0.2450, name: '스리랑카', currency: '루피', symbol: '௹', flagImg: 'lk' }
 };
 
 const currencySymbols = {
-    'JPY': '¥', 'PHP': '₱', 'CNY': '¥', 'NPR': 'रू', 'AUD': 'A$', 'HKD': 'HK$', 'MNT': '₮', 'VND': '₫'
+    'JPY': '¥', 'PHP': '₱', 'CNY': '¥', 'NPR': 'रू', 'AUD': 'A$', 'HKD': 'HK$', 'MNT': '₮', 'VND': '₫', 'LKR': '௹'
 };
 
 const withdrawalFees = {
@@ -403,7 +408,8 @@ const withdrawalFees = {
     'AUD': 0,
     'HKD': 0,
     'MNT': 0,
-    'VND': 0
+    'VND': 0,
+    'LKR': 0
 };
 
 let selectedCurrency = 'JPY';
@@ -575,22 +581,24 @@ function handleAmountInput(e) {
 }
 
 function handleCurrencyChange(currency, flagUrl) {
-    selectedCurrency = currency; 
-    
+    selectedCurrency = currency;
+
     const receiveCurrencyFlag = document.getElementById('receiveCurrencyFlag');
     const receiveCurrencyCode = document.getElementById('receiveCurrencyCode');
     const receiveCurrencySymbol = document.getElementById('receiveCurrencySymbol');
-    
+    const receiveCurrencyInput = document.getElementById('receiveCurrency');
+
     if (receiveCurrencyFlag && flagUrl) receiveCurrencyFlag.src = flagUrl;
     if (receiveCurrencyCode) receiveCurrencyCode.textContent = currency;
     if (receiveCurrencySymbol) {
         receiveCurrencySymbol.textContent = currencySymbols[currency] || '¥';
     }
-    
+    if (receiveCurrencyInput) receiveCurrencyInput.value = currency;
+
     // 계산 실행
     const sendInput = document.getElementById('sendAmount');
     if (sendInput) handleSendAmountInput({ target: sendInput });
-    
+
     updateRateDisplay();
 }
 
@@ -612,9 +620,11 @@ function closeCurrencyDropdown(e) {
 function handleCountryClick(e) {
     const card = e.currentTarget;
     const currency = card.dataset.currency;
-    
+
     if (currency && exchangeRates[currency]) {
-        handleCurrencyChange(currency);
+        const flagImg = exchangeRates[currency].flagImg;
+        const flagUrl = `images/${flagImg}.png`;
+        handleCurrencyChange(currency, flagUrl);
         document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
     }
 }
