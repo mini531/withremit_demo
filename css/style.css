@@ -903,6 +903,36 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-rows-select:hover { border-color: var(--primary-blue); }
 .db-rows-select:focus { outline: none; border-color: var(--primary-blue); }
 
+/* Remittance List Page */
+.remit-search-box { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+.remit-search-row { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+.remit-search-field { display: flex; flex-direction: column; gap: 6px; }
+.remit-search-label { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
+.remit-status-select { min-width: 180px; padding: 10px 32px 10px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; background: #fff; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8E96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; transition: var(--transition); }
+.remit-status-select:hover, .remit-status-select:focus { outline: none; border-color: var(--primary-blue); }
+.remit-period-field { flex: 1; min-width: 100%; }
+.remit-period-wrapper { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.remit-date-input { max-width: 160px; }
+.date-separator { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+.remit-quick-btns { display: flex; gap: 6px; }
+.remit-quick-btn { padding: 8px 14px; border: 1.5px solid var(--border-color); background: #fff; border-radius: 6px; font-size: 0.85rem; font-weight: 500; color: var(--text-body); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.remit-quick-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: var(--bg-light); }
+.remit-quick-btn.active { background: var(--primary-green); border-color: var(--primary-green); color: #fff; font-weight: 600; }
+.remit-search-actions { display: flex; gap: 8px; }
+.remit-sort-wrapper { display: flex; align-items: center; gap: 12px; }
+.remit-sort-select { padding: 8px 32px 8px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); background: #fff; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8E96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; transition: var(--transition); }
+.remit-sort-select:hover, .remit-sort-select:focus { outline: none; border-color: var(--primary-blue); }
+.remit-table .remit-receipt-num { font-family: 'Courier New', monospace; font-weight: 600; color: var(--text-dark); }
+.remit-table .remit-receiver { font-weight: 500; color: var(--text-dark); }
+.remit-table .remit-amount { font-weight: 600; color: var(--text-dark); }
+.remit-table .remit-foreign { font-weight: 500; color: #4b5563; }
+.remit-status { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+.remit-status.status-success { background: #d1fae5; color: #065f46; }
+.remit-status.status-complete { background: #dbeafe; color: #1e40af; }
+.remit-status.status-processing { background: #fef3c7; color: #92400e; }
+.remit-status.status-pending { background: #fef08a; color: #854d0e; }
+.remit-status.status-failed { background: #fee2e2; color: #991b1b; }
+
 /* Contact Info Bar */
 .contact-info-bar { background: #f8fafc; border-top: 1px solid var(--border-color); padding: 14px 0; }
 .contact-info-items { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 20px; }
@@ -1048,6 +1078,24 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-page-num { min-width: 28px; height: 28px; font-size: 0.8rem; }
   .db-page-btn { width: 28px; height: 28px; }
   .db-page-num:nth-child(n+7):nth-last-child(n+3) { display: none; }
+  .remit-search-box { display: none; }
+  .remit-search-box.mobile-active { display: flex; }
+  .remit-search-row { flex-direction: column; gap: 12px; align-items: stretch; }
+  .remit-search-field { width: 100%; }
+  .remit-status-select { width: 100%; min-width: 100%; font-size: 0.85rem; }
+  .remit-period-field { min-width: 100%; }
+  .remit-period-wrapper { flex-direction: column; align-items: stretch; gap: 10px; }
+  .remit-date-input { max-width: 100%; width: 100%; }
+  .remit-quick-btns { flex-wrap: wrap; }
+  .remit-quick-btn { flex: 1; min-width: calc(50% - 3px); font-size: 0.8rem; padding: 6px 10px; }
+  .remit-search-actions { flex-direction: column; }
+  .db-search-btn, .db-reset-btn { width: 100%; }
+  .remit-sort-wrapper { width: 100%; justify-content: space-between; }
+  .remit-sort-select { font-size: 0.8rem; }
+  .remit-table { font-size: 0.8rem; }
+  .remit-table th, .remit-table td { padding: 8px 6px; font-size: 0.75rem; }
+  .remit-table .col-status { min-width: 70px; }
+  .remit-status { font-size: 0.7rem; padding: 3px 6px; }
 }
 
 /* Notice Detail Page */
