@@ -54,26 +54,7 @@
 
     <main class="db-main-container container">
         <div class="db-layout-flex">
-            <aside class="db-sidebar" id="dbSidebar">
-                <nav class="db-side-nav">
-                    <a href="dashboard.html" class="db-nav-link">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
-                        <span>대시보드</span>
-                    </a>
-                    <a href="notice_list.html" class="db-nav-link active">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-                        <span>공지사항</span>
-                    </a>
-                    <a href="#" class="db-nav-link">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                        <span>문의하기</span>
-                    </a>
-                    <a href="#" class="db-nav-link">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                        <span>설정</span>
-                    </a>
-                </nav>
-            </aside>
+            <div id="sidebarContainer"></div>
 
             <div class="db-content">
                 <div class="db-page-header">
@@ -82,7 +63,7 @@
 
                 <div class="notice-detail-card">
                     <div class="notice-detail-header">
-                        <h2 class="notice-detail-title" id="noticeTitle">연말연시 영업일 안내</h2>
+                        <h2 class="notice-detail-title" id="noticeTitle">추석 연휴에도 하나송금은 정상근무합니다.</h2>
                         <div class="notice-detail-meta">
                             <span class="meta-item">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -92,7 +73,7 @@
                                     <line x1="3" y1="10" x2="21" y2="10"></line>
                                 </svg>
                                 <span class="meta-label">작성일</span>
-                                <span class="meta-value" id="noticeDate">2025-12-29</span>
+                                <span class="meta-value" id="noticeDate">2025-10-03</span>
                             </span>
                             <span class="meta-item">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -108,7 +89,7 @@
                                     <circle cx="12" cy="12" r="3"></circle>
                                 </svg>
                                 <span class="meta-label">조회수</span>
-                                <span class="meta-value" id="noticeViews">69</span>
+                                <span class="meta-value" id="noticeViews">52</span>
                             </span>
                         </div>
                     </div>
@@ -116,43 +97,52 @@
                     <div class="notice-detail-divider"></div>
 
                     <div class="notice-detail-content" id="noticeContent">
-                        <p>안녕하세요. 씬앤빗페이입니다.</p>
+                        <p>안녕하세요. withremit입니다.</p>
                         <br>
-                        <p>올해에도 씬앤빗페이에 많은 관심과 충전을 보내 주신 분들에 감사드립니다.</p>
+                        <p>항상 withremit을 이용해 주셔서 감사합니다.<br>
+                        하기의 추석 연휴기간 중 일요일을 제외하고 withremit은 정상영업합니다.</p>
                         <br>
-                        <p>설 연휴의 영업일을 다음과 같이 안내 드립니다.<br>
-                        새해에도 변함없는 관심과 배풍을 부탁드립니다.<br>
-                        아무쪼록 새해에도 잘 부탁드립니다.</p>
+                        <p>10월3일(금) ～ 10월9일(목)</p>
                         <br>
-                        <p style="text-align: center;">- 기 -</p>
+                        <p>* 10시부터 17시까지(당일송금 17시 마감) 입니다.</p>
                         <br>
-                        <p>12/29 정상영업<br>
-                        12/30 오전공무 (오전 11시까지 정윤뜨까지 땡땡출금)</p>
+                        <p>그 외 궁금하신 점이 있으시면 withremit 고객센터로 연락주세요.<br>
+                        감사합니다.</p>
                     </div>
 
                     <div class="notice-detail-divider"></div>
 
                     <div class="notice-detail-nav">
-                        <a href="#" class="notice-nav-item" id="nextNotice">
-                            <span class="nav-label">다음글</span>
-                            <span class="nav-title">추석 연휴에도 하나승금은 정상근무합니다.</span>
-                        </a>
-                        <a href="#" class="notice-nav-item" id="prevNotice">
+                        <a href="#" class="notice-nav-item" id="prevNotice" style="display: none;">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="18 15 12 9 6 15"></polyline>
+                            </svg>
                             <span class="nav-label">이전글</span>
-                            <span class="nav-title">연말연시 영업일 안내</span>
+                            <span class="nav-title"></span>
+                        </a>
+                        <a href="#" class="notice-nav-item" id="nextNotice" style="display: none;">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                            <span class="nav-label">다음글</span>
+                            <span class="nav-title"></span>
                         </a>
                     </div>
 
                     <div class="notice-detail-footer">
-                        <button class="btn btn-secondary" onclick="location.href='notice_list.html'">목록</button>
+                        <button class="btn btn-primary" onclick="location.href='notice_list.html'">목록</button>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <div id="contactContainer"></div>
+    <div id="footerContainer"></div>
+
     <div class="db-overlay" id="dbOverlay"></div>
 
+    <script src="js/includes.js"></script>
     <script src="js/sidebar.js"></script>
     <script>
         // MY 메뉴 토글
@@ -174,12 +164,112 @@
             });
         }
 
-        // URL 파라미터에서 제목 가져오기
+        // 공지사항 데이터
+        const notices = [
+            {
+                title: '연말연시 영업일 안내',
+                date: '2025-12-29',
+                author: 'manager',
+                views: 69,
+                content: `안녕하세요. 씬앤빗페이입니다.
+
+올해에도 씬앤빗페이에 많은 관심과 충전을 보내 주신 분들에 감사드립니다.
+
+설 연휴의 영업일을 다음과 같이 안내 드립니다.
+새해에도 변함없는 관심과 배풍을 부탁드립니다.
+아무쪼록 새해에도 잘 부탁드립니다.
+
+                        - 기 -
+
+12/29 정상영업
+12/30 오전공무 (오전 11시까지 정윤뜨까지 땡땡출금)`
+            },
+            {
+                title: '추석 연휴에도 하나송금은 정상근무합니다.',
+                date: '2025-10-03',
+                author: 'manager',
+                views: 52,
+                content: `안녕하세요. withremit입니다.
+
+항상 withremit을 이용해 주셔서 감사합니다.
+하기의 추석 연휴기간 중 일요일을 제외하고 withremit은 정상영업합니다.
+
+10월3일(금) ～ 10월9일(목)
+
+* 10시부터 17시까지(당일송금 17시 마감) 입니다.
+
+그 외 궁금하신 점이 있으시면 withremit 고객센터로 연락주세요.
+감사합니다.`
+            },
+            {
+                title: '설 연휴 중 농협은행, 지역 농협은행 인터넷 뱅킹 중지 안내',
+                date: '2025-01-24',
+                author: 'manager',
+                views: 38,
+                content: `안녕하세요. withremit입니다.
+
+설 연휴 중 농협은행과 지역 농협은행의 인터넷 뱅킹 서비스가 일시 중지됩니다.
+
+중지 기간: 2025년 1월 28일 ~ 2월 1일
+
+해당 기간 동안 농협 계좌로의 송금이 지연될 수 있으니 참고 부탁드립니다.
+
+감사합니다.`
+            }
+        ];
+
+        // URL 파라미터에서 제목 가져오기 및 공지사항 표시
         const urlParams = new URLSearchParams(window.location.search);
-        const title = urlParams.get('title');
-        if (title) {
-            document.getElementById('noticeTitle').textContent = decodeURIComponent(title);
+        const titleParam = urlParams.get('title');
+
+        let currentIndex = 0;
+        if (titleParam) {
+            const decodedTitle = decodeURIComponent(titleParam);
+            currentIndex = notices.findIndex(n => n.title === decodedTitle);
+            if (currentIndex === -1) currentIndex = 0;
         }
+
+        function displayNotice(index) {
+            const notice = notices[index];
+            document.getElementById('noticeTitle').textContent = notice.title;
+            document.getElementById('noticeDate').textContent = notice.date;
+            document.getElementById('noticeAuthor').textContent = notice.author;
+            document.getElementById('noticeViews').textContent = notice.views;
+            document.getElementById('noticeContent').innerHTML = notice.content.split('\n').map(line =>
+                line.trim() === '' ? '<br>' : `<p>${line}</p>`
+            ).join('\n');
+
+            // 이전글 설정
+            const prevNotice = document.getElementById('prevNotice');
+            if (index < notices.length - 1) {
+                prevNotice.style.display = 'flex';
+                prevNotice.querySelector('.nav-title').textContent = notices[index + 1].title;
+                prevNotice.onclick = (e) => {
+                    e.preventDefault();
+                    displayNotice(index + 1);
+                    currentIndex = index + 1;
+                };
+            } else {
+                prevNotice.style.display = 'none';
+            }
+
+            // 다음글 설정
+            const nextNotice = document.getElementById('nextNotice');
+            if (index > 0) {
+                nextNotice.style.display = 'flex';
+                nextNotice.querySelector('.nav-title').textContent = notices[index - 1].title;
+                nextNotice.onclick = (e) => {
+                    e.preventDefault();
+                    displayNotice(index - 1);
+                    currentIndex = index - 1;
+                };
+            } else {
+                nextNotice.style.display = 'none';
+            }
+        }
+
+        // 초기 공지사항 표시
+        displayNotice(currentIndex);
     </script>
 </body>
 </html>
