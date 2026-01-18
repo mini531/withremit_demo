@@ -581,22 +581,24 @@ function handleAmountInput(e) {
 }
 
 function handleCurrencyChange(currency, flagUrl) {
-    selectedCurrency = currency; 
-    
+    selectedCurrency = currency;
+
     const receiveCurrencyFlag = document.getElementById('receiveCurrencyFlag');
     const receiveCurrencyCode = document.getElementById('receiveCurrencyCode');
     const receiveCurrencySymbol = document.getElementById('receiveCurrencySymbol');
-    
+    const receiveCurrencyInput = document.getElementById('receiveCurrency');
+
     if (receiveCurrencyFlag && flagUrl) receiveCurrencyFlag.src = flagUrl;
     if (receiveCurrencyCode) receiveCurrencyCode.textContent = currency;
     if (receiveCurrencySymbol) {
         receiveCurrencySymbol.textContent = currencySymbols[currency] || '¥';
     }
-    
+    if (receiveCurrencyInput) receiveCurrencyInput.value = currency;
+
     // 계산 실행
     const sendInput = document.getElementById('sendAmount');
     if (sendInput) handleSendAmountInput({ target: sendInput });
-    
+
     updateRateDisplay();
 }
 
@@ -618,9 +620,11 @@ function closeCurrencyDropdown(e) {
 function handleCountryClick(e) {
     const card = e.currentTarget;
     const currency = card.dataset.currency;
-    
+
     if (currency && exchangeRates[currency]) {
-        handleCurrencyChange(currency);
+        const flagImg = exchangeRates[currency].flagImg;
+        const flagUrl = `images/${flagImg}.png`;
+        handleCurrencyChange(currency, flagUrl);
         document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
     }
 }
