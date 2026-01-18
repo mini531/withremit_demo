@@ -633,6 +633,12 @@
             const sendAmountInput = document.getElementById('sendAmount');
             sendAmountInput.value = '';
 
+            // 국가 변경 시 계산 결과 영역 숨기기
+            const calcResult = document.getElementById('calcResult');
+            if (calcResult) {
+                calcResult.style.display = 'none';
+            }
+
             // 빠른 금액 버튼 업데이트
             updateQuickAmountButtons();
         });
@@ -774,6 +780,8 @@
 
         // 송금 신청
         function submitRemittance() {
+            const country = document.getElementById('remitCountry').value;
+
             // 필수 항목 검증
             const requiredFields = [
                 { id: 'remitCountry', name: '국가' },
@@ -787,12 +795,16 @@
                 { id: 'relationship', name: '수취인과의 관계' },
                 { id: 'beneficiaryBank', name: '수취 은행' },
                 { id: 'beneficiaryAccount', name: '수취 계좌 번호' },
-                { id: 'accountType', name: '수취 계좌 타입' },
                 { id: 'remitPurpose', name: '송금 목적' },
                 { id: 'fundSource', name: '자금 출처' },
                 { id: 'beneficiaryPhone', name: '전화번호' },
                 { id: 'beneficiaryAddress', name: '주소' }
             ];
+
+            // 일본인 경우에만 계좌 타입 필수
+            if (country === 'JP') {
+                requiredFields.push({ id: 'accountType', name: '수취 계좌 타입' });
+            }
 
             for (const field of requiredFields) {
                 const element = document.getElementById(field.id);
@@ -896,11 +908,18 @@
             }
 
             const rateInfo = exchangeRates[country];
+            const isMobile = window.innerWidth <= 768;
             let buttonsHtml = '';
 
             if (amountType === 'send') {
                 // 송금액 기준: KRW 버튼 (한도 내에서만 표시)
-                const amounts = [1000000, 2000000, 3000000, 4000000, 5000000, 6000000];
+                let amounts = [1000000, 2000000, 3000000, 4000000, 5000000, 6000000];
+
+                // 모바일: 3단계 (최소, 중간, 최대)
+                if (isMobile) {
+                    amounts = [1000000, 3500000, 6000000];
+                }
+
                 amounts.forEach(amount => {
                     if (amount <= MAX_KRW_LIMIT) {
                         buttonsHtml += `<button type="button" class="quick-btn" onclick="setQuickAmount(${amount})">₩ ${amount.toLocaleString('ko-KR')}</button>`;
@@ -924,7 +943,14 @@
                 // 해당 국가의 외화 한도 계산
                 const foreignLimit = MAX_KRW_LIMIT * rateInfo.rate;
 
-                const amounts = quickAmounts[country] || [100000, 300000, 500000];
+                let amounts = quickAmounts[country] || [100000, 300000, 500000];
+
+                // 모바일: 3단계 (최소, 중간, 최대) - 첫 번째, 중간, 마지막 요소만 선택
+                if (isMobile && amounts.length > 3) {
+                    const midIndex = Math.floor(amounts.length / 2);
+                    amounts = [amounts[0], amounts[midIndex], amounts[amounts.length - 1]];
+                }
+
                 amounts.forEach(amount => {
                     // 한도 내의 금액만 표시
                     if (amount <= foreignLimit) {
