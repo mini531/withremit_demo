@@ -105,7 +105,7 @@
                                     <span id="currencySymbol" style="position: absolute; left: 16px; font-weight: 700; font-size: 1rem; color: var(--text-dark); max-width: 50px; overflow: hidden; text-overflow: ellipsis;">₩</span>
                                     <input type="text" placeholder="송금 금액을 입력하세요" class="login-input" id="sendAmount" style="padding-left: 58px;">
                                 </div>
-                                <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산</button>
+                                <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산하기</button>
                             </div>
                         </div>
 
@@ -127,7 +127,7 @@
                                     <div class="calc-item-label">출금 수수료</div>
                                     <div class="calc-item-value" id="withdrawalFeeAmount">-</div>
                                 </div>
-                                <div class="calc-grid-item highlight">
+                                <div class="calc-grid-item">
                                     <div class="calc-item-label">입금액</div>
                                     <div class="calc-item-value" id="depositAmount">-</div>
                                 </div>
@@ -560,6 +560,24 @@
             const serviceSelect = document.getElementById('remitService');
             const bankSelect = document.getElementById('beneficiaryBank');
 
+            // 모든 입력 값 초기화
+            document.getElementById('sendAmount').value = '';
+            document.getElementById('calcResult').style.display = 'none';
+            document.getElementById('depositBank').value = '';
+            document.getElementById('depositorName').value = '홍길동';
+            document.getElementById('depositAccount').value = '';
+            document.getElementById('accountHolder').value = '';
+            document.getElementById('beneficiaryName').value = '';
+            document.getElementById('relationship').value = '';
+            document.getElementById('branchNumber').value = '';
+            document.getElementById('beneficiaryAccount').value = '';
+            document.getElementById('accountType').value = '';
+            document.getElementById('remitPurpose').value = '';
+            document.getElementById('fundSource').value = '';
+            document.getElementById('beneficiaryPhone').value = '';
+            document.getElementById('bankBranchNumber').value = '';
+            document.getElementById('beneficiaryAddress').value = '';
+
             // 서비스 선택 업데이트
             serviceSelect.disabled = false;
             serviceSelect.innerHTML = '';
@@ -622,6 +640,9 @@
                 const amountLabel = document.getElementById('amountLabel');
                 const sendAmountInput = document.getElementById('sendAmount');
                 const calcResult = document.getElementById('calcResult');
+                const MAX_LIMIT = 50000;
+                const KRW_PER_USD = 1350;
+                const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD;
 
                 // 계산 결과 초기화 및 숨김
                 calcResult.style.display = 'none';
@@ -638,7 +659,14 @@
                         const numValue = parseFloat(currentAmount);
                         if (!isNaN(numValue) && numValue > 0) {
                             const convertedAmount = Math.floor(numValue / exchangeRates[country].rate);
-                            sendAmountInput.value = convertedAmount.toLocaleString('ko-KR');
+
+                            // 한도액 체크
+                            if (convertedAmount > MAX_KRW_LIMIT) {
+                                showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>현재 환율 기준 송금 가능액은 <b>₩${MAX_KRW_LIMIT.toLocaleString()}</b>입니다.`);
+                                sendAmountInput.value = MAX_KRW_LIMIT.toLocaleString('ko-KR');
+                            } else {
+                                sendAmountInput.value = convertedAmount.toLocaleString('ko-KR');
+                            }
                         }
                     }
                 } else if (this.value === 'receive') {
@@ -654,7 +682,16 @@
                         const numValue = parseFloat(currentAmount);
                         if (!isNaN(numValue) && numValue > 0) {
                             const convertedAmount = Math.floor(numValue * exchangeRates[country].rate);
-                            sendAmountInput.value = convertedAmount.toLocaleString('ko-KR');
+                            const rateInfo = exchangeRates[country];
+                            const foreignLimit = MAX_KRW_LIMIT * rateInfo.rate;
+
+                            // 한도액 체크
+                            if (convertedAmount > foreignLimit) {
+                                showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>현재 환율 기준 수취 가능액은 <b>${rateInfo.symbol}${Math.floor(foreignLimit).toLocaleString()}</b>입니다.`);
+                                sendAmountInput.value = Math.floor(foreignLimit).toLocaleString('ko-KR');
+                            } else {
+                                sendAmountInput.value = convertedAmount.toLocaleString('ko-KR');
+                            }
                         }
                     }
                 }
@@ -792,11 +829,14 @@
             // 출금 수수료 표시
             const withdrawalFeeRow = document.getElementById('withdrawalFeeRow');
             const withdrawalFeeAmount = document.getElementById('withdrawalFeeAmount');
+            const calcResultGrid = document.querySelector('.calc-result-grid');
             if (withdrawalFee > 0) {
                 withdrawalFeeAmount.textContent = `${rateInfo.symbol} ${withdrawalFee.toLocaleString('ko-KR')}`;
                 withdrawalFeeRow.style.display = 'flex';
+                calcResultGrid.classList.remove('no-withdrawal-fee');
             } else {
                 withdrawalFeeRow.style.display = 'none';
+                calcResultGrid.classList.add('no-withdrawal-fee');
             }
 
             document.getElementById('calcResult').style.display = 'block';
