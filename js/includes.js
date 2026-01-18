@@ -15,6 +15,10 @@ function loadIncludes() {
                         navNotice.classList.add('active');
                     }
                 }
+                // Initialize sidebar after loading
+                if (typeof initSidebar === 'function') {
+                    initSidebar();
+                }
             })
             .catch(error => console.error('Error loading sidebar:', error));
     }
