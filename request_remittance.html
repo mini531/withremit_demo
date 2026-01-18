@@ -741,14 +741,20 @@
             document.getElementById('depositAmount').textContent =
                 `₩ ${depositAmount.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
 
-            // 출금 수수료 표시
+            // 출금 수수료 표시 및 그리드 컬럼 조정
             const withdrawalFeeRow = document.getElementById('withdrawalFeeRow');
             const withdrawalFeeAmount = document.getElementById('withdrawalFeeAmount');
+            const calcResultCols = document.querySelector('.calc-result-cols');
+
             if (withdrawalFee > 0) {
                 withdrawalFeeAmount.textContent = `${rateInfo.symbol} ${withdrawalFee.toLocaleString('ko-KR')}`;
                 withdrawalFeeRow.style.display = 'flex';
+                // 5개 항목이므로 5열 그리드
+                calcResultCols.style.gridTemplateColumns = 'repeat(5, 1fr)';
             } else {
                 withdrawalFeeRow.style.display = 'none';
+                // 4개 항목이므로 4열 그리드
+                calcResultCols.style.gridTemplateColumns = 'repeat(4, 1fr)';
             }
 
             document.getElementById('calcResult').style.display = 'block';
