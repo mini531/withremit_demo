@@ -1145,7 +1145,7 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 .remit-calc-result {
-  display: none;
+  display: none !important;
   background: var(--bg-light);
   border-radius: 10px;
   padding: 20px;
@@ -1153,7 +1153,7 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 .remit-calc-result.active {
-  display: block;
+  display: block !important;
 }
 
 .calc-result-row {
