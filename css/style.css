@@ -1197,20 +1197,17 @@ p { font-size: 1rem; color: var(--text-body); }
 .calc-result-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  gap: 0;
 }
 
 .calc-grid-item {
   text-align: center;
-  padding: 12px 8px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background: #fff;
+  padding: 12px 16px;
+  border-right: 1px solid var(--border-color);
 }
 
-.calc-grid-item.highlight {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  border-color: var(--primary-blue);
+.calc-grid-item:last-child {
+  border-right: none;
 }
 
 .calc-item-label {
@@ -1220,21 +1217,11 @@ p { font-size: 1rem; color: var(--text-body); }
   margin-bottom: 6px;
 }
 
-.calc-grid-item.highlight .calc-item-label {
-  font-weight: 600;
-  color: var(--primary-blue);
-}
-
 .calc-item-value {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-dark);
   word-break: break-all;
-}
-
-.calc-grid-item.highlight .calc-item-value {
-  color: var(--primary-blue);
-  font-size: 1.05rem;
 }
 
 /* Responsive styles for remittance page */
@@ -1264,7 +1251,7 @@ p { font-size: 1rem; color: var(--text-body); }
 
   .calc-result-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 0;
   }
 }
 
@@ -1303,11 +1290,11 @@ p { font-size: 1rem; color: var(--text-body); }
 
   .calc-result-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 0;
   }
 
   .calc-grid-item {
-    padding: 10px 6px;
+    padding: 10px 12px;
   }
 
   .calc-item-label {
