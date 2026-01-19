@@ -561,10 +561,10 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 
 /* 개인회원 2단 레이아웃 */
 .reg-dual-section { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 24px; }
-.reg-subsection { background: #fff; padding: 24px; border: 1px solid var(--border-color); border-radius: 12px; }
-.reg-subsection h4 { font-size: 16px; font-weight: 700; color: var(--primary-blue); margin-bottom: 10px; text-align: center; }
+.reg-subsection { background: #fff; padding: 24px; border-radius: 12px; }
+.reg-subsection h4 { font-size: 16px; font-weight: 700; color: #777777; margin-bottom: 10px; text-align: center; }
 .subsection-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; text-align: center; line-height: 1.5; }
-.reg-id-cards-vertical { display: flex; flex-direction: column; gap: 12px; }
+.reg-id-cards-vertical { display: flex; flex-direction: row; gap: 12px; }
 
 .reg-id-card { background: #fff; border: 1.5px solid var(--border-color); border-radius: 16px; padding: 10px 12px; text-align: center; transition: var(--transition); }
 .reg-id-card:hover { border-color: var(--primary-green); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
