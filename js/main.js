@@ -19,7 +19,8 @@ const translations = {
         
         // Calculator
         'calc.title': '송금 시뮬레이션',
-        'calc.send': '보내실 금액(최대송금액 {limit}원)',
+        'calc.send': '보내실 금액',
+        'calc.maxAmount': '최대 송금액 {limit}원',
         'calc.rate': '실시간 환율 적용',
         'calc.receive': '받으실 금액',
         'calc.result': '상대방이 받는 금액',
@@ -111,6 +112,7 @@ const translations = {
         // Calculator
         'calc.title': 'Transfer Simulation',
         'calc.send': 'Send Amount',
+        'calc.maxAmount': 'Max {limit} KRW',
         'calc.rate': 'Real-time exchange rate',
         'calc.receive': 'Receive Amount',
         'calc.result': 'Recipient receives',
@@ -202,6 +204,7 @@ const translations = {
         // Calculator
         'calc.title': '送金シミュレーション',
         'calc.send': '送金額',
+        'calc.maxAmount': '最大送金額 {limit}ウォン',
         'calc.rate': 'リアルタイム為替レート適用',
         'calc.receive': '受取額',
         'calc.result': '受取人が受け取る金額',
@@ -293,6 +296,7 @@ const translations = {
         // Calculator
         'calc.title': '汇款模拟',
         'calc.send': '汇款金额',
+        'calc.maxAmount': '最高 {limit} 韩元',
         'calc.rate': '实时汇率',
         'calc.receive': '收款金额',
         'calc.result': '收款人收到',
@@ -503,7 +507,7 @@ function applyTranslations() {
         const key = el.getAttribute('data-i18n');
         const translation = t(key);
         if (translation) {
-            if (key === 'calc.send') {
+            if (key === 'calc.maxAmount') {
                 // Replace {limit} placeholder with actual max limit
                 el.innerHTML = translation.replace('{limit}', MAX_KRW_LIMIT.toLocaleString('ko-KR'));
             } else {
