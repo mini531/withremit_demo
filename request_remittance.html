@@ -729,7 +729,6 @@
             const rateInfo = exchangeRates[country];
             const feeRate = country === 'NP' ? 0.005 : 0.01;
 
- main
             let sendAmount, fee, receiveAmtBeforeFee, withdrawalFee, receiveAmt, depositAmount;
 
             if (amountType === 'send') {
@@ -878,7 +877,11 @@
                 }
             }
 
- main
+            // 에러가 있으면 첫 번째 에러 필드로 포커스 이동
+            if (hasError) {
+                if (firstErrorElement) {
+                    firstErrorElement.focus();
+                }
                 return;
             }
 
