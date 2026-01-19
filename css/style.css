@@ -1056,7 +1056,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-detail-toggle-btn.active .toggle-text::after { content: ' 닫기'; }
 
 /* Search Detail Section (Collapsible) */
-.db-search-detail { display: none; margin-bottom: 16px; padding: 16px; background: var(--bg-light); border: 1.5px solid var(--border-color); border-radius: 8px; }
+.db-search-detail { display: none; margin-bottom: 16px; }
 .db-search-detail.show { display: block; }
 .search-date-section { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .search-date-section .db-search-input { flex: 0 1 150px; height: 36px; }
@@ -1125,17 +1125,75 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .remit-table { display: block; }
   .remit-table thead { display: none; }
   .remit-table tbody { display: block; }
-  .remit-table tbody tr.remit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; background: #fff; cursor: pointer; }
+  .remit-table tbody tr.remit-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background: #fff;
+    cursor: pointer;
+  }
   .remit-table tbody tr.remit-row:hover { background: var(--bg-light); box-shadow: var(--shadow-sm); }
   .remit-table tbody tr.remit-row.expanded { background: #e8f4f8; }
-  .remit-table tbody tr.remit-row td { display: flex; flex-direction: column; gap: 4px; border: none; padding: 0; }
-  .remit-table tbody tr.remit-row td::before { content: attr(data-label); font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+  .remit-table tbody tr.remit-row td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    padding: 0;
+  }
+  .remit-table tbody tr.remit-row td::before {
+    content: attr(data-label);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
   .remit-table tbody tr.remit-row td.hide-desktop { display: none !important; }
-  .remit-table tbody tr.remit-detail-row { display: none; grid-template-columns: 1fr; padding: 16px; border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 8px 8px; margin-top: -12px; margin-bottom: 12px; background: #f8fafb; }
-  .remit-table tbody tr.remit-detail-row.show { display: grid; }
+
+  /* Specific styling for receipt number and status */
+  .remit-table tbody tr.remit-row td:first-child {
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 4px;
+  }
+  .remit-table tbody tr.remit-row td:first-child::before {
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .remit-table tbody tr.remit-detail-row {
+    display: none;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-top: -12px;
+    margin-bottom: 12px;
+    background: #f8fafb;
+  }
+  .remit-table tbody tr.remit-detail-row.show { display: flex; }
   .remit-table tbody tr.remit-detail-row td { border: none; padding: 0; }
-  .remit-detail-content { flex-direction: column; align-items: flex-start; gap: 16px; padding: 0; background: transparent; border: none; }
-  .remit-detail-item { width: 100%; }
+  .remit-detail-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+  .remit-detail-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   /* Search Box Responsive */
   .remit-search-box { flex-direction: column; align-items: stretch; }
@@ -1278,15 +1336,17 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .remit-search-box.mobile-active { display: flex; }
   .remit-search-box .db-search-type { width: 100%; min-width: 100%; font-size: 0.85rem; }
   .remit-search-box .db-search-input { width: 100%; }
-  .db-detail-toggle-btn { width: 100%; }
+  .db-detail-toggle-btn { display: none !important; }
+  .db-search-detail { display: block !important; }
   .db-search-btn, .db-reset-btn { width: 100%; }
-  .db-search-detail { padding: 12px; }
   .search-date-section { flex-direction: column; }
   .search-date-section .db-search-input { width: 100%; }
   .remit-quick-btns-inline { flex-wrap: wrap; width: 100%; margin-left: 0; }
   .remit-quick-btn-small { flex: 1; min-width: calc(50% - 2px); }
-  .remit-sort-wrapper { width: 100%; justify-content: space-between; }
+  .db-table-info { flex-direction: row; align-items: center; justify-content: space-between; }
+  .remit-sort-wrapper { width: auto; justify-content: flex-end; }
   .remit-sort-select { font-size: 0.8rem; }
+  .db-mobile-search-toggle { order: 2; }
   .db-notice-list-page { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .remit-table { font-size: 0.75rem; min-width: 900px; }
   .remit-table th, .remit-table td { padding: 8px 6px; font-size: 0.7rem; white-space: nowrap; }
