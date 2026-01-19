@@ -749,6 +749,12 @@
                 sendAmount = beforeFee / (1 - feeRate);
                 fee = Math.floor(sendAmount * feeRate);
                 depositAmount = sendAmount + fee;
+
+                // 역산한 송금 금액이 한도를 초과하는지 검증
+                if (sendAmount > MAX_KRW_LIMIT) {
+                    showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>수취 금액을 낮춰주세요.`);
+                    return;
+                }
             }
 
             // 한도 검증 (송금액 기준으로 통일)
@@ -974,11 +980,12 @@
 
             if (amountType === 'send') {
                 // 송금액 기준: KRW 버튼 (한도 내에서만 표시)
-                let amounts = [1000000, 2000000, 3000000, 4000000, 5000000, 6000000];
+                // 한도: 6,750,000원 기준 5단계 (20%, 40%, 60%, 80%, 95%)
+                let amounts = [1350000, 2700000, 4050000, 5400000, 6400000];
 
                 // 모바일: 3단계 (최소, 중간, 최대)
                 if (isMobile) {
-                    amounts = [1000000, 3500000, 6000000];
+                    amounts = [1350000, 4050000, 6400000];
                 }
 
                 amounts.forEach(amount => {
@@ -989,11 +996,23 @@
             } else {
                 // 수취 금액 기준: 외화 버튼 (송금액으로 환산하여 한도 검증)
                 const quickAmounts = {
-main
+                    JP: [150000, 300000, 450000, 600000, 700000],        // 한도: 약 741,984엔
+                    PH: [50000, 100000, 150000, 200000, 240000],         // 한도: 약 241,189페소
+                    CN: [7000, 14000, 21000, 28000, 34000],              // 한도: 약 36,022위안
+                    NP: [130000, 260000, 390000, 520000, 640000],        // 한도: 약 640,197루피
+                    AU: [1500, 3000, 4500, 6000, 7000],                  // 한도: 약 7,366호주달러
+                    HK: [8000, 16000, 24000, 32000, 37000],              // 한도: 약 39,416홍콩달러
+                    MN: [3500000, 7000000, 10500000, 14000000, 16500000], // 한도: 약 17,235,225투그릭
+                    VN: [25000000, 50000000, 75000000, 100000000, 118000000], // 한도: 약 123,645,900동
+                    LK: [300000, 600000, 900000, 1200000, 1550000]       // 한도: 약 1,636,485루피
                 };
 
-                // 최대 수취 가능액 계산 (송금액 한도를 수취액으로 환산)
-                const maxReceiveAmt = MAX_KRW_LIMIT * (1 - feeRate) * rateInfo.rate - rateInfo.withdrawalFee;
+                // 최대 수취 가능액 계산 (송금액 한도를 수취액으로 환산, 수수료 고려)
+                const feeRate = country === 'NP' ? 0.005 : 0.01;
+                const sendAmount = MAX_KRW_LIMIT;
+                const fee = Math.floor(sendAmount * feeRate);
+                const receiveAmtBeforeFee = (sendAmount - fee) * rateInfo.rate;
+                const maxReceiveAmt = Math.floor(receiveAmtBeforeFee - rateInfo.withdrawalFee);
 
                 let amounts = quickAmounts[country] || [100000, 300000, 500000];
 
