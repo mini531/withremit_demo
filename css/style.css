@@ -61,7 +61,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .lang-select { display: flex; align-items: center; gap: 6px; padding: 8px 28px 8px 12px; border: none; border-radius: 8px; font-size: 0.875rem; background: transparent; cursor: pointer; color: var(--text-dark); font-weight: 500; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8E96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; height: 40px; transition: var(--transition); }
 .lang-select:hover { background-color: var(--bg-light); }
 .lang-select:focus { outline: none; background-color: var(--bg-light); }
-.btn { display: inline-flex; align-items: center; justify-content: center; padding: 0 16px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; transition: var(--transition); height: 40px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 0 16px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; transition: var(--transition); height: 40px; border: none; cursor: pointer; }
 .btn-text { border: none; background: transparent; color: var(--text-dark); }
 .btn-text:hover { background: rgba(27,94,158,0.08); color: var(--primary-blue); }
 .btn-outline { border: 1px solid var(--border-color); color: var(--text-dark); background: #fff; }
@@ -377,7 +377,12 @@ p { font-size: 1rem; color: var(--text-body); }
 .field-label { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; display: block; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 .input-box-group { display: flex; align-items: center; border: 1.5px solid var(--border-color); border-radius: var(--radius); transition: var(--transition); background: #fff; }
 .input-box-group:focus-within { border-color: var(--primary-green); box-shadow: 0 0 0 3px rgba(0,160,220,0.1); }
+.input-box-group.error { border-color: #ef4444; }
+.input-box-group.error:focus-within { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1); }
+.field-error { display: block; color: #ef4444; font-size: 0.85rem; margin-top: 6px; font-weight: 500; }
 .login-input { flex: 1; padding: 14px 16px; font-size: 1.1rem; font-weight: 600; border: none; outline: none; color: var(--text-dark); background: transparent; }
+.select-styled.error { border-color: #ef4444; }
+.select-styled.error:focus { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1); }
 .login-input::placeholder { color: #AAB4B8 !important; font-weight: 400; opacity: 1; }
 .password-wrap { flex: 1; display: flex; align-items: center; position: relative; }
 .keypad-btn { position: absolute; right: 12px; color: var(--text-muted); cursor: pointer; padding: 8px; }
@@ -499,7 +504,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .modal-btn-warning { background-color: #f59e0b; border: none; color: #ffffff; width: 100%; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem; transition: all 0.2s; cursor: pointer; }
 .modal-btn-warning:hover { background-color: #d97706; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
 .modal-btn-success { background-color: var(--primary-green); border: none; color: #ffffff; width: 100%; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem; transition: all 0.2s; cursor: pointer; }
-.modal-btn-success:hover { background-color: #059669; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+.modal-btn-success:hover { background-color: #0088BE; transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
 @keyframes modalFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 
@@ -584,7 +589,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .field-item { display: flex; flex-direction: column; }
 .field-item.flex-2 { grid-column: span 2; }
-.btn-sub-action { padding: 0 16px; background: #7A8E96; color: #fff; border-radius: 8px; font-size: 13px; font-weight: 600; white-space: nowrap; transition: var(--transition); height: 52px; }
+.btn-sub-action { padding: 0 16px; background: #7A8E96; color: #fff; border-radius: 8px; font-size: 13px; font-weight: 600; white-space: nowrap; transition: var(--transition); height: 52px; flex-shrink: 0; display: inline-block; border: none; cursor: pointer; }
 .btn-sub-action:hover { background: #6A7E86; transform: translateY(-1px); }
 .file-upload-wrap { display: flex !important; align-items: center !important; justify-content: space-between !important; border: 1.5px solid var(--border-color) !important; border-radius: var(--radius) !important; background: #fff !important; height: 52px !important; overflow: hidden !important; width: 100% !important; }
 .file-name-display { flex: 1 !important; width: 50px; padding: 0 16px !important; font-size: 14px !important; color: var(--text-muted) !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; text-align: left !important; min-width: 0 !important; }
@@ -903,6 +908,40 @@ p { font-size: 1rem; color: var(--text-body); }
 .db-rows-select:hover { border-color: var(--primary-blue); }
 .db-rows-select:focus { outline: none; border-color: var(--primary-blue); }
 
+/* Remittance List Page */
+.remit-search-box { display: flex; gap: 8px; margin-bottom: 24px; align-items: center; }
+.remit-status-select { min-width: 140px; }
+.date-separator { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; margin: 0 4px; }
+.remit-quick-btns { display: flex; gap: 6px; }
+.remit-quick-btn { padding: 8px 14px; border: 1.5px solid var(--border-color); background: #fff; border-radius: 6px; font-size: 0.85rem; font-weight: 500; color: var(--text-body); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.remit-quick-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: var(--bg-light); }
+.remit-quick-btn.active { background: var(--primary-green); border-color: var(--primary-green); color: #fff; font-weight: 600; }
+.remit-sort-wrapper { display: flex; align-items: center; gap: 12px; }
+.remit-sort-select { padding: 8px 32px 8px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); background: #fff; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8E96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; transition: var(--transition); }
+.remit-sort-select:hover, .remit-sort-select:focus { outline: none; border-color: var(--primary-blue); }
+.remit-table .remit-receipt-num { font-family: 'Courier New', monospace; font-weight: 600; color: var(--text-dark); }
+.remit-table .remit-amount { text-align: right; font-weight: 600; color: var(--text-dark); }
+.remit-action-btn { padding: 6px 16px; background: var(--primary-green); color: #fff; border: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.remit-action-btn:hover { background: var(--primary-green-dark); transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0, 160, 220, 0.3); }
+.remit-status { display: inline-flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 600; }
+.remit-status svg { flex-shrink: 0; }
+.remit-status.status-review { color: #f59e0b; }
+.remit-status.status-review svg { stroke: #f59e0b; }
+.remit-status.status-processing { color: #f59e0b; }
+.remit-status.status-processing svg { stroke: #f59e0b; }
+.remit-status.status-approved { color: #10b981; }
+.remit-status.status-approved svg { stroke: #10b981; }
+.remit-status.status-complete { color: #3b82f6; }
+.remit-status.status-complete svg { stroke: #3b82f6; }
+.remit-status.status-success { color: #10b981; }
+.remit-status.status-success svg { stroke: #10b981; }
+.remit-status.status-failed { color: #ef4444; }
+.remit-status.status-failed svg { stroke: #ef4444; }
+.remit-status.status-pending { color: #9ca3af; }
+.remit-status.status-pending svg { stroke: #9ca3af; }
+.remit-status.status-cancel { color: #9ca3af; }
+.remit-status.status-cancel svg { stroke: #9ca3af; }
+
 /* Contact Info Bar */
 .contact-info-bar { background: #f8fafc; border-top: 1px solid var(--border-color); padding: 14px 0; }
 .contact-info-items { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 20px; }
@@ -1048,6 +1087,20 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-page-num { min-width: 28px; height: 28px; font-size: 0.8rem; }
   .db-page-btn { width: 28px; height: 28px; }
   .db-page-num:nth-child(n+7):nth-last-child(n+3) { display: none; }
+  .remit-search-box { display: none; flex-direction: column; gap: 12px; }
+  .remit-search-box.mobile-active { display: flex; }
+  .remit-status-select { width: 100%; min-width: 100%; font-size: 0.85rem; }
+  .db-search-input { width: 100%; }
+  .remit-quick-btns { flex-wrap: wrap; width: 100%; }
+  .remit-quick-btn { flex: 1; min-width: calc(50% - 3px); font-size: 0.8rem; padding: 6px 10px; }
+  .db-search-btn, .db-reset-btn { width: 100%; }
+  .remit-sort-wrapper { width: 100%; justify-content: space-between; }
+  .remit-sort-select { font-size: 0.8rem; }
+  .db-notice-list-page { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .remit-table { font-size: 0.75rem; min-width: 900px; }
+  .remit-table th, .remit-table td { padding: 8px 6px; font-size: 0.7rem; white-space: nowrap; }
+  .remit-action-btn { padding: 4px 10px; font-size: 0.75rem; }
+  .remit-status { font-size: 0.7rem; }
 }
 
 /* Notice Detail Page */
@@ -1145,10 +1198,15 @@ p { font-size: 1rem; color: var(--text-body); }
 }
 
 .remit-calc-result {
+  display: none !important;
   background: var(--bg-light);
   border-radius: 10px;
   padding: 20px;
   margin-top: 20px;
+}
+
+.remit-calc-result.active {
+  display: block !important;
 }
 
 .calc-result-row {
@@ -1268,7 +1326,7 @@ p { font-size: 1rem; color: var(--text-body); }
   display: none;
 }
 
-#withdrawalFeeRow {
+.calc-col-item.hidden {
   display: none;
 }
 
@@ -1276,6 +1334,10 @@ p { font-size: 1rem; color: var(--text-body); }
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
+}
+
+.calc-result-cols.four-items {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .calc-col-item {
@@ -1291,9 +1353,6 @@ p { font-size: 1rem; color: var(--text-body); }
   border-right: none;
 }
 
-.calc-col-item.highlight {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-}
 
 .calc-col-label {
   font-size: 0.75rem;
@@ -1393,38 +1452,17 @@ p { font-size: 1rem; color: var(--text-body); }
     justify-content: space-between;
     align-items: center;
     padding: 12px 14px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    border-right: 1px solid var(--border-color);
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border-color);
   }
 
-  .calc-col-item:nth-child(1),
-  .calc-col-item:nth-child(2) {
-    flex: 0 0 calc(50% - 6px);
+  .calc-col-item:last-child {
+    border-bottom: none;
   }
 
-  .calc-col-item:nth-child(3) {
-    flex: 0 0 calc(50% - 6px);
-  }
-
-  .calc-col-item:nth-child(4) {
-    flex: 0 0 calc(50% - 6px);
-  }
-
-  .calc-col-item:nth-child(5) {
-    flex: 0 0 calc(50% - 6px);
-  }
-
-  /* 출금 수수료가 있을 경우 레이아웃 */
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(1),
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(2),
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(3) {
-    flex: 0 0 calc(33.333% - 8px);
-  }
-
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(4),
-  .calc-result-cols:has(#withdrawalFeeRow[style*="display: flex"]) .calc-col-item:nth-child(5) {
-    flex: 0 0 calc(50% - 6px);
+  .calc-col-item {
+    flex: 0 0 100%;
   }
 
   .calc-col-label {
@@ -1488,12 +1526,19 @@ p { font-size: 1rem; color: var(--text-body); }
   }
 
   .calc-result-cols {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .calc-col-item {
-    padding: 8px 4px;
+    padding: 10px 12px;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .calc-col-item:last-child {
+    border-bottom: none;
   }
 
   .calc-col-label {
@@ -1517,16 +1562,23 @@ p { font-size: 1rem; color: var(--text-body); }
   }
 
   .remit-action-btns {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     margin-top: 20px;
   }
 
   .remit-action-btns .btn {
-    width: 100%;
     min-width: auto;
     height: 42px;
-    padding: 0 20px;
+    padding: 0 16px;
     font-size: 0.9rem;
+  }
+
+  .remit-action-btns .btn-remit-cancel {
+    flex: 1;
+  }
+
+  .remit-action-btns .btn-primary {
+    flex: 1.5;
   }
 }
