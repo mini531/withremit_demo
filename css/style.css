@@ -1170,7 +1170,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 
 @media (max-width: 480px) {
   .db-sidebar { width: 240px; left: -100%; height: calc(100vh - 55px); top: 55px; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; position: relative; }
-  .db-sidebar.mobile-open { left: 0; top: 0; width: 100%; height: 100%; padding: 15px 0; }
+  .db-sidebar.mobile-open { left: 0; top: 56px; width: 100%; height: calc(100vh - 56px); padding: 15px 0; }
   .db-sidebar-close { display: flex; align-items: center; justify-content: center; }
   .db-limit-grid { grid-template-columns: 1fr; }
   .db-limit-item { gap: 10px; }
