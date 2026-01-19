@@ -1047,9 +1047,10 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .remit-search-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; align-items: flex-end; }
 .search-field-group { display: flex; flex-direction: column; gap: 6px; }
 .search-field-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
-.search-date-group { grid-column: span 2; }
-.search-date-inputs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.search-date-group { grid-column: span 2; position: relative; margin-bottom: 34px; }
+.search-date-inputs { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; }
 .search-date-inputs .db-search-input { flex: 1; height: 36px; }
+.search-date-group .remit-quick-btns-small { position: absolute; top: 100%; left: 0; margin-top: 6px; z-index: 1; }
 .search-buttons { display: flex; gap: 8px; align-items: flex-end; justify-self: end; }
 .db-search-input, .db-search-type { height: 36px !important; }
 
