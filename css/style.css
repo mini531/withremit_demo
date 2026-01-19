@@ -197,7 +197,7 @@ p { font-size: 1rem; color: var(--text-body); }
 
 /* ===== Contact Section ===== */
 .contact { background: linear-gradient(180deg, #fff 0%, var(--bg-light) 100%); }
-.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; align-items: start; }
+.contact-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 24px; align-items: start; }
 .contact-info h3 { margin-bottom: 24px; color: var(--text-dark); font-size: 1.25rem; }
 .contact-items { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .contact-item { display: flex; gap: 14px; }
@@ -211,10 +211,10 @@ p { font-size: 1rem; color: var(--text-body); }
 .contact-hours h4 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
 .contact-hours p { font-size: 0.9rem; margin-bottom: 8px; color: var(--text-body); }
 .contact-hours p strong { color: var(--text-dark); }
-.contact-sns { padding: 24px; background: #fff; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; gap: 24px; justify-content: center; }
+.contact-sns { padding: 24px 24px 6px 24px; background: #fff; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; gap: 24px; justify-content: center; }
 .sns-item { text-align: center; }
-.sns-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; color: var(--text-dark); }
-.qr-code { width: 150px; height: 150px; border: 2px solid var(--border-color); border-radius: var(--radius); padding: 8px; background: #fff; }
+.sns-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); }
+.qr-code { width: 120px; height: 120px; border-radius: var(--radius); background: #fff; }
 
 /* ===== Footer ===== */
 .footer { background: var(--bg-dark); color: rgba(255,255,255,0.6); padding: 48px 0 28px; }
@@ -241,7 +241,8 @@ p { font-size: 1rem; color: var(--text-body); }
     .features-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .countries-grid { grid-template-columns: repeat(2, 1fr); }
     .trust-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .contact-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .contact-grid .contact-info:first-child { grid-column: 1 / -1; }
 }
 
 /* ===== Responsive - Mobile ===== */
