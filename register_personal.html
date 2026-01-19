@@ -35,7 +35,7 @@
                         <label class="check-label-group">
                             <input type="checkbox" class="agree-item">
                             <span class="custom-check"></span>
-                            <span class="check-text">송금 서비스 이용약관 (필수)</span>
+                            <span class="check-text">송금 서비스 이용약관 <span class="badge-required">필수</span></span>
                         </label>
                     </div>
                     <div class="terms-content-box">제 1 조 (적용 범위 등)
@@ -243,7 +243,7 @@
                         <label class="check-label-group">
                             <input type="checkbox" class="agree-item">
                             <span class="custom-check"></span>
-                            <span class="check-text">개인정보 수집 및 이용 안내 (필수)</span>
+                            <span class="check-text">개인정보 수집 및 이용 안내 <span class="badge-required">필수</span></span>
                         </label>
                     </div>
                     <div class="terms-content-box">주식회사 씨앤비페이 (씨앤비페이가 운영하는 인터넷사이트 www.oneremit.co.kr이하, 당사라고 합니다)는 정보주체로부터 소액해외송금서비스를 처리하기 위하여 다양한 개인정보를 처리하고 있습니다. 
@@ -357,7 +357,7 @@
 
             <div class="reg-action-btns">
                 <button type="button" class="btn-step-prev" onclick="history.back()">이전</button>
-                <a href="register_personal_info.html" class="btn-main-login">다음</a>
+                <a href="register_personal_info.html" class="btn-main-login" id="nextBtn" style="pointer-events: none; opacity: 0.5;">다음</a>
             </div>
         </div>
     </main>
@@ -365,10 +365,24 @@
     <script>
         const agreeAll = document.getElementById('agreeAll');
         const items = document.querySelectorAll('.agree-item');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // 다음 버튼 활성화/비활성화 체크
+        function checkAllRequired() {
+            const allChecked = Array.from(items).every(item => item.checked);
+            if (allChecked) {
+                nextBtn.style.pointerEvents = 'auto';
+                nextBtn.style.opacity = '1';
+            } else {
+                nextBtn.style.pointerEvents = 'none';
+                nextBtn.style.opacity = '0.5';
+            }
+        }
 
         // 전체 동의 클릭 시
         agreeAll.addEventListener('change', () => {
             items.forEach(item => item.checked = agreeAll.checked);
+            checkAllRequired();
         });
 
         // 개별 동의 클릭 시
@@ -376,6 +390,7 @@
             item.addEventListener('change', () => {
                 const checkedCount = document.querySelectorAll('.agree-item:checked').length;
                 agreeAll.checked = (checkedCount === items.length);
+                checkAllRequired();
             });
         });
     </script>
