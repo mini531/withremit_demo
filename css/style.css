@@ -950,7 +950,7 @@ p { font-size: 1rem; color: var(--text-body); }
 
 @media (max-width: 1024px) {
   .db-sidebar { position: fixed; left: -220px; width: 200px; height: calc(100vh - 80px); top: 80px; z-index: 1000; background: #fff; border-radius: 0; box-shadow: var(--shadow); overflow-y: auto; }
-  .db-sidebar.mobile-open { left: 20px; }
+  .db-sidebar.mobile-open { left: 0px; padding: 15px 0 15px 15px; top: 72px; height: 100%; }
   .db-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
   .db-col-info { width: auto; min-width: unset; }
   .db-grid > .calculator-card { width: 100% !important; max-width: 100% !important; flex: 0 1 auto !important; margin: 0 !important; min-width: unset; }
@@ -1004,15 +1004,16 @@ p { font-size: 1rem; color: var(--text-body); }
   .db-page-num:nth-child(n+8):nth-last-child(n+4) { display: none; }
   .db-rows-select { width: 100%; }
   .db-notice-table th, .db-notice-table td { padding: 12px 8px; font-size: 0.875rem; }
+  .db-help-btns-new { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 @media (max-width: 480px) {
   .db-sidebar { width: 240px; left: -100%; height: calc(100vh - 55px); top: 55px; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; padding-top: 20px; }
-  .db-sidebar.mobile-open { left: 0; }
+  .db-sidebar.mobile-open { left: 0; top: 56px; width: 100%; height: 100%; padding: 20px 0; }
   .db-limit-grid { grid-template-columns: 1fr; }
   .db-limit-item { gap: 10px; }
   .db-help-btns { grid-template-columns: 1fr; }
-  .db-help-btns-new { grid-template-columns: 1fr 1fr; }
+  .db-help-btns-new { grid-template-columns: 1fr; }
   .db-user-dropdown .btn { padding: 0 10px; min-width: 40px; }
   .db-user-dropdown .btn svg { margin: 0; }
   .db-user-dropdown .btn-text { display: none; }
