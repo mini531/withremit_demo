@@ -65,12 +65,14 @@
                                     <option value="VN">베트남 (VND)</option>
                                     <option value="LK">스리랑카 (LKR)</option>
                                 </select>
+                                <span class="field-error" id="remitCountryError"></span>
                             </div>
                             <div class="field-item">
                                 <label class="field-label">서비스 선택</label>
                                 <select class="login-input select-styled" id="remitService" disabled>
                                     <option value="" disabled selected>선택</option>
                                 </select>
+                                <span class="field-error" id="remitServiceError"></span>
                             </div>
                         </div>
 
@@ -107,6 +109,7 @@
                                 </div>
                                 <button type="button" class="btn-sub-action" onclick="calculateRemit()">계산하기</button>
                             </div>
+                            <span class="field-error" id="sendAmountError"></span>
                             <div class="quick-amount-buttons" id="quickAmountButtons">
                                 <button type="button" class="quick-btn" onclick="setQuickAmount(1000000)">₩ 1,000,000</button>
                                 <button type="button" class="quick-btn" onclick="setQuickAmount(2000000)">₩ 2,000,000</button>
@@ -157,21 +160,25 @@
                                     <option value="ibk">기업은행 (IBK)</option>
                                     <option value="nh">농협은행 (NONGHYUP BANK)</option>
                                 </select>
+                                <span class="field-error" id="depositBankError"></span>
                             </div>
                             <div class="field-item">
                                 <label class="field-label">입금자 명</label>
                                 <input type="text" placeholder="입금자 명을 입력하세요" class="login-input" id="depositorName" value="홍길동">
+                                <span class="field-error" id="depositorNameError"></span>
                             </div>
                         </div>
 
                         <div class="form-row-2">
                             <div class="field-item">
                                 <label class="field-label">입금 계좌</label>
-                                <input type="text" placeholder="계좌번호를 입력하세요" class="login-input" id="depositAccount">
+                                <input type="text" placeholder="계좌 번호를 입력하세요" class="login-input" id="depositAccount">
+                                <span class="field-error" id="depositAccountError"></span>
                             </div>
                             <div class="field-item">
                                 <label class="field-label">입금 계좌 명의</label>
                                 <input type="text" placeholder="계좌 명의를 입력하세요" class="login-input" id="accountHolder">
+                                <span class="field-error" id="accountHolderError"></span>
                             </div>
                         </div>
                     </div>
@@ -186,6 +193,7 @@
                             <div class="field-item">
                                 <label class="field-label">수취인명(영문)</label>
                                 <input type="text" placeholder="영문으로 입력하세요" class="login-input" id="beneficiaryName">
+                                <span class="field-error" id="beneficiaryNameError"></span>
                             </div>
                             <div class="field-item">
                                 <label class="field-label">수취인과의 관계</label>
@@ -201,6 +209,7 @@
                                     <option value="R08">친구</option>
                                     <option value="R09">배우자</option>
                                 </select>
+                                <span class="field-error" id="relationshipError"></span>
                             </div>
                         </div>
 
@@ -210,17 +219,20 @@
                                 <select class="login-input select-styled" id="beneficiaryBank">
                                     <option value="">선택</option>
                                 </select>
+                                <span class="field-error" id="beneficiaryBankError"></span>
                             </div>
                             <div class="field-item">
-                                <label class="field-label">은행 지점번호</label>
-                                <input type="text" placeholder="지점번호를 입력하세요" class="login-input" id="branchNumber">
+                                <label class="field-label">은행 지점 번호</label>
+                                <input type="text" placeholder="지점 번호를 입력하세요" class="login-input" id="branchNumber">
+                                <span class="field-error" id="branchNumberError"></span>
                             </div>
                         </div>
 
                         <div class="form-row-2">
                             <div class="field-item">
                                 <label class="field-label">수취 계좌 번호</label>
-                                <input type="text" placeholder="계좌번호를 입력하세요" class="login-input" id="beneficiaryAccount">
+                                <input type="text" placeholder="계좌 번호를 입력하세요" class="login-input" id="beneficiaryAccount">
+                                <span class="field-error" id="beneficiaryAccountError"></span>
                             </div>
                             <div class="field-item">
                                 <label class="field-label">수취 계좌 타입</label>
@@ -229,6 +241,7 @@
                                     <option value="1">Futuu 저축계좌</option>
                                     <option value="2">Touza 당좌계좌</option>
                                 </select>
+                                <span class="field-error" id="accountTypeError"></span>
                             </div>
                         </div>
 
@@ -246,6 +259,7 @@
                                     <option value="gift">선물</option>
                                     <option value="other">기타</option>
                                 </select>
+                                <span class="field-error" id="remitPurposeError"></span>
                             </div>
                             <div class="field-item">
                                 <label class="field-label">자금 출처</label>
@@ -258,6 +272,7 @@
                                     <option value="SF05">연금</option>
                                     <option value="SF06">사업수입</option>
                                 </select>
+                                <span class="field-error" id="fundSourceError"></span>
                             </div>
                         </div>
 
@@ -265,16 +280,19 @@
                             <div class="field-item">
                                 <label class="field-label">전화번호</label>
                                 <input type="text" placeholder="수취인 전화번호" class="login-input" id="beneficiaryPhone">
+                                <span class="field-error" id="beneficiaryPhoneError"></span>
                             </div>
                             <div class="field-item">
-                                <label class="field-label">은행 지점번호</label>
-                                <input type="text" placeholder="은행 지점번호를 입력하세요" class="login-input" id="bankBranchNumber">
+                                <label class="field-label">은행 지점 번호</label>
+                                <input type="text" placeholder="은행 지점 번호를 입력하세요" class="login-input" id="bankBranchNumber">
+                                <span class="field-error" id="bankBranchNumberError"></span>
                             </div>
                         </div>
 
                         <div class="field-item top-level">
                             <label class="field-label">주소</label>
                             <textarea class="login-input textarea-input" placeholder="수취인 주소를 입력하세요" id="beneficiaryAddress" rows="3"></textarea>
+                            <span class="field-error" id="beneficiaryAddressError"></span>
                         </div>
                     </div>
                 </div>
@@ -714,21 +732,6 @@
             const KRW_PER_USD = 1350;
             const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD;
 
-            // 한도 검증
-            if (amountType === 'send' && inputAmount > MAX_KRW_LIMIT) {
-                showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>현재 환율 기준 송금 가능액인 <b>₩${MAX_KRW_LIMIT.toLocaleString()}</b>까지 입력해주세요.`);
-                return;
-            }
-
-            // 수취 금액 기준일 때 외화 한도 검증
-            if (amountType === 'receive') {
-                const foreignLimit = MAX_KRW_LIMIT * rateInfo.rate;
-                if (inputAmount > foreignLimit) {
-                    showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>현재 환율 기준 수취 가능액인 <b>${rateInfo.symbol}${Math.floor(foreignLimit).toLocaleString()}</b>까지 입력해주세요.`);
-                    return;
-                }
-            }
-
             let sendAmount, fee, receiveAmtBeforeFee, withdrawalFee, receiveAmt, depositAmount;
 
             if (amountType === 'send') {
@@ -740,7 +743,7 @@
                 receiveAmt = receiveAmtBeforeFee - withdrawalFee;
                 depositAmount = sendAmount + fee;
             } else {
-                // 수취 금액 기준
+                // 수취 금액 기준 - 먼저 송금액 계산
                 receiveAmt = inputAmount;
                 withdrawalFee = rateInfo.withdrawalFee;
                 receiveAmtBeforeFee = receiveAmt + withdrawalFee;
@@ -748,6 +751,18 @@
                 sendAmount = beforeFee / (1 - feeRate);
                 fee = Math.floor(sendAmount * feeRate);
                 depositAmount = sendAmount + fee;
+            }
+
+            // 한도 검증 (송금액 기준으로 통일)
+            if (sendAmount > MAX_KRW_LIMIT) {
+                if (amountType === 'send') {
+                    showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>현재 환율 기준 송금 가능액인 <b>₩${MAX_KRW_LIMIT.toLocaleString()}</b>까지 입력해주세요.`);
+                } else {
+                    // 수취 금액 기준일 때는 최대 수취 가능액 계산
+                    const maxReceiveAmt = MAX_KRW_LIMIT * (1 - feeRate) * rateInfo.rate - rateInfo.withdrawalFee;
+                    showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>현재 환율 기준 수취 가능액인 <b>${rateInfo.symbol} ${Math.floor(maxReceiveAmt).toLocaleString()}</b>까지 입력해주세요.`);
+                }
+                return;
             }
 
             // 결과 표시
@@ -778,9 +793,51 @@
             calcResult.classList.add('active');
         }
 
+        // 에러 표시 함수
+        function showFieldError(elementId, message) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+
+            // 부모 요소 찾기
+            const fieldItem = element.closest('.field-item');
+            if (!fieldItem) return;
+
+            // input-box-group에 에러 클래스 추가
+            const inputGroup = element.closest('.input-box-group');
+            if (inputGroup) {
+                inputGroup.classList.add('error');
+            }
+
+            // select인 경우 직접 에러 클래스 추가
+            if (element.tagName === 'SELECT') {
+                element.classList.add('error');
+            }
+
+            // 에러 메시지 span 추가 또는 업데이트
+            let errorSpan = fieldItem.querySelector('.field-error');
+            if (!errorSpan) {
+                errorSpan = document.createElement('span');
+                errorSpan.className = 'field-error';
+                fieldItem.appendChild(errorSpan);
+            }
+            errorSpan.textContent = message;
+        }
+
+        // 모든 에러 초기화
+        function clearAllErrors() {
+            document.querySelectorAll('.input-box-group.error').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.select-styled.error').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.field-error').forEach(el => el.textContent = '');
+        }
+
         // 송금 신청
         function submitRemittance() {
+            // 기존 에러 초기화
+            clearAllErrors();
+
             const country = document.getElementById('remitCountry').value;
+            let hasError = false;
+            let firstErrorElement = null;
 
             // 필수 항목 검증
             const requiredFields = [
@@ -809,10 +866,20 @@
             for (const field of requiredFields) {
                 const element = document.getElementById(field.id);
                 if (!element.value || element.value.trim() === '') {
-                    showWarning(`${field.name}를 입력해주세요.`);
-                    element.focus();
-                    return;
+                    showFieldError(field.id, `${field.name}을(를) 입력해주세요.`);
+                    hasError = true;
+                    if (!firstErrorElement) {
+                        firstErrorElement = element;
+                    }
                 }
+            }
+
+            if (hasError) {
+                if (firstErrorElement) {
+                    firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstErrorElement.focus();
+                }
+                return;
             }
 
             // 송금 금액 검증
@@ -887,10 +954,19 @@
                     numValue = MAX_KRW_LIMIT;
                 }
             } else if (amountType === 'receive' && country && exchangeRates[country]) {
-                const foreignLimit = MAX_KRW_LIMIT * exchangeRates[country].rate;
-                if (numValue > foreignLimit) {
-                    showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>현재 환율 기준 수취 가능액인 <b>${exchangeRates[country].symbol}${Math.floor(foreignLimit).toLocaleString()}</b>까지 입력해주세요.`);
-                    numValue = Math.floor(foreignLimit);
+                const rateInfo = exchangeRates[country];
+                const feeRate = country === 'NP' ? 0.005 : 0.01;
+                // 수취 금액 기준일 때는 송금액으로 환산하여 한도 검증
+                const receiveAmt = numValue;
+                const withdrawalFee = rateInfo.withdrawalFee;
+                const receiveAmtBeforeFee = receiveAmt + withdrawalFee;
+                const beforeFee = receiveAmtBeforeFee / rateInfo.rate;
+                const calculatedSendAmount = beforeFee / (1 - feeRate);
+
+                if (calculatedSendAmount > MAX_KRW_LIMIT) {
+                    const maxReceiveAmt = MAX_KRW_LIMIT * (1 - feeRate) * rateInfo.rate - rateInfo.withdrawalFee;
+                    showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>현재 환율 기준 수취 가능액인 <b>${rateInfo.symbol} ${Math.floor(maxReceiveAmt).toLocaleString()}</b>까지 입력해주세요.`);
+                    numValue = Math.floor(maxReceiveAmt);
                 }
             }
 
@@ -919,6 +995,7 @@
             }
 
             const rateInfo = exchangeRates[country];
+            const feeRate = country === 'NP' ? 0.005 : 0.01;
             const isMobile = window.innerWidth <= 768;
             let buttonsHtml = '';
 
@@ -937,26 +1014,25 @@
                     }
                 });
             } else {
-                // 수취 금액 기준: 외화 버튼 (국가별 한도액의 20%, 40%, 60%, 80% 수준)
-                // 한도를 초과하지 않도록 보수적으로 설정
+                // 수취 금액 기준: 외화 버튼 (송금액으로 환산하여 한도 검증)
                 const quickAmounts = {
-                    JP: [1500000, 3000000, 4500000, 6000000],        // 한도: 7,506,000엔
-                    PH: [500000, 1000000, 1500000, 2000000],         // 한도: 2,841,750페소
-                    CN: [70000, 140000, 210000, 280000],              // 한도: 364,500위안
-                    NP: [1300000, 2600000, 3900000, 5200000],        // 한도: 6,777,000루피
-                    AU: [15000, 30000, 45000, 60000],                  // 한도: 74,250호주달러
-                    HK: [80000, 160000, 240000, 320000],              // 한도: 398,250홍콩달러
-                    MN: [35000000, 70000000, 105000000, 140000000], // 한도: 174,352,500투그릭
-                    VN: [250000000, 500000000, 750000000, 1000000000], // 한도: 1,250,100,000동
-                    LK: [3000000, 6000000, 9000000, 12000000]       // 한도: 16,537,500루피
+                    JP: [1500000, 3000000, 4500000, 6000000],
+                    PH: [500000, 1000000, 1500000, 2000000],
+                    CN: [70000, 140000, 210000, 280000],
+                    NP: [1300000, 2600000, 3900000, 5200000],
+                    AU: [15000, 30000, 45000, 60000],
+                    HK: [80000, 160000, 240000, 320000],
+                    MN: [35000000, 70000000, 105000000, 140000000],
+                    VN: [250000000, 500000000, 750000000, 1000000000],
+                    LK: [3000000, 6000000, 9000000, 12000000]
                 };
 
-                // 해당 국가의 외화 한도 계산
-                const foreignLimit = MAX_KRW_LIMIT * rateInfo.rate;
+                // 최대 수취 가능액 계산 (송금액 한도를 수취액으로 환산)
+                const maxReceiveAmt = MAX_KRW_LIMIT * (1 - feeRate) * rateInfo.rate - rateInfo.withdrawalFee;
 
                 let amounts = quickAmounts[country] || [100000, 300000, 500000];
 
-                // 모바일: 3단계 (최소, 중간, 최대) - 첫 번째, 중간, 마지막 요소만 선택
+                // 모바일: 3단계 (최소, 중간, 최대)
                 if (isMobile && amounts.length > 3) {
                     const midIndex = Math.floor(amounts.length / 2);
                     amounts = [amounts[0], amounts[midIndex], amounts[amounts.length - 1]];
@@ -964,7 +1040,7 @@
 
                 amounts.forEach(amount => {
                     // 한도 내의 금액만 표시
-                    if (amount <= foreignLimit) {
+                    if (amount <= maxReceiveAmt) {
                         buttonsHtml += `<button type="button" class="quick-btn" onclick="setQuickAmount(${amount})">${rateInfo.symbol} ${amount.toLocaleString('ko-KR')}</button>`;
                     }
                 });
