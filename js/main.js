@@ -44,7 +44,7 @@ const translations = {
         
         // Countries
         'countries.title': '송금 가능 국가',
-        'countries.desc': '9개 주요 국가로 빠르고 안전하게 송금하세요',
+        'countries.desc': '10개 주요 국가로 빠르고 안전하게 송금하세요',
         'country.japan': '일본',
         'country.philippines': '필리핀',
         'country.china': '중국',
@@ -54,6 +54,7 @@ const translations = {
         'country.mongolia': '몽골',
         'country.vietnam': '베트남',
         'country.srilanka': '스리랑카',
+        'country.bangladesh': '방글라데시',
         
         // Trust
         'trust.title': '신뢰할 수 있는 파트너',
@@ -134,7 +135,7 @@ const translations = {
         
         // Countries
         'countries.title': 'Available Countries',
-        'countries.desc': 'Send money safely to 9 major countries',
+        'countries.desc': 'Send money safely to 10 major countries',
         'country.japan': 'Japan',
         'country.philippines': 'Philippines',
         'country.china': 'China',
@@ -144,6 +145,7 @@ const translations = {
         'country.mongolia': 'Mongolia',
         'country.vietnam': 'Vietnam',
         'country.srilanka': 'Sri Lanka',
+        'country.bangladesh': 'Bangladesh',
         
         // Trust
         'trust.title': 'Trusted Partner',
@@ -224,7 +226,7 @@ const translations = {
         
         // Countries
         'countries.title': '送金可能国',
-        'countries.desc': '9カ国の主要国へ安全に送金',
+        'countries.desc': '10カ国の主要国へ安全に送金',
         'country.japan': '日本',
         'country.philippines': 'フィリピン',
         'country.china': '中国',
@@ -234,6 +236,7 @@ const translations = {
         'country.mongolia': 'モンゴル',
         'country.vietnam': 'ベトナム',
         'country.srilanka': 'スリランカ',
+        'country.bangladesh': 'バングラデシュ',
         
         // Trust
         'trust.title': '信頼できるパートナー',
