@@ -64,6 +64,7 @@
                                     <option value="MN">몽골 (MNT)</option>
                                     <option value="VN">베트남 (VND)</option>
                                     <option value="LK">스리랑카 (LKR)</option>
+                                    <option value="BD">방글라데시 (BDT)</option>
                                 </select>
                                 <span class="field-error" id="remitCountryError"></span>
                             </div>
@@ -372,7 +373,8 @@
             HK: { rate: 0.0059, name: '홍콩', currency: '달러', symbol: 'HK$', withdrawalFee: 0 },
             MN: { rate: 2.5830, name: '몽골', currency: '투그릭', symbol: '₮', withdrawalFee: 0 },
             VN: { rate: 18.5200, name: '베트남', currency: '동', symbol: '₫', withdrawalFee: 0 },
-            LK: { rate: 0.2450, name: '스리랑카', currency: '루피', symbol: '௹', withdrawalFee: 0 }
+            LK: { rate: 0.2450, name: '스리랑카', currency: '루피', symbol: '௹', withdrawalFee: 0 },
+            BD: { rate: 0.0815, name: '방글라데시', currency: '타카', symbol: '৳', withdrawalFee: 0 }
         };
 
         // window 객체에 등록하여 전역 접근 가능하게
@@ -396,7 +398,8 @@
             HK: [{ value: 'HK_REMIT', text: '홍콩 송금', locked: true }],
             MN: [{ value: 'MN_REMIT', text: '몽고 송금', locked: true }],
             VN: [{ value: 'VN_REMIT', text: '베트남 송금', locked: true }],
-            LK: [{ value: 'LK_REMIT', text: '스리랑카 송금', locked: true }]
+            LK: [{ value: 'LK_REMIT', text: '스리랑카 송금', locked: true }],
+            BD: [{ value: 'BD_REMIT', text: '방글라데시 송금', locked: true }]
         };
 
         // 국가별 은행 목록 (일본은 전체 목록)
@@ -585,6 +588,13 @@
                 { value: 'PB', text: 'People\'s Bank' },
                 { value: 'COM', text: 'Commercial Bank' },
                 { value: 'HNB', text: 'Hatton National Bank' }
+            ],
+            BD: [
+                { value: '', text: '선택' },
+                { value: 'DBBL', text: 'Dutch-Bangla Bank' },
+                { value: 'BRAC', text: 'BRAC Bank' },
+                { value: 'EBL', text: 'Eastern Bank' },
+                { value: 'CITY', text: 'City Bank' }
             ]
         };
 
@@ -1009,7 +1019,8 @@
                     HK: [8000, 16000, 24000, 32000, 37000],              // 한도: 약 39,416홍콩달러
                     MN: [3500000, 7000000, 10500000, 14000000, 16500000], // 한도: 약 17,235,225투그릭
                     VN: [25000000, 50000000, 75000000, 100000000, 118000000], // 한도: 약 123,645,900동
-                    LK: [300000, 600000, 900000, 1200000, 1550000]       // 한도: 약 1,636,485루피
+                    LK: [300000, 600000, 900000, 1200000, 1550000],      // 한도: 약 1,636,485루피
+                    BD: [100000, 200000, 300000, 400000, 500000]         // 한도: 약 544,623타카
                 };
 
                 // 최대 수취 가능액 계산 (송금액 한도를 수취액으로 환산, 수수료 고려)
