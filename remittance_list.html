@@ -27,9 +27,8 @@
                 <div class="db-content-card">
                     <div class="db-search-box remit-search-box" id="searchBox">
                         <div class="search-field-group">
-                            <label class="search-field-label">송금 상태</label>
                             <select class="db-search-type remit-status-select">
-                                <option value="">전체</option>
+                                <option value="">송금 상태 전체</option>
                                 <option value="접수">접수</option>
                                 <option value="신청중">신청중</option>
                                 <option value="접수 완료">접수 완료</option>
@@ -41,24 +40,19 @@
                             </select>
                         </div>
                         <div class="search-field-group">
-                            <label class="search-field-label">접수 번호</label>
                             <input type="text" class="db-search-input" placeholder="접수 번호 입력" id="receiptNumber">
                         </div>
                         <div class="search-field-group search-date-group">
-                            <label class="search-field-label">조회 기간</label>
                             <div class="search-date-inputs">
                                 <input type="date" class="db-search-input date-picker-custom" id="startDate">
                                 <span class="date-separator">~</span>
                                 <input type="date" class="db-search-input date-picker-custom" id="endDate">
                             </div>
-                        </div>
-                        <div class="search-field-group">
-                            <label class="search-field-label">빠른 선택</label>
-                            <div class="remit-quick-btns">
-                                <button type="button" class="remit-quick-btn active" data-days="0">당일</button>
-                                <button type="button" class="remit-quick-btn" data-days="7">일주일</button>
-                                <button type="button" class="remit-quick-btn" data-days="30">1개월</button>
-                                <button type="button" class="remit-quick-btn" data-days="90">3개월</button>
+                            <div class="remit-quick-btns-small">
+                                <button type="button" class="remit-quick-btn-small active" data-days="0">당일</button>
+                                <button type="button" class="remit-quick-btn-small" data-days="7">일주일</button>
+                                <button type="button" class="remit-quick-btn-small" data-days="30">1개월</button>
+                                <button type="button" class="remit-quick-btn-small" data-days="90">3개월</button>
                             </div>
                         </div>
                         <div class="search-buttons">
@@ -105,18 +99,6 @@
 
                     <div class="db-notice-list-page">
                         <table class="db-notice-table remit-table">
-                            <colgroup>
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 110px;">
-                                <col style="width: 110px;">
-                                <col style="width: 100px;">
-                                <col style="width: 120px;">
-                                <col style="width: 120px;">
-                                <col style="width: 110px;">
-                                <col style="width: 110px;">
-                                <col style="width: 90px;">
-                            </colgroup>
                             <thead>
                                 <tr>
                                     <th>접수 번호</th>
@@ -478,7 +460,7 @@
 
         // Quick date button handler
         function setupQuickDateButtons() {
-            const quickBtns = document.querySelectorAll('.remit-quick-btn');
+            const quickBtns = document.querySelectorAll('.remit-quick-btn-small');
             const startDateInput = document.getElementById('startDate');
             const endDateInput = document.getElementById('endDate');
 
