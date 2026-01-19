@@ -826,11 +826,16 @@
                 element.classList.add('error');
             }
 
-            // 에러 메시지 span 추가 또는 업데이트
-            let errorSpan = fieldItem.querySelector('.field-error');
+            // 에러 메시지 span 찾기 (ID 우선, 클래스 fallback)
+            const errorSpanId = `${elementId}Error`;
+            let errorSpan = document.getElementById(errorSpanId);
+            if (!errorSpan) {
+                errorSpan = fieldItem.querySelector('.field-error');
+            }
             if (!errorSpan) {
                 errorSpan = document.createElement('span');
                 errorSpan.className = 'field-error';
+                errorSpan.id = errorSpanId;
                 fieldItem.appendChild(errorSpan);
             }
             errorSpan.textContent = message;
