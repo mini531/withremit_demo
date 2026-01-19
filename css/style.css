@@ -555,6 +555,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .reg-label h3 { font-size: 20px; font-weight: 700; color: var(--primary-blue); margin-bottom: 8px; }
 .reg-label p { font-size: 14px; color: var(--text-muted); }
 .reg-id-grid { display: grid; gap: 16px; margin-bottom: 24px; }
+.id-grid-2 { grid-template-columns: repeat(2, 1fr); }
 .id-grid-3 { grid-template-columns: repeat(3, 1fr); margin-left: auto; margin-right: auto; }
 .id-grid-4 { grid-template-columns: repeat(4, 1fr); }
 .reg-id-card { background: #fff; border: 1.5px solid var(--border-color); border-radius: 16px; padding: 10px 12px; text-align: center; transition: var(--transition); }
@@ -605,16 +606,15 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 /* 필수/선택 badge styles */
 .badge-required, .badge-optional {
     display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
-    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: 4px;
     vertical-align: middle;
 }
 
 .badge-required {
-    background: #fce7ef;
+    background: #f3b9cf;
     color: #fff;
 }
 
@@ -1024,6 +1024,48 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .remit-status.status-cancel { color: #9ca3af; }
 .remit-status.status-cancel svg { stroke: #9ca3af; }
 
+/* Improved Search Box Layout */
+.remit-search-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; align-items: flex-end; }
+.search-field-group { display: flex; flex-direction: column; gap: 6px; }
+.search-field-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+.search-date-group { grid-column: span 2; }
+.search-date-inputs { display: flex; align-items: center; gap: 8px; }
+.search-date-inputs .db-search-input { flex: 1; height: 46px; }
+.search-buttons { display: flex; gap: 8px; align-items: flex-end; justify-self: end; }
+.db-search-input, .db-search-type { height: 46px !important; }
+
+/* Hide columns on desktop */
+.hide-desktop { display: none !important; }
+
+/* Expandable Rows */
+.remit-row { cursor: pointer; transition: background-color 0.2s; }
+.remit-row:hover { background-color: var(--bg-light); }
+.remit-row.expanded { background-color: #e8f4f8; }
+.remit-detail-row { display: none; }
+.remit-detail-row.show { display: table-row; }
+.remit-detail-content { padding: 20px; background: #f8fafb; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); display: flex; gap: 32px; align-items: center; }
+.remit-detail-item { display: flex; flex-direction: column; gap: 4px; }
+.remit-detail-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+.remit-detail-value { font-size: 0.95rem; color: var(--text-dark); font-weight: 600; }
+
+/* Improved Status Colors - Less Fluorescent */
+.remit-status.status-review { color: #d97706; }
+.remit-status.status-review svg { stroke: #d97706; }
+.remit-status.status-processing { color: #d97706; }
+.remit-status.status-processing svg { stroke: #d97706; }
+.remit-status.status-approved { color: #059669; }
+.remit-status.status-approved svg { stroke: #059669; }
+.remit-status.status-complete { color: #2563eb; }
+.remit-status.status-complete svg { stroke: #2563eb; }
+.remit-status.status-success { color: #059669; }
+.remit-status.status-success svg { stroke: #059669; }
+.remit-status.status-failed { color: #dc2626; }
+.remit-status.status-failed svg { stroke: #dc2626; }
+.remit-status.status-pending { color: #6b7280; }
+.remit-status.status-pending svg { stroke: #6b7280; }
+.remit-status.status-cancel { color: #6b7280; }
+.remit-status.status-cancel svg { stroke: #6b7280; }
+
 /* Contact Info Bar */
 .contact-info-bar { background: #f8fafc; border-top: 1px solid var(--border-color); padding: 14px 0; }
 .contact-info-items { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 20px; }
@@ -1044,6 +1086,28 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .db-notice-table .th-num, .db-notice-table .td-num { display: none; }
   .db-notice-table .th-views, .db-notice-table .td-views { display: none; }
   .db-notice-table .col-num, .db-notice-table .col-views { display: none; }
+
+  /* Remittance List - Card Layout for Tablet/Mobile */
+  .remit-table { display: block; }
+  .remit-table thead { display: none; }
+  .remit-table tbody { display: block; }
+  .remit-table tbody tr.remit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; background: #fff; cursor: pointer; }
+  .remit-table tbody tr.remit-row:hover { background: var(--bg-light); box-shadow: var(--shadow-sm); }
+  .remit-table tbody tr.remit-row.expanded { background: #e8f4f8; }
+  .remit-table tbody tr.remit-row td { display: flex; flex-direction: column; gap: 4px; border: none; padding: 0; }
+  .remit-table tbody tr.remit-row td::before { content: attr(data-label); font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+  .remit-table tbody tr.remit-row td.hide-desktop { display: none !important; }
+  .remit-table tbody tr.remit-detail-row { display: none; grid-template-columns: 1fr; padding: 16px; border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 8px 8px; margin-top: -12px; margin-bottom: 12px; background: #f8fafb; }
+  .remit-table tbody tr.remit-detail-row.show { display: grid; }
+  .remit-table tbody tr.remit-detail-row td { border: none; padding: 0; }
+  .remit-detail-content { flex-direction: column; align-items: flex-start; gap: 16px; padding: 0; background: transparent; border: none; }
+  .remit-detail-item { width: 100%; }
+
+  /* Search Box Responsive */
+  .remit-search-box { grid-template-columns: 1fr; }
+  .search-date-group { grid-column: span 1; }
+  .search-buttons { justify-self: stretch; width: 100%; }
+  .search-buttons button { flex: 1; }
 }
 
 @media (max-width: 768px) {
