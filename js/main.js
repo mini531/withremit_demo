@@ -11,7 +11,7 @@ const translations = {
         'nav.language': '언어',
         
         // Hero
-        'hero.title': '해외송금, 이제는 쉽고 간편하게',
+        'hero.title': '해외송금,<br><span>이제는</span> 쉽고 간편하게',
         'hero.desc': '보내시는 분의 마음을 담아, 더 빠르고 더 저렴하게 전해드립니다. 언제 어디서나, 글로벌 기준의 빠르고 안전한 송금 솔루션',
         'hero.badge1': '최단 5분 송금',
         'hero.badge2': 'SGI 서울보증보험',
@@ -102,7 +102,7 @@ const translations = {
         'nav.language': 'Language',
         
         // Hero
-        'hero.title': 'International Remittance, Now Easy and Simple',
+        'hero.title': 'International Remittance,<br><span>Now</span> Easy and Simple',
         'hero.desc': 'We deliver your money with care, faster and more affordably. Anytime, anywhere, fast and secure global remittance solutions',
         'hero.badge1': '5 min transfer',
         'hero.badge2': 'SGI Guaranteed',
@@ -193,7 +193,7 @@ const translations = {
         'nav.language': '言語',
         
         // Hero
-        'hero.title': '海外送金、今はもっと簡単に',
+        'hero.title': '海外送金、<br><span>今は</span>もっと簡単に',
         'hero.desc': '送る方の気持ちを込めて、より速く、より安くお届けします。いつでもどこでも、グローバル基準の速くて安全な送金ソリューション',
         'hero.badge1': '最短5分送金',
         'hero.badge2': 'SGI保証保険',
@@ -284,7 +284,7 @@ const translations = {
         'nav.language': '语言',
         
         // Hero
-        'hero.title': '海外汇款，现在更简单便捷',
+        'hero.title': '海外汇款，<br><span>现在</span>更简单便捷',
         'hero.desc': '用心传递您的心意，更快更实惠。随时随地，全球标准的快速安全汇款解决方案',
         'hero.badge1': '最快5分钟',
         'hero.badge2': 'SGI保险担保',
