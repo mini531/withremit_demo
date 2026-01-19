@@ -54,6 +54,7 @@ const translations = {
         'country.mongolia': '몽골',
         'country.vietnam': '베트남',
         'country.srilanka': '스리랑카',
+        'country.bangladesh': '방글라데시',
         
         // Trust
         'trust.title': '언제나 마음 편한 안심 송금',
@@ -144,6 +145,7 @@ const translations = {
         'country.mongolia': 'Mongolia',
         'country.vietnam': 'Vietnam',
         'country.srilanka': 'Sri Lanka',
+        'country.bangladesh': 'Bangladesh',
         
         // Trust
         'trust.title': 'Peace of Mind Remittance',
@@ -234,6 +236,7 @@ const translations = {
         'country.mongolia': 'モンゴル',
         'country.vietnam': 'ベトナム',
         'country.srilanka': 'スリランカ',
+        'country.bangladesh': 'バングラデシュ',
         
         // Trust
         'trust.title': 'いつでも安心の送金',
@@ -393,11 +396,12 @@ const exchangeRates = {
     HKD: { rate: 0.0059, name: '홍콩', currency: '달러', symbol: 'HK$', flagImg: 'hk' },
     MNT: { rate: 2.5830, name: '몽골', currency: '투그릭', symbol: '₮', flagImg: 'mn' },
     VND: { rate: 18.5200, name: '베트남', currency: '동', symbol: '₫', flagImg: 'vn' },
-    LKR: { rate: 0.2450, name: '스리랑카', currency: '루피', symbol: '௹', flagImg: 'lk' }
+    LKR: { rate: 0.2450, name: '스리랑카', currency: '루피', symbol: '௹', flagImg: 'lk' },
+    BDT: { rate: 0.0815, name: '방글라데시', currency: '타카', symbol: '৳', flagImg: 'bd' }
 };
 
 const currencySymbols = {
-    'JPY': '¥', 'PHP': '₱', 'CNY': '¥', 'NPR': 'रू', 'AUD': 'A$', 'HKD': 'HK$', 'MNT': '₮', 'VND': '₫', 'LKR': '௹'
+    'JPY': '¥', 'PHP': '₱', 'CNY': '¥', 'NPR': 'रू', 'AUD': 'A$', 'HKD': 'HK$', 'MNT': '₮', 'VND': '₫', 'LKR': '௹', 'BDT': '৳'
 };
 
 const withdrawalFees = {
@@ -409,7 +413,8 @@ const withdrawalFees = {
     'HKD': 0,
     'MNT': 0,
     'VND': 0,
-    'LKR': 0
+    'LKR': 0,
+    'BDT': 0
 };
 
 let selectedCurrency = 'JPY';
