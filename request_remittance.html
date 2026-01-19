@@ -136,7 +136,7 @@
                                     <span class="calc-col-value" id="receiveAmount">-</span>
                                 </div>
                                 <div class="calc-col-item" id="withdrawalFeeRow">
-                                    <span class="calc-col-label">출금 수수료</span>
+                                    <span class="calc-col-label">수취 수수료</span>
                                     <span class="calc-col-value" id="withdrawalFeeAmount">-</span>
                                 </div>
                                 <div class="calc-col-item highlight">
@@ -788,7 +788,7 @@
             document.getElementById('depositAmount').textContent =
                 `₩ ${depositAmount.toLocaleString('ko-KR', {maximumFractionDigits: 0})}`;
 
-            // 출금 수수료 표시 및 그리드 컬럼 조정
+            // 수취 수수료 표시 및 그리드 컬럼 조정
             const withdrawalFeeRow = document.getElementById('withdrawalFeeRow');
             const withdrawalFeeAmount = document.getElementById('withdrawalFeeAmount');
             const calcResultCols = document.querySelector('.calc-result-cols');

@@ -2,6 +2,7 @@
 function initSidebar() {
     const sidebar = document.getElementById('dbSidebar');
     const toggleBtn = document.getElementById('sidebarToggle');
+    const closeBtn = document.getElementById('sidebarClose');
     const overlay = document.getElementById('dbOverlay');
 
     if (toggleBtn && sidebar && overlay) {
@@ -15,6 +16,14 @@ function initSidebar() {
         });
 
         overlay.addEventListener('click', () => {
+            sidebar.classList.remove('mobile-open');
+            overlay.classList.remove('active');
+        });
+    }
+
+    // 사이드바 닫기 버튼 (480px 이하 모바일에서만 표시)
+    if (closeBtn && sidebar && overlay) {
+        closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('mobile-open');
             overlay.classList.remove('active');
         });
