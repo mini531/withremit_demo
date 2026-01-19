@@ -108,7 +108,7 @@ p { font-size: 1rem; color: var(--text-body); }
 .calc-currency-btn .calc-currency-code { font-weight: 600; font-size: 0.9rem; color: var(--text-dark); }
 .calc-currency-arrow { color: var(--text-muted); transition: var(--transition); }
 .calc-currency-dropdown.open .calc-currency-arrow { transform: rotate(180deg); }
-.calc-currency-options { position: absolute; top: calc(100% + 4px); right: 0; background: #fff; border: 1px solid var(--border-color); border-radius: 10px; box-shadow: var(--shadow-lg); min-width: 140px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: var(--transition); z-index: 100; overflow: hidden; }
+.calc-currency-options { position: absolute; top: calc(100% + 4px); right: 0; background: #fff; border: 1px solid var(--border-color); border-radius: 10px; box-shadow: var(--shadow-lg); min-width: 280px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: var(--transition); z-index: 100; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
 .calc-currency-dropdown.open .calc-currency-options { opacity: 1; visibility: visible; transform: translateY(0); }
 .calc-currency-option { display: flex; align-items: center; gap: 10px; padding: 12px 16px; cursor: pointer; transition: var(--transition); }
 .calc-currency-option:hover { background: var(--bg-light); }
