@@ -601,6 +601,27 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 
 .field-label { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; display: block; font-weight: 600; text-align: left; }
 .field-desc { font-size: 13px; color: var(--primary-green); font-weight: 500; }
+
+/* 필수/선택 badge styles */
+.badge-required, .badge-optional {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.badge-required {
+    background: #fce7ef;
+    color: #fff;
+}
+
+.badge-optional {
+    background: #e5e7eb;
+    color: #6b7280;
+}
 .login-input { width: 100%; padding: 14px 16px; font-size: 1.05rem; font-weight: 500; border: 1.5px solid var(--border-color); border-radius: var(--radius); outline: none; transition: var(--transition); background: #fff; color: var(--text-dark); font-family: 'Pretendard', sans-serif !important; }
 
 
