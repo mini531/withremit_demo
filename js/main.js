@@ -19,7 +19,7 @@ const translations = {
         
         // Calculator
         'calc.title': '송금 시뮬레이션',
-        'calc.send': '보내실 금액',
+        'calc.send': '보내실 금액(최대송금액 {limit}원)',
         'calc.rate': '실시간 환율 적용',
         'calc.receive': '받으실 금액',
         'calc.result': '상대방이 받는 금액',
@@ -27,7 +27,7 @@ const translations = {
         'calc.btn': '지금 바로 송금하기',
         'calc.deposit': '입금할 금액',
         'calc.transferFee': '송금 수수료',
-        'calc.withdrawalFee': '출금 수수료',
+        'calc.withdrawalFee': '수취 수수료',
         'modal.limit.title': '송금 한도 초과',
         'modal.limit.memo': '외환거래법령에 따라 건당 최대 <b>$5,000(USD)</b>까지 송금이 가능합니다. 현재 환율 기준 송금 가능액인 <b>{limit}원</b>으로 조정되었습니다.',
         'modal.ok': '확인',
@@ -502,7 +502,14 @@ function applyTranslations() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         const translation = t(key);
-        if (translation) el.innerHTML = translation;
+        if (translation) {
+            if (key === 'calc.send') {
+                // Replace {limit} placeholder with actual max limit
+                el.innerHTML = translation.replace('{limit}', MAX_KRW_LIMIT.toLocaleString('ko-KR'));
+            } else {
+                el.innerHTML = translation;
+            }
+        }
     });
     document.documentElement.lang = currentLang;
 
