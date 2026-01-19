@@ -1006,7 +1006,14 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-rows-select:focus { outline: none; border-color: var(--primary-blue); }
 
 /* Remittance List Page */
-.remit-search-box { display: flex; gap: 8px; margin-bottom: 24px; align-items: center; }
+.remit-search-box { display: flex; gap: 8px; margin-bottom: 24px; align-items: flex-start; flex-wrap: wrap; }
+.remit-search-conditions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; transition: all 0.3s ease; max-height: 200px; overflow: hidden; }
+.remit-search-conditions.collapsed { max-height: 0; opacity: 0; visibility: hidden; }
+.remit-detail-toggle { display: flex; align-items: center; gap: 6px; padding: 10px 16px; background: #fff; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.remit-detail-toggle:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: var(--bg-light); }
+.remit-detail-toggle.active { background: var(--primary-blue); border-color: var(--primary-blue); color: #fff; }
+.remit-detail-toggle .toggle-text { font-weight: 600; }
+.remit-detail-toggle .hidden { display: none; }
 .remit-status-select { min-width: 140px; }
 .date-separator { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; margin: 0 4px; }
 .remit-quick-btns { display: flex; gap: 6px; }
@@ -1042,6 +1049,19 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .remit-status.status-pending svg { stroke: #9ca3af; }
 .remit-status.status-cancel { color: #9ca3af; }
 .remit-status.status-cancel svg { stroke: #9ca3af; }
+.remit-expand-cell { text-align: center; padding: 12px 8px; width: 40px; }
+.remit-expand-btn { background: none; border: none; padding: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: all 0.2s; }
+.remit-expand-btn:hover { background: var(--bg-light); }
+.remit-expand-btn .chevron-icon { transition: transform 0.3s ease; stroke: var(--text-muted); }
+.remit-row[data-expanded="true"] .chevron-icon { transform: rotate(90deg); }
+.remit-detail-row { display: none; }
+.remit-detail-row.expanded { display: table-row; }
+.remit-detail-row td { padding: 0; border-top: none; }
+.remit-detail-content { padding: 16px 24px; background: var(--bg-light); border-top: 1px solid var(--border-color); }
+.remit-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.remit-detail-item { display: flex; flex-direction: column; gap: 4px; }
+.remit-detail-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+.remit-detail-value { font-size: 0.9rem; color: var(--text-dark); font-weight: 600; }
 
 /* Improved Search Box Layout */
 .remit-search-box { display: flex; gap: 8px; margin-bottom: 16px; align-items: center; flex-wrap: wrap; }
