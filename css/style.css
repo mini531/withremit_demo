@@ -1194,15 +1194,6 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
     justify-content: space-between;
     align-items: center;
   }
-
-  /* Search Box Responsive */
-  .remit-search-box { flex-direction: column; align-items: stretch; }
-  .remit-search-box .db-search-type,
-  .remit-search-box .db-search-input { flex: 1 1 auto; }
-  .db-detail-toggle-btn { width: 100%; justify-content: center; }
-  .search-date-section { flex-direction: column; align-items: stretch; }
-  .search-date-section .db-search-input { flex: 1 1 auto; }
-  .remit-quick-btns-inline { margin-left: 0; justify-content: center; }
 }
 
 @media (max-width: 768px) {
