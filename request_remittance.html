@@ -811,8 +811,8 @@
                 inputGroup.classList.add('error');
             }
 
-            // select인 경우 직접 에러 클래스 추가
-            if (element.tagName === 'SELECT') {
+            // select, input, textarea인 경우 직접 에러 클래스 추가
+            if (element.tagName === 'SELECT' || element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.classList.add('error');
             }
 
@@ -830,6 +830,8 @@
         function clearAllErrors() {
             document.querySelectorAll('.input-box-group.error').forEach(el => el.classList.remove('error'));
             document.querySelectorAll('.select-styled.error').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('input.error').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('textarea.error').forEach(el => el.classList.remove('error'));
             document.querySelectorAll('.field-error').forEach(el => el.textContent = '');
         }
 
@@ -844,32 +846,32 @@
 
             // 필수 항목 검증
             const requiredFields = [
-                { id: 'remitCountry', name: '국가' },
-                { id: 'remitService', name: '서비스' },
-                { id: 'sendAmount', name: '송금 금액' },
-                { id: 'depositBank', name: '입금 은행' },
-                { id: 'depositorName', name: '입금자 명' },
-                { id: 'depositAccount', name: '입금 계좌' },
-                { id: 'accountHolder', name: '입금 계좌 명의' },
-                { id: 'beneficiaryName', name: '수취인명' },
-                { id: 'relationship', name: '수취인과의 관계' },
-                { id: 'beneficiaryBank', name: '수취 은행' },
-                { id: 'beneficiaryAccount', name: '수취 계좌 번호' },
-                { id: 'remitPurpose', name: '송금 목적' },
-                { id: 'fundSource', name: '자금 출처' },
-                { id: 'beneficiaryPhone', name: '전화번호' },
-                { id: 'beneficiaryAddress', name: '주소' }
+                { id: 'remitCountry', message: '국가를 선택해 주세요.' },
+                { id: 'remitService', message: '서비스를 선택해 주세요.' },
+                { id: 'sendAmount', message: '송금 금액을 입력해 주세요.' },
+                { id: 'depositBank', message: '입금 은행을 선택해 주세요.' },
+                { id: 'depositorName', message: '입금자 명을 입력해 주세요.' },
+                { id: 'depositAccount', message: '입금 계좌를 입력해 주세요.' },
+                { id: 'accountHolder', message: '입금 계좌 명의를 입력해 주세요.' },
+                { id: 'beneficiaryName', message: '수취인명을 입력해 주세요.' },
+                { id: 'relationship', message: '수취인과의 관계를 선택해 주세요.' },
+                { id: 'beneficiaryBank', message: '수취 은행을 선택해 주세요.' },
+                { id: 'beneficiaryAccount', message: '수취 계좌 번호를 입력해 주세요.' },
+                { id: 'remitPurpose', message: '송금 목적을 선택해 주세요.' },
+                { id: 'fundSource', message: '자금 출처를 선택해 주세요.' },
+                { id: 'beneficiaryPhone', message: '전화번호를 입력해 주세요.' },
+                { id: 'beneficiaryAddress', message: '주소를 입력해 주세요.' }
             ];
 
             // 일본인 경우에만 계좌 타입 필수
             if (country === 'JP') {
-                requiredFields.push({ id: 'accountType', name: '수취 계좌 타입' });
+                requiredFields.push({ id: 'accountType', message: '수취 계좌 타입을 선택해 주세요.' });
             }
 
             for (const field of requiredFields) {
                 const element = document.getElementById(field.id);
                 if (!element.value || element.value.trim() === '') {
-                    showFieldError(field.id, `${field.name}을(를) 입력해주세요.`);
+                    showFieldError(field.id, field.message);
                     hasError = true;
                     if (!firstErrorElement) {
                         firstErrorElement = element;
