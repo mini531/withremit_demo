@@ -29,7 +29,7 @@
                     <div class="limit-info-grid">
                         <div class="limit-info-item">
                             <div class="limit-label">1회 한도액</div>
-                            <div class="limit-value">$ 50,000</div>
+                            <div class="limit-value">$ 5,000</div>
                         </div>
                         <div class="limit-info-item">
                             <div class="limit-label">1년 한도액</div>
@@ -37,11 +37,11 @@
                         </div>
                         <div class="limit-info-item">
                             <div class="limit-label">송금액</div>
-                            <div class="limit-value">$ 50,000.00</div>
+                            <div class="limit-value">$ 5,000.00</div>
                         </div>
                         <div class="limit-info-item highlight">
                             <div class="limit-label">송금 가능 금액</div>
-                            <div class="limit-value">$ 50,000.00</div>
+                            <div class="limit-value">$ 5,000.00</div>
                         </div>
                     </div>
 
@@ -361,9 +361,9 @@
         window.exchangeRates = exchangeRates;
 
         // 송금 한도 상수 정의 (전역)
-        const MAX_LIMIT = 50000; // USD
+        const MAX_LIMIT = 5000; // USD
         const KRW_PER_USD = 1350;
-        const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD; // 67,500,000원
+        const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD; // 6,750,000원
 
         // 국가별 서비스 옵션 (서비스명과 변경가능 여부)
         const servicesByCountry = {
@@ -709,11 +709,8 @@
 
             const rateInfo = exchangeRates[country];
             const feeRate = country === 'NP' ? 0.005 : 0.01;
-            const MAX_LIMIT = 50000; // $50,000
-            const KRW_PER_USD = 1350;
-            const MAX_KRW_LIMIT = MAX_LIMIT * KRW_PER_USD;
 
-            // 한도 검증
+            // 한도 검증 (전역 상수 사용)
             if (amountType === 'send' && inputAmount > MAX_KRW_LIMIT) {
                 showLimitModal(`외환거래법령에 따라 건당 최대 <b>$${MAX_LIMIT.toLocaleString()}(USD)</b>까지 송금이 가능합니다.<br><br>현재 환율 기준 송금 가능액인 <b>₩${MAX_KRW_LIMIT.toLocaleString()}</b>까지 입력해주세요.`);
                 return;
@@ -815,12 +812,11 @@
                 }
             }
 
-            // 송금 금액 검증
+            // 송금 금액 검증 (전역 상수 사용)
             const sendAmount = parseFloat(document.getElementById('sendAmount').value.replace(/,/g, ''));
-            const maxKRW = 50000 * 1350; // $50,000 한도
 
-            if (sendAmount > maxKRW) {
-                showWarning(`1회 송금 한도(${maxKRW.toLocaleString('ko-KR')}원)를 초과했습니다.`);
+            if (sendAmount > MAX_KRW_LIMIT) {
+                showWarning(`1회 송금 한도(${MAX_KRW_LIMIT.toLocaleString('ko-KR')}원)를 초과했습니다.`);
                 return;
             }
 
@@ -929,15 +925,15 @@
                 // 수취 금액 기준: 외화 버튼 (국가별 한도액에 근사한 5단계 금액)
                 // 각 국가별 한도: 20%, 40%, 60%, 80%, ~95%
                 const quickAmounts = {
-                    JP: [1500000, 3000000, 4500000, 6000000, 7000000],        // 한도: 7,506,000엔
-                    PH: [500000, 1000000, 1500000, 2000000, 2500000],         // 한도: 2,841,750페소
-                    CN: [70000, 140000, 210000, 280000, 350000],              // 한도: 364,500위안
-                    NP: [1300000, 2600000, 3900000, 5200000, 6500000],        // 한도: 6,777,000루피
-                    AU: [15000, 30000, 45000, 60000, 70000],                  // 한도: 74,250호주달러
-                    HK: [80000, 160000, 240000, 320000, 380000],              // 한도: 398,250홍콩달러
-                    MN: [35000000, 70000000, 105000000, 140000000, 170000000], // 한도: 174,352,500투그릭
-                    VN: [250000000, 500000000, 750000000, 1000000000, 1200000000], // 한도: 1,250,100,000동
-                    LK: [3000000, 6000000, 9000000, 12000000, 16000000]       // 한도: 16,537,500루피
+                    JP: [150000, 300000, 450000, 600000, 700000],        // 한도: 750,600엔
+                    PH: [50000, 100000, 150000, 200000, 260000],         // 한도: 284,175페소
+                    CN: [7000, 14000, 21000, 28000, 34000],              // 한도: 36,450위안
+                    NP: [130000, 260000, 390000, 520000, 640000],        // 한도: 677,700루피
+                    AU: [1500, 3000, 4500, 6000, 7000],                  // 한도: 7,425호주달러
+                    HK: [8000, 16000, 24000, 32000, 37000],              // 한도: 39,825홍콩달러
+                    MN: [3500000, 7000000, 10500000, 14000000, 16500000], // 한도: 17,435,250투그릭
+                    VN: [25000000, 50000000, 75000000, 100000000, 118000000], // 한도: 125,010,000동
+                    LK: [300000, 600000, 900000, 1200000, 1550000]       // 한도: 1,653,750루피
                 };
 
                 // 해당 국가의 외화 한도 계산
