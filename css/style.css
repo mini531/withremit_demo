@@ -731,7 +731,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-my-layer.active { display: block; }
 .db-my-layer a { display: block; padding: 12px 20px; font-size: 14px; color: var(--text-dark); text-decoration: none; }
 .db-my-layer .logout-color { color: #ff5a5f; border-top: 1px solid #eee; }
-.db-main-container { padding: 20px 40px 40px; }
+.db-main-container { padding: 20px 20px 40px; }
 .db-layout-flex { display: flex; align-items: flex-start; position: relative; }
 .db-sidebar { width: 200px; background: transparent; border-radius: 0; border: none; box-shadow: none; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; overflow: visible; }
 .db-collapsed .db-sidebar { width: 0; overflow: hidden; opacity: 0;}
