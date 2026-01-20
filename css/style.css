@@ -1053,36 +1053,59 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 /* Improved Search Box Layout */
 .remit-search-box {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: row;
+  gap: 16px;
   margin-bottom: 16px;
-}
-
-/* Main Search Row - Horizontal Layout */
-.search-main-row {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 /* Search Conditions Wrapper - Left Side */
 .search-conditions-wrapper {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+/* Search Conditions Main - Always Visible */
+.search-conditions-main {
+  display: flex;
   gap: 8px;
   align-items: center;
-  flex: 1;
   flex-wrap: wrap;
+}
+
+/* Search Conditions Detail - Collapsible */
+.search-conditions-detail {
+  display: none;
+  gap: 8px;
+  padding-top: 0;
+  animation: slideDown 0.3s ease;
+}
+.search-conditions-detail.show {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* Search Buttons Wrapper - Right Side */
 .search-buttons-wrapper {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+/* Search Buttons Top - Query and Reset */
+.search-buttons-top {
+  display: flex;
   gap: 8px;
   align-items: center;
-  flex-shrink: 0;
-  margin-left: auto;
+}
+
+/* Search Buttons Bottom - Detail Toggle */
+.search-buttons-bottom {
+  display: flex;
 }
 
 /* Search Label */
@@ -1194,16 +1217,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   display: none;
 }
 
-/* Search Detail Section (Collapsible) */
-.db-search-detail {
-  display: none;
-  padding-top: 0;
-  animation: slideDown 0.3s ease;
-}
-.db-search-detail.show {
-  display: block;
-}
-
+/* Animation */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -1215,12 +1229,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   }
 }
 
-.search-detail-row {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
+/* Search Field Wrapper */
 .search-field-wrapper {
   display: flex;
   align-items: center;
@@ -1518,18 +1527,20 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .db-page-num:nth-child(n+7):nth-last-child(n+3) { display: none; }
   .remit-search-box { display: none; flex-direction: column; gap: 12px; }
   .remit-search-box.mobile-active { display: flex; }
-  .search-main-row { flex-direction: column; gap: 12px; }
   .search-conditions-wrapper { flex-direction: column; width: 100%; }
-  .search-buttons-wrapper { flex-direction: row; width: 100%; margin-left: 0; }
+  .search-conditions-main { flex-direction: column; width: 100%; }
+  .search-conditions-detail.show { flex-direction: column; width: 100%; }
+  .search-buttons-wrapper { flex-direction: row; width: 100%; align-items: center; }
+  .search-buttons-top { flex: 1; }
+  .search-buttons-bottom { flex-shrink: 0; }
   .remit-search-box .search-label { font-size: 0.85rem; }
   .remit-search-box .db-search-input.date-picker-custom { width: 100%; }
   .remit-search-box .date-separator { display: none; }
   .db-detail-toggle-btn { display: none !important; }
-  .db-search-detail { display: block !important; }
+  .search-conditions-detail { display: flex !important; }
   .db-search-btn { flex: 1; }
   .remit-search-box .db-reset-btn { width: auto; padding: 8px 16px; }
   .remit-search-box .db-reset-btn .reset-text { display: inline; }
-  .search-detail-row { flex-direction: column; gap: 12px; }
   .search-field-wrapper { flex-direction: column; align-items: flex-start; width: 100%; gap: 6px; }
   .search-field-wrapper .db-search-type { width: 100%; }
   .search-field-wrapper .db-search-input { width: 100%; min-width: 100%; }
