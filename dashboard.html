@@ -87,6 +87,7 @@
                     </div>
                 </div>
 
+                <!-- Division 1: 송금 시뮬레이션 + 현재 보유 잔액, 나의 송금 한도 -->
                 <div class="db-grid">
                     <!-- Left Column -->
                     <div class="db-col-calc">
@@ -211,85 +212,6 @@
 
                         <button class="calc-btn" data-i18n="calc.btn" onclick="goToRemittance()">지금 바로 송금하기</button>
                         </div>
-
-                        <!-- Ongoing Transfer Card -->
-                        <div class="db-info-card db-ongoing-card">
-                            <h3 class="db-card-title">최근 송금 내역</h3>
-                            <div class="db-ongoing-info">
-                                <div class="db-ongoing-row">
-                                    <span class="db-ongoing-label">대상</span>
-                                    <span class="db-ongoing-value">Tanaka (JP)</span>
-                                </div>
-                                <div class="db-ongoing-row">
-                                    <span class="db-ongoing-label">금액</span>
-                                    <span class="db-ongoing-value">₩ 1,000,000</span>
-                                </div>
-                                <div class="db-ongoing-row">
-                                    <span class="db-ongoing-label">상태</span>
-                                    <div class="db-status-inline">
-                                        <div class="db-status-icon-mini">
-                                            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
-                                                <circle cx="12" cy="12" r="10"></circle>
-                                                <polyline points="12 6 12 12 16 14"></polyline>
-                                            </svg>
-                                        </div>
-                                        <span class="db-ongoing-value status-complete">접수완료</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="db-ongoing-notice">송금이 완료되면 상태가 변경됩니다.</div>
-                        </div>
-
-                        <!-- Frequent Accounts -->
-                        <div class="db-info-card db-accounts-card">
-                            <h3 class="db-card-title">자주 쓰는 계좌</h3>
-                            <div class="db-account-list">
-                                <div class="db-account-item">
-                                    <div class="db-account-flag">
-                                        <img src="images/jp.png" alt="일본">
-                                    </div>
-                                    <div class="db-account-info">
-                                        <div class="db-account-name">Tanaka (일본)</div>
-                                        <div class="db-account-bank">JP 모건 ****1234</div>
-                                    </div>
-                                </div>
-                                <div class="db-account-item">
-                                    <div class="db-account-flag">
-                                        <img src="images/jp.png" alt="일본">
-                                    </div>
-                                    <div class="db-account-info">
-                                        <div class="db-account-name">Sato (일본)</div>
-                                        <div class="db-account-bank">미즈호 은행 ****9988</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="db-add-account">+ 새 계좌 등록하기</a>
-                        </div>
-
-                        <!-- Help Card -->
-                        <div class="db-info-card db-help-card">
-                            <h3 class="db-card-title">도움이 필요하신가요?</h3>
-                            <div class="db-help-btns-new">
-                                <button class="db-help-btn-new db-help-btn-outline">
-                                    <div class="db-help-icon">
-                                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                                        </svg>
-                                    </div>
-                                    <span>자주 묻는 질문</span>
-                                </button>
-                                <button class="db-help-btn-new db-help-btn-primary">
-                                    <div class="db-help-icon">
-                                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                        </svg>
-                                    </div>
-                                    <span>1:1 문의</span>
-                                </button>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Right Column -->
@@ -300,7 +222,6 @@
                             <div class="db-main-wallet">
                                 <div class="wallet-val-white">₩ 1,250,000</div>
                                 <div class="wallet-btns">
-                                    <button class="btn btn-white" style="height:44px; padding:0 30px;">잔액 충전</button>
                                     <button class="btn btn-white-outline" style="height:44px; padding:0 30px;">내 계좌로 인출</button>
                                 </div>
                             </div>
@@ -368,78 +289,173 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Recent Transactions -->
-                        <div class="db-info-card db-transactions-card">
-                            <h3 class="db-card-title">최근 거래 내역</h3>
-                            <div class="db-transaction-list-new">
-                                <div class="db-transaction-item-new">
-                                    <div class="db-trans-icon deposit">
-                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
-                                            <path d="M12 5v14M5 12l7 7 7-7"/>
+                <!-- Division 2: 최근 송금 내역, 최근 거래 내역, 자주 쓰는 계좌 (3단) -->
+                <div class="db-grid-3col">
+                    <!-- Ongoing Transfer Card -->
+                    <div class="db-info-card db-ongoing-card">
+                        <h3 class="db-card-title">최근 송금 내역</h3>
+                        <div class="db-ongoing-info">
+                            <div class="db-ongoing-row">
+                                <span class="db-ongoing-label">대상</span>
+                                <span class="db-ongoing-value">Tanaka (JP)</span>
+                            </div>
+                            <div class="db-ongoing-row">
+                                <span class="db-ongoing-label">금액</span>
+                                <span class="db-ongoing-value">₩ 1,000,000</span>
+                            </div>
+                            <div class="db-ongoing-row">
+                                <span class="db-ongoing-label">상태</span>
+                                <div class="db-status-inline">
+                                    <div class="db-status-icon-mini">
+                                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
                                         </svg>
                                     </div>
-                                    <div class="db-trans-info">
-                                        <div class="db-trans-date-new">2026.01.15</div>
-                                        <div class="db-trans-type-new deposit">입금</div>
-                                    </div>
-                                    <div class="db-trans-amounts">
-                                        <div class="db-trans-amount-new deposit">+500,000</div>
-                                        <div class="db-trans-balance-new">₩ 1,250,000</div>
-                                    </div>
-                                </div>
-                                <div class="db-transaction-item-new">
-                                    <div class="db-trans-icon withdraw">
-                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
-                                            <path d="M12 19V5M5 12l7-7 7 7"/>
-                                        </svg>
-                                    </div>
-                                    <div class="db-trans-info">
-                                        <div class="db-trans-date-new">2026.01.12</div>
-                                        <div class="db-trans-type-new withdraw">출금</div>
-                                    </div>
-                                    <div class="db-trans-amounts">
-                                        <div class="db-trans-amount-new withdraw">-1,000,000</div>
-                                        <div class="db-trans-balance-new">₩ 750,000</div>
-                                    </div>
-                                </div>
-                                <div class="db-transaction-item-new">
-                                    <div class="db-trans-icon deposit">
-                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
-                                            <path d="M12 5v14M5 12l7 7 7-7"/>
-                                        </svg>
-                                    </div>
-                                    <div class="db-trans-info">
-                                        <div class="db-trans-date-new">2026.01.10</div>
-                                        <div class="db-trans-type-new deposit">입금</div>
-                                    </div>
-                                    <div class="db-trans-amounts">
-                                        <div class="db-trans-amount-new deposit">+2,000,000</div>
-                                        <div class="db-trans-balance-new">₩ 1,750,000</div>
-                                    </div>
+                                    <span class="db-ongoing-value status-complete">접수완료</span>
                                 </div>
                             </div>
                         </div>
+                        <div class="db-ongoing-notice">송금이 완료되면 상태가 변경됩니다.</div>
+                    </div>
 
-                        <!-- Notices Card -->
-                        <div class="db-info-card db-notices-card">
-                            <div class="db-card-header">
-                                <h3 class="db-card-title">공지사항</h3>
-                                <a href="notice_list.html" class="db-more-link">더 보기</a>
+                    <!-- Recent Transactions -->
+                    <div class="db-info-card db-transactions-card">
+                        <h3 class="db-card-title">최근 거래 내역</h3>
+                        <div class="db-transaction-list-new">
+                            <div class="db-transaction-item-new">
+                                <div class="db-trans-icon deposit">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                                    </svg>
+                                </div>
+                                <div class="db-trans-info">
+                                    <div class="db-trans-date-new">2026.01.15</div>
+                                    <div class="db-trans-type-new deposit">입금</div>
+                                </div>
+                                <div class="db-trans-amounts">
+                                    <div class="db-trans-amount-new deposit">+500,000</div>
+                                    <div class="db-trans-balance-new">₩ 1,250,000</div>
+                                </div>
                             </div>
-                            <div class="db-notice-list">
-                                <a href="notice_detail.html?title=연말연시 영업일 안내" class="db-notice-item">
-                                    <span class="db-notice-title">연말연시 영업일 안내</span>
-                                    <span class="db-notice-date">2025.12.29</span>
-                                </a>
-                                <a href="notice_detail.html?title=추석 연휴에도 withremit은 정상근무합니다." class="db-notice-item">
-                                    <span class="db-notice-title">추석 연휴에도 withremit은 정상근무합니다.</span>
-                                    <span class="db-notice-date">2025.10.03</span>
-                                </a>
-                                <a href="notice_detail.html?title=설 연휴 중 농협은행, 지역 농협은행 인터넷 뱅킹 중지 안내" class="db-notice-item">
-                                    <span class="db-notice-title">설 연휴 중 농협은행, 지역 농협은행 인터넷 뱅킹 중지 안내</span>
-                                    <span class="db-notice-date">2025.01.24</span>
-                                </a>
+                            <div class="db-transaction-item-new">
+                                <div class="db-trans-icon withdraw">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <path d="M12 19V5M5 12l7-7 7 7"/>
+                                    </svg>
+                                </div>
+                                <div class="db-trans-info">
+                                    <div class="db-trans-date-new">2026.01.12</div>
+                                    <div class="db-trans-type-new withdraw">출금</div>
+                                </div>
+                                <div class="db-trans-amounts">
+                                    <div class="db-trans-amount-new withdraw">-1,000,000</div>
+                                    <div class="db-trans-balance-new">₩ 750,000</div>
+                                </div>
+                            </div>
+                            <div class="db-transaction-item-new">
+                                <div class="db-trans-icon deposit">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                                    </svg>
+                                </div>
+                                <div class="db-trans-info">
+                                    <div class="db-trans-date-new">2026.01.10</div>
+                                    <div class="db-trans-type-new deposit">입금</div>
+                                </div>
+                                <div class="db-trans-amounts">
+                                    <div class="db-trans-amount-new deposit">+2,000,000</div>
+                                    <div class="db-trans-balance-new">₩ 1,750,000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Frequent Accounts -->
+                    <div class="db-info-card db-accounts-card">
+                        <h3 class="db-card-title">자주 쓰는 계좌</h3>
+                        <div class="db-account-list">
+                            <div class="db-account-item">
+                                <div class="db-account-flag">
+                                    <img src="images/jp.png" alt="일본">
+                                </div>
+                                <div class="db-account-info">
+                                    <div class="db-account-name">Tanaka (일본)</div>
+                                    <div class="db-account-bank">JP 모건 ****1234</div>
+                                </div>
+                            </div>
+                            <div class="db-account-item">
+                                <div class="db-account-flag">
+                                    <img src="images/jp.png" alt="일본">
+                                </div>
+                                <div class="db-account-info">
+                                    <div class="db-account-name">Sato (일본)</div>
+                                    <div class="db-account-bank">미즈호 은행 ****9988</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="db-add-account">+ 새 계좌 등록하기</a>
+                    </div>
+                </div>
+
+                <!-- Division 3: 공지사항, 도움이 필요하신가요? (2단) -->
+                <div class="db-grid-2col">
+                    <!-- Notices Card -->
+                    <div class="db-info-card db-notices-card">
+                        <div class="db-card-header">
+                            <h3 class="db-card-title">공지사항</h3>
+                            <a href="notice_list.html" class="db-more-link">더 보기</a>
+                        </div>
+                        <div class="db-notice-list">
+                            <a href="notice_detail.html?title=연말연시 영업일 안내" class="db-notice-item">
+                                <span class="db-notice-title">연말연시 영업일 안내</span>
+                                <span class="db-notice-date">2025.12.29</span>
+                            </a>
+                            <a href="notice_detail.html?title=추석 연휴에도 withremit은 정상근무합니다." class="db-notice-item">
+                                <span class="db-notice-title">추석 연휴에도 withremit은 정상근무합니다.</span>
+                                <span class="db-notice-date">2025.10.03</span>
+                            </a>
+                            <a href="notice_detail.html?title=설 연휴 중 농협은행, 지역 농협은행 인터넷 뱅킹 중지 안내" class="db-notice-item">
+                                <span class="db-notice-title">설 연휴 중 농협은행, 지역 농협은행 인터넷 뱅킹 중지 안내</span>
+                                <span class="db-notice-date">2025.01.24</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Help Card -->
+                    <div class="db-info-card db-help-card">
+                        <h3 class="db-card-title">도움이 필요하신가요?</h3>
+                        <div class="db-help-btns-new">
+                            <button class="db-help-btn-new db-help-btn-outline">
+                                <div class="db-help-icon">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                </div>
+                                <span>자주 묻는 질문</span>
+                            </button>
+                            <button class="db-help-btn-new db-help-btn-primary">
+                                <div class="db-help-icon">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                </div>
+                                <span>1:1 문의</span>
+                            </button>
+                        </div>
+                        <div class="db-help-qr-section">
+                            <div class="db-help-qr-item">
+                                <h4>LINE</h4>
+                                <img src="images/lineQR.png" alt="LINE QR Code" class="db-help-qr-code">
+                            </div>
+                            <div class="db-help-qr-item">
+                                <h4>Kakao Talk</h4>
+                                <img src="images/kakaoQR.png" alt="Kakao Talk QR Code" class="db-help-qr-code">
                             </div>
                         </div>
                     </div>
