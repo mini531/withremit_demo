@@ -1058,23 +1058,39 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .remit-status.status-cancel svg { stroke: #9ca3af; }
 
 /* Improved Search Box Layout */
-.remit-search-box { display: flex; gap: 8px; margin-bottom: 16px; align-items: flex-start; flex-wrap: wrap; }
-.remit-search-box .db-search-type { flex: 0 1 180px; height: 38px; }
-.remit-search-box .db-search-input { flex: 1 1 200px; height: 38px; }
-.db-detail-toggle-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--bg-light); border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-.db-detail-toggle-btn:hover { background: var(--primary-blue); color: #fff; border-color: var(--primary-blue); }
+.remit-search-box { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; flex-wrap: wrap; }
+
+/* Search Conditions Wrapper - Left Side */
+.search-conditions-wrapper { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+
+/* Always Visible: Period + Quick Buttons */
+.search-conditions-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.search-label { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); min-width: 50px; }
+.search-conditions-main .db-search-input { width: 150px; height: 36px; padding: 8px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; }
+.search-conditions-main .date-separator { color: var(--text-muted); margin: 0 4px; }
+
+/* Collapsible Detail Section */
+.search-conditions-detail { display: none; align-items: center; gap: 12px; padding-top: 8px; flex-wrap: wrap; }
+.search-conditions-detail.show { display: flex; }
+.search-field-wrapper { display: flex; align-items: center; gap: 8px; }
+.search-field-wrapper .search-label { font-size: 0.85rem; min-width: 70px; }
+.search-field-wrapper .db-search-type { width: 140px; height: 36px; padding: 8px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; }
+.search-field-wrapper .db-search-input { width: 400px; height: 36px; padding: 8px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; }
+
+/* Action Buttons Wrapper - Right Side */
+.search-buttons-wrapper { display: flex; gap: 8px; align-items: flex-start; }
+.db-detail-toggle-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; height: 36px; background: #fff; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.db-detail-toggle-btn:hover { color: var(--primary-blue); }
 .db-detail-toggle-btn .plus-icon { display: block; }
 .db-detail-toggle-btn .minus-icon { display: none; }
 .db-detail-toggle-btn.active .plus-icon { display: none; }
 .db-detail-toggle-btn.active .minus-icon { display: block; }
-.db-detail-toggle-btn.active {
-  color: var(--primary-blue);
-}
+.db-detail-toggle-btn.active { color: var(--primary-blue); }
 
 /* Search and Reset Buttons */
-.remit-search-box .db-search-btn {
+.search-buttons-wrapper .db-search-btn {
   padding: 8px 20px;
-  height: 38px;
+  height: 36px;
   background: #7A8E96;
   color: #fff;
   border: none;
@@ -1084,26 +1100,43 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.remit-search-box .db-search-btn:hover {
+.search-buttons-wrapper .db-search-btn:hover {
   background: #6a7e86;
 }
 
-.remit-search-box .db-reset-btn {
+.search-buttons-wrapper .db-reset-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px;
-  width: 38px;
-  height: 38px;
+  padding: 8px;
+  width: 36px;
+  height: 36px;
   background: transparent;
   color: var(--text-muted);
   border: 1.5px solid var(--border-color);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
+}
+
+.search-buttons-wrapper .db-reset-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.search-buttons-wrapper .db-reset-btn:hover {
+  border-color: var(--text-dark);
+  color: var(--text-dark);
+}
+
+.search-buttons-wrapper .db-reset-btn .reset-text {
+  display: none;
 }
 
 /* Search Detail Section (Collapsible) */
@@ -1895,28 +1928,35 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   }
 }
 
-/* Remittance Card Grid Layout */
-.remit-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
-.remit-card { background: #fff; border: 1.5px solid var(--border-color); border-radius: 12px; padding: 16px; transition: all 0.3s; position: relative; cursor: pointer; }
-.remit-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: var(--primary-blue); }
-.remit-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-.remit-card-receipt { display: flex; flex-direction: column; gap: 2px; }
+/* Remittance Card Grid Layout - 1 card per row */
+.remit-card-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+.remit-card { background: #fff; border: 1.5px solid var(--border-color); border-radius: 8px; padding: 16px 20px; transition: all 0.2s; display: flex; align-items: center; gap: 24px; }
+.remit-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--primary-blue); }
+
+/* Left: Receipt Number + Date + View Button */
+.remit-card-left { display: flex; flex-direction: column; gap: 4px; min-width: 140px; }
 .remit-card-receipt-num { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); }
-.remit-card-date { font-size: 0.75rem; color: var(--text-muted); }
-.remit-card-view-btn { padding: 6px 12px; background: var(--primary-blue); color: #fff; border: none; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-.remit-card-view-btn:hover { background: var(--primary-green); transform: scale(1.05); }
-.remit-card-amounts { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-color); }
+.remit-card-date { font-size: 0.8rem; color: var(--text-muted); }
+.remit-card-view-btn { margin-top: 6px; padding: 5px 12px; background: var(--primary-blue); color: #fff; border: none; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; align-self: flex-start; }
+.remit-card-view-btn:hover { background: var(--primary-green); }
+
+/* Center: Send Amount → Receive Amount */
+.remit-card-amounts { display: flex; align-items: center; gap: 16px; min-width: 360px; }
 .remit-card-amount { display: flex; flex-direction: column; gap: 4px; }
-.remit-card-amount-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
-.remit-card-amount-value { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 4px; }
-.remit-card-flag { width: 20px; height: 14px; border-radius: 2px; object-fit: cover; }
-.remit-card-details { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-.remit-card-detail-row { display: flex; justify-content: space-between; align-items: center; }
-.remit-card-detail-label { font-size: 0.75rem; color: var(--text-muted); }
-.remit-card-detail-value { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
-.remit-card-map { width: 100%; height: 80px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; background: #e5e7eb; }
-.remit-card-map img { width: 100%; height: 100%; object-fit: cover; }
-.remit-card-status-wrapper { display: flex; justify-content: center; }
+.remit-card-amount-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
+.remit-card-amount-value { font-size: 1.15rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 6px; }
+.remit-card-flag { width: 24px; height: 16px; border-radius: 2px; object-fit: cover; }
+.remit-card-arrow { color: var(--text-muted); display: flex; align-items: center; }
+
+/* Right: Details (Name, Bank, Receive Date) */
+.remit-card-details { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.remit-card-detail-row { display: flex; gap: 8px; font-size: 0.85rem; }
+.remit-card-detail-label { color: var(--text-muted); min-width: 50px; }
+.remit-card-detail-value { font-weight: 600; color: var(--text-dark); }
+
+/* Far Right: Status */
+.remit-card-status-wrapper { display: flex; align-items: center; margin-left: auto; }
+.remit-card-status-wrapper .remit-status { padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
 
 /* Remittance Detail Modal */
 .remit-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
@@ -1937,6 +1977,8 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .remit-modal-footer { padding: 16px 24px; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 12px; }
 
 @media (max-width: 768px) {
-  .remit-card-grid { grid-template-columns: 1fr; }
+  .remit-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .remit-card-amounts { min-width: 100%; flex-wrap: wrap; }
+  .remit-card-details { width: 100%; }
   .remit-detail-grid { grid-template-columns: 1fr; }
 }
