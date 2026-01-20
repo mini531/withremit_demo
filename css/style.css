@@ -947,6 +947,12 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-help-btn-new svg { stroke: var(--text-muted); }
 .db-help-btn-new span { font-size: 1rem; font-weight: 600; color: var(--text-dark); }
 
+/* Help Card QR Section */
+.db-help-qr-section { display: flex; gap: 20px; justify-content: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-color); }
+.db-help-qr-item { text-align: center; flex: 1; max-width: 150px; }
+.db-help-qr-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; color: var(--text-dark); }
+.db-help-qr-code { width: 100%; max-width: 120px; height: auto; border-radius: var(--radius); background: #fff; border: 1px solid var(--border-color); }
+
 /* Header Balance Display */
 .db-balance-display { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--text-dark); }
 .balance-label { color: var(--text-muted); font-weight: 500; }
@@ -1253,6 +1259,10 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .db-limit-item { gap: 10px; }
   .db-help-btns { grid-template-columns: 1fr; }
   .db-help-btns-new { grid-template-columns: 1fr; }
+  .db-help-qr-section { gap: 16px; margin-top: 20px; padding-top: 20px; }
+  .db-help-qr-item { max-width: 120px; }
+  .db-help-qr-item h4 { font-size: 0.85rem; margin-bottom: 10px; }
+  .db-help-qr-code { max-width: 100px; }
   .db-user-dropdown .btn { padding: 0 10px; min-width: 40px; }
   .db-user-dropdown .btn svg { margin: 0; }
   .db-user-dropdown .btn-text { display: none; }
