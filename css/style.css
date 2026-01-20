@@ -1053,14 +1053,21 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 /* Improved Search Box Layout */
 .remit-search-box {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
   margin-bottom: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
-/* Search Conditions Wrapper */
+/* Main Search Row - Horizontal Layout */
+.search-main-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Search Conditions Wrapper - Left Side */
 .search-conditions-wrapper {
   display: flex;
   gap: 8px;
@@ -1069,7 +1076,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   flex-wrap: wrap;
 }
 
-/* Search Buttons Wrapper */
+/* Search Buttons Wrapper - Right Side */
 .search-buttons-wrapper {
   display: flex;
   gap: 8px;
@@ -1108,18 +1115,18 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   flex-wrap: nowrap;
 }
 
-/* Detail Toggle Button - Positioned Below Search Box */
+/* Detail Toggle Button - Now in Search Buttons Wrapper */
 .db-detail-toggle-btn {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 8px;
-  margin-top: 8px;
+  padding: 8px 12px;
+  height: 38px;
   background: transparent;
-  border: none;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 400;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
   color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.2s;
@@ -1127,6 +1134,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 }
 .db-detail-toggle-btn:hover {
   color: var(--primary-blue);
+  border-color: var(--primary-blue);
   background: rgba(0, 123, 255, 0.05);
 }
 .db-detail-toggle-btn .plus-icon { display: block; }
@@ -1189,8 +1197,6 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 /* Search Detail Section (Collapsible) */
 .db-search-detail {
   display: none;
-  margin-top: 12px;
-  margin-bottom: 12px;
   padding-top: 0;
   animation: slideDown 0.3s ease;
 }
@@ -1512,6 +1518,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .db-page-num:nth-child(n+7):nth-last-child(n+3) { display: none; }
   .remit-search-box { display: none; flex-direction: column; gap: 12px; }
   .remit-search-box.mobile-active { display: flex; }
+  .search-main-row { flex-direction: column; gap: 12px; }
   .search-conditions-wrapper { flex-direction: column; width: 100%; }
   .search-buttons-wrapper { flex-direction: row; width: 100%; margin-left: 0; }
   .remit-search-box .search-label { font-size: 0.85rem; }
