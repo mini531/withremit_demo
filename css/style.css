@@ -1147,6 +1147,36 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .search-date-section .date-separator { margin: 0 4px; }
 .remit-quick-btns-inline { display: flex; gap: 4px; flex-wrap: wrap; margin-left: 12px; }
 
+/* New Remittance Search Form */
+.remit-search-wrapper { margin-bottom: 20px; }
+.remit-search-main { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 0; }
+.remit-search-main .search-label { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); min-width: 50px; }
+.remit-search-main .search-date-input { width: 150px; height: 38px; padding: 8px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-family: inherit; outline: none; transition: all 0.2s; }
+.remit-search-main .search-date-input:focus { border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(27,94,158,0.1); }
+.remit-search-main .date-separator { color: var(--text-muted); margin: 0 4px; font-size: 1.1rem; }
+.remit-quick-btn-small { padding: 7px 12px; background: #fff; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.remit-quick-btn-small:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: var(--primary-blue-light); }
+.remit-quick-btn-small.active { background: var(--primary-blue); color: #fff; border-color: var(--primary-blue); }
+.search-divider { color: var(--border-color); font-size: 1.2rem; margin: 0 8px; }
+.search-submit-btn { padding: 8px 24px; background: #6b7280; color: #fff; border: none; border-radius: 6px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.search-submit-btn:hover { background: #4b5563; }
+.search-reset-btn { width: 32px; height: 32px; background: transparent; border: 1.5px solid var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; color: var(--text-muted); padding: 0; }
+.search-reset-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: var(--primary-blue-light); }
+.search-detail-toggle { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: transparent; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.85rem; font-weight: 500; color: var(--text-dark); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.search-detail-toggle:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+.search-detail-toggle.active { background: var(--primary-blue-light); border-color: var(--primary-blue); color: var(--primary-blue); }
+.search-detail-toggle .toggle-arrow { transition: transform 0.3s; }
+.search-detail-toggle.active .toggle-arrow { transform: rotate(180deg); }
+
+/* Detail Search Section (Collapsible) */
+.remit-search-detail { display: none; padding: 12px 0; border-top: 1px solid var(--border-color); margin-top: 8px; align-items: center; gap: 12px; }
+.remit-search-detail.show { display: flex; }
+.remit-search-detail .search-label { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); min-width: 50px; }
+.search-status-select { width: 160px; height: 38px; padding: 8px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-family: inherit; outline: none; transition: all 0.2s; cursor: pointer; background: #fff; }
+.search-status-select:focus { border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(27,94,158,0.1); }
+.search-receipt-input { width: 300px; height: 38px; padding: 8px 12px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-family: inherit; outline: none; transition: all 0.2s; }
+.search-receipt-input:focus { border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(27,94,158,0.1); }
+
 .search-field-group { display: flex; flex-direction: column; gap: 6px; }
 .search-field-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
 
@@ -1944,8 +1974,8 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .remit-card-amounts { display: flex; align-items: center; gap: 16px; min-width: 360px; }
 .remit-card-amount { display: flex; flex-direction: column; gap: 4px; }
 .remit-card-amount-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
-.remit-card-amount-value { font-size: 1.15rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 6px; }
-.remit-card-flag { width: 24px; height: 16px; border-radius: 2px; object-fit: cover; }
+.remit-card-amount-value { font-size: 1.15rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
+.remit-card-flag { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 .remit-card-arrow { color: var(--text-muted); display: flex; align-items: center; }
 
 /* Right: Details (Name, Bank, Receive Date) */
