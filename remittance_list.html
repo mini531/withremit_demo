@@ -27,23 +27,52 @@
                 <div class="db-content-card">
                     <!-- Main Search Row (Always Visible) -->
                     <div class="db-search-box remit-search-box" id="searchBox">
-                        <!-- Search Conditions Wrapper -->
-                        <div class="search-conditions-wrapper">
-                            <div class="search-label">기간</div>
-                            <input type="date" class="db-search-input date-picker-custom" id="startDate">
-                            <span class="date-separator">-</span>
-                            <input type="date" class="db-search-input date-picker-custom" id="endDate">
+                        <!-- Main Row: Left (conditions) and Right (buttons) -->
+                        <div class="search-main-row">
+                            <!-- Left Side: Search Conditions -->
+                            <div class="search-conditions-wrapper">
+                                <div class="search-label">기간</div>
+                                <input type="date" class="db-search-input date-picker-custom" id="startDate">
+                                <span class="date-separator">-</span>
+                                <input type="date" class="db-search-input date-picker-custom" id="endDate">
 
-                            <div class="remit-quick-btns-inline">
-                                <button type="button" class="remit-quick-btn-small" data-days="0">당일</button>
-                                <button type="button" class="remit-quick-btn-small" data-days="7">1주일</button>
-                                <button type="button" class="remit-quick-btn-small" data-days="30">1개월</button>
-                                <button type="button" class="remit-quick-btn-small" data-days="90">3개월</button>
-                                <button type="button" class="remit-quick-btn-small" data-days="180">6개월</button>
+                                <div class="remit-quick-btns-inline">
+                                    <button type="button" class="remit-quick-btn-small" data-days="0">당일</button>
+                                    <button type="button" class="remit-quick-btn-small" data-days="7">1주일</button>
+                                    <button type="button" class="remit-quick-btn-small" data-days="30">1개월</button>
+                                    <button type="button" class="remit-quick-btn-small" data-days="90">3개월</button>
+                                    <button type="button" class="remit-quick-btn-small" data-days="180">6개월</button>
+                                </div>
+                            </div>
+
+                            <!-- Right Side: Buttons Wrapper -->
+                            <div class="search-buttons-wrapper">
+                                <button class="db-search-btn">조회</button>
+                                <button class="db-reset-btn" title="초기화">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                                        <path d="M21 3v5h-5"></path>
+                                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                                        <path d="M3 21v-5h5"></path>
+                                    </svg>
+                                    <span class="reset-text">초기화</span>
+                                </button>
+                                <button class="db-detail-toggle-btn" id="detailToggleBtn">
+                                    <svg class="toggle-icon plus-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                                    </svg>
+                                    <svg class="toggle-icon minus-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                                    </svg>
+                                    <span class="toggle-text">세부 검색</span>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Detailed Search Row (Collapsible) -->
+                        <!-- Detailed Search Row (Collapsible - Below) -->
                         <div class="db-search-detail" id="searchDetail">
                             <div class="search-detail-row">
                                 <div class="search-field-wrapper">
@@ -67,35 +96,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Buttons Wrapper -->
-                        <div class="search-buttons-wrapper">
-                            <button class="db-search-btn">조회</button>
-                            <button class="db-reset-btn" title="초기화">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
-                                    <path d="M21 3v5h-5"></path>
-                                    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
-                                    <path d="M3 21v-5h5"></path>
-                                </svg>
-                                <span class="reset-text">초기화</span>
-                            </button>
-                        </div>
                     </div>
-
-                    <!-- Detail Toggle Button (Below Search Box) -->
-                    <button class="db-detail-toggle-btn" id="detailToggleBtn">
-                        <svg class="toggle-icon plus-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="16"></line>
-                            <line x1="8" y1="12" x2="16" y2="12"></line>
-                        </svg>
-                        <svg class="toggle-icon minus-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="8" y1="12" x2="16" y2="12"></line>
-                        </svg>
-                        <span class="toggle-text">세부 검색</span>
-                    </button>
 
                     <div class="db-table-info">
                         <span class="db-total-count">총 <strong>10</strong>건</span>
