@@ -1147,7 +1147,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .search-date-section { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .search-date-section .db-search-input { flex: 0 1 150px; height: 36px; }
 .search-date-section .date-separator { margin: 0 4px; }
-.remit-quick-btns-inline { display: flex; gap: 4px; flex-wrap: wrap; margin-left: 12px; }
+.remit-quick-btns-inline { display: flex; gap: 2px; flex-wrap: wrap; margin-left: 12px; }
 
 /* New Remittance Search Form - Left/Right Split Layout */
 .remit-search-wrapper { margin-bottom: 20px; }
@@ -2040,8 +2040,11 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .db-search-btn { flex: 1; }
 
   /* Quick Buttons - 1 row, 5 buttons */
-  .remit-quick-btns-inline { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 4px; margin-left: 0; }
+  .remit-quick-btns-inline { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 2px; margin-left: 0; }
   .remit-quick-btn-small { flex: 1; min-width: auto; font-size: 0.7rem; padding: 6px 8px; }
+
+  /* Always show detail search on mobile */
+  .remit-search-detail { display: flex !important; }
 
   /* Card Mobile Layout - Keep amounts in one row */
   .remit-card-body { flex-direction: row; flex-wrap: wrap; gap: 8px; }
@@ -2087,7 +2090,9 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   }
 
   /* Detail search - status and receipt number each on own line */
+  /* Always show detail search on mobile */
   .remit-search-detail {
+    display: flex !important;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
