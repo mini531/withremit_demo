@@ -978,9 +978,10 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-search-btn:hover { background: #6a7e86; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(122,142,150,0.3); }
 .db-search-btn svg { flex-shrink: 0; }
 .db-search-btn .search-btn-icon { display: none; }
-.db-reset-btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; background: transparent; color: var(--text-muted); border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.db-reset-btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; background: #fff; color: var(--text-muted); border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .db-reset-btn:hover { border-color: var(--text-muted); color: var(--text-dark); background: var(--bg-light); }
 .db-reset-btn svg { flex-shrink: 0; }
+.db-reset-btn .reset-text { display: inline; }
 .db-reset-btn .reset-btn-text { display: none; }
 .db-table-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .db-mobile-search-toggle { display: none; align-items: center; gap: 6px; padding: 8px 16px; background: #7A8E96; color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 0.9rem; font-weight: 600; }
@@ -1312,6 +1313,11 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
     justify-content: space-between;
     align-items: center;
   }
+}
+
+/* Tablet view (768px - 1024px): Hide reset button text, show only icon */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .db-reset-btn .reset-text { display: none; }
 }
 
 @media (max-width: 768px) {
