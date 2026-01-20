@@ -981,7 +981,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-reset-btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; background: #fff; color: var(--text-muted); border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .db-reset-btn:hover { border-color: var(--text-muted); color: var(--text-dark); background: var(--bg-light); }
 .db-reset-btn svg { flex-shrink: 0; }
-.db-reset-btn .reset-text { display: inline; }
+.db-reset-btn .reset-text { display: none; }
 .db-reset-btn .reset-btn-text { display: none; }
 .db-table-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .db-mobile-search-toggle { display: none; align-items: center; gap: 6px; padding: 8px 16px; background: #7A8E96; color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 0.9rem; font-weight: 600; }
@@ -1315,10 +1315,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   }
 }
 
-/* Tablet view (768px - 1024px): Hide reset button text, show only icon */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .db-reset-btn .reset-text { display: none; }
-}
+/* Tablet view (768px - 1024px): Reset button text already hidden by default */
 
 @media (max-width: 768px) {
   .db-sidebar { position: fixed; left: -220px; width: 200px; height: calc(100vh - 55px); max-height: calc(100vh - 55px); top: 55px; z-index: 1100; background: #fff; box-shadow: var(--shadow-lg); overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 20px 0 60px 0; }
@@ -1441,6 +1438,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .db-search-btn { width: 100%; justify-content: center; padding: 8px 16px; font-size: 0.85rem; }
   .db-reset-btn { width: 100%; justify-content: center; }
   .db-reset-btn .reset-text { display: inline; }
+  .db-reset-btn .reset-btn-text { display: inline; }
   .db-mobile-search-toggle { display: flex; }
   .db-total-count { font-size: 0.85rem; }
   .db-rows-select { font-size: 0.8rem; padding: 6px 28px 6px 10px; }
@@ -1471,6 +1469,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .db-search-btn { flex: 1; }
   .remit-search-box .db-reset-btn { width: auto; padding: 8px 16px; }
   .remit-search-box .db-reset-btn .reset-text { display: inline; }
+  .remit-search-box .db-reset-btn .reset-btn-text { display: inline; }
   .search-field-wrapper { flex-direction: column; align-items: flex-start; width: 100%; gap: 6px; }
   .search-field-wrapper .db-search-type { width: 100%; }
   .search-field-wrapper .db-search-input { width: 100%; min-width: 100%; }
@@ -2136,6 +2135,9 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
     gap: 8px;
     border-radius: 8px;
     padding: 10px;
+  }
+  .db-reset-btn .reset-text {
+    display: inline;
   }
   .db-reset-btn .reset-btn-text {
     display: inline;
