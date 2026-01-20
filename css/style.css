@@ -1108,31 +1108,34 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   flex-wrap: nowrap;
 }
 
-/* Detail Toggle Button */
+/* Detail Toggle Button - Positioned Below Search Box */
 .db-detail-toggle-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  background: var(--bg-light);
-  border: 1.5px solid var(--border-color);
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-dark);
+  gap: 4px;
+  padding: 4px 8px;
+  margin-top: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
 }
 .db-detail-toggle-btn:hover {
-  background: var(--primary-blue);
-  color: #fff;
-  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+  background: rgba(0, 123, 255, 0.05);
 }
 .db-detail-toggle-btn .plus-icon { display: block; }
 .db-detail-toggle-btn .minus-icon { display: none; }
 .db-detail-toggle-btn.active .plus-icon { display: none; }
 .db-detail-toggle-btn.active .minus-icon { display: block; }
+.db-detail-toggle-btn.active {
+  color: var(--primary-blue);
+}
 
 /* Search and Reset Buttons */
 .remit-search-box .db-search-btn {
@@ -1186,7 +1189,8 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 /* Search Detail Section (Collapsible) */
 .db-search-detail {
   display: none;
-  margin-bottom: 16px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   padding-top: 0;
   animation: slideDown 0.3s ease;
 }
