@@ -421,21 +421,24 @@
                 const card = document.createElement('div');
                 card.className = 'remit-card';
                 card.innerHTML = `
-                    <div class="remit-card-header">
-                        <div class="remit-card-receipt">
-                            <div class="remit-card-receipt-num">${data.receiptNum}</div>
-                            <div class="remit-card-date">${data.date}</div>
-                        </div>
-                        <button class="remit-card-view-btn" onclick="openModal(${index})">내역 보기</button>
+                    <div class="remit-card-left">
+                        <div class="remit-card-receipt-num">${data.receiptNum}</div>
+                        <div class="remit-card-date">${data.date}</div>
+                        <button class="remit-card-view-btn" onclick="openModal(${index})">내역 보기 ›</button>
                     </div>
                     <div class="remit-card-amounts">
                         <div class="remit-card-amount">
                             <span class="remit-card-amount-label">송금</span>
-                            <span class="remit-card-amount-value">${data.sendAmount}</span>
+                            <span class="remit-card-amount-value">
+                                <img src="images/kr.png" alt="KR" class="remit-card-flag">
+                                ${data.sendAmount}
+                            </span>
                         </div>
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
+                        <div class="remit-card-arrow">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
                         <div class="remit-card-amount">
                             <span class="remit-card-amount-label">입금</span>
                             <span class="remit-card-amount-value">
@@ -457,9 +460,6 @@
                             <span class="remit-card-detail-label">수취일</span>
                             <span class="remit-card-detail-value">${data.receiveDate}</span>
                         </div>
-                    </div>
-                    <div class="remit-card-map">
-                        ${getMapPlaceholder(data.country)}
                     </div>
                     <div class="remit-card-status-wrapper">
                         <span class="remit-status status-${data.status}">
