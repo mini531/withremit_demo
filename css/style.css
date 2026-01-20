@@ -941,9 +941,9 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 
 /* Help Card - New Design */
 .db-help-btns-new { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.db-help-btn-new { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 0; border-radius: var(--radius); border: none; cursor: pointer; transition: all 0.2s; min-height: 120px; background: #f8f9fa; color: var(--text-dark); }
+.db-help-btn-new { display: flex; flex-direction: row-reverse; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-radius: var(--radius); border: none; cursor: pointer; transition: all 0.2s; min-height: 60px; background: #f8f9fa; color: var(--text-dark); }
 .db-help-btn-new:hover { background: #e9ecef; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.db-help-icon { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
+.db-help-icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .db-help-btn-new svg { stroke: var(--text-muted); }
 .db-help-btn-new span { font-size: 1rem; font-weight: 600; color: var(--text-dark); }
 
