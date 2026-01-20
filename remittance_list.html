@@ -69,17 +69,33 @@
                             </div>
                         </div>
 
-                    <div class="db-search-detail" id="searchDetail">
-                        <div class="search-date-section">
-                            <input type="date" class="db-search-input date-picker-custom" id="startDate2">
-                            <span class="date-separator">~</span>
-                            <input type="date" class="db-search-input date-picker-custom" id="endDate2">
-                            <div class="remit-quick-btns-inline">
-                                <button type="button" class="remit-quick-btn-small active" data-days="0">당일</button>
-                                <button type="button" class="remit-quick-btn-small" data-days="7">일주일</button>
-                                <button type="button" class="remit-quick-btn-small" data-days="30">1개월</button>
-                                <button type="button" class="remit-quick-btn-small" data-days="90">3개월</button>
-                            </div>
+                        <!-- Right: Action Buttons -->
+                        <div class="search-buttons-wrapper">
+                            <button class="db-detail-toggle-btn" id="detailToggleBtn">
+                                <span class="toggle-text">세부 검색</span>
+                                <svg class="plus-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"></path>
+                                </svg>
+                                <svg class="minus-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14"></path>
+                                </svg>
+                            </button>
+                            <button class="db-search-btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                검색
+                            </button>
+                            <button class="db-reset-btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                                    <path d="M21 3v5h-5"></path>
+                                    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                                    <path d="M3 21v-5h5"></path>
+                                </svg>
+                                <span class="reset-text">초기화</span>
+                            </button>
                         </div>
                     </div>
 
@@ -596,6 +612,20 @@
                         `;
                         detailContent.appendChild(item3);
                     }
+                }
+            });
+        }
+
+        // Detail search toggle
+        const detailToggleBtn = document.getElementById('detailToggleBtn');
+        const searchDetail = document.getElementById('searchDetail');
+
+        if (detailToggleBtn && searchDetail) {
+            detailToggleBtn.addEventListener('click', () => {
+                detailToggleBtn.classList.toggle('active');
+                searchDetail.classList.toggle('show');
+            });
+        }
 
         // Mobile search toggle
         const mobileSearchToggle = document.getElementById('mobileSearchToggle');
@@ -611,11 +641,6 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             renderCards();
-
-            // Initialize search conditions as collapsed
-            if (searchConditions) {
-                searchConditions.classList.add('collapsed');
-            }
 
             // Modal close handlers
             document.getElementById('modalClose').addEventListener('click', closeModal);
