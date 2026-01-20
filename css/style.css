@@ -969,7 +969,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-content-card { background: #fff; border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
 .db-page-header { margin-bottom: 24px; }
 .db-page-title { font-size: 1.75rem; font-weight: 700; color: var(--text-dark); margin: 0; }
-.db-search-box { display: flex; gap: 8px; margin-bottom: 24px; align-items: center; transition: max-height 0.3s ease, opacity 0.3s ease; overflow: hidden; }
+.db-search-box { display: flex; gap: 8px; margin-bottom: 24px; align-items: center; transition: max-height 0.3s ease, opacity 0.3s ease; overflow: hidden; background-color: #F8F9FA; padding: 20px; border-radius: 8px; }
 .db-search-type { padding: 10px 32px 10px 14px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-weight: 500; color: var(--text-dark); background: #fff; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8E96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; transition: var(--transition); min-width: 120px; }
 .db-search-type:hover, .db-search-type:focus { outline: none; border-color: var(--primary-blue); }
 .db-search-input { flex: 1; padding: 10px 16px; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; transition: var(--transition); }
@@ -977,11 +977,12 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-search-btn { display: flex; align-items: center; gap: 6px; padding: 10px 20px; background: #7A8E96; color: #fff; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .db-search-btn:hover { background: #6a7e86; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(122,142,150,0.3); }
 .db-search-btn svg { flex-shrink: 0; }
+.db-search-btn .search-btn-icon { display: none; }
 .db-reset-btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; background: transparent; color: var(--text-muted); border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .db-reset-btn:hover { border-color: var(--text-muted); color: var(--text-dark); background: var(--bg-light); }
 .db-reset-btn svg { flex-shrink: 0; }
-.db-reset-btn .reset-text { display: none; }
-.db-table-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-top: 16px; border-top: 1px solid var(--border-color); }
+.db-reset-btn .reset-btn-text { display: none; }
+.db-table-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .db-mobile-search-toggle { display: none; align-items: center; gap: 6px; padding: 8px 16px; background: #7A8E96; color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 0.9rem; font-weight: 600; }
 .db-mobile-search-toggle:hover { background: #6a7e86; }
 .db-mobile-search-toggle .close-icon, .db-mobile-search-toggle .close-text { display: none; }
@@ -1149,7 +1150,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 
 /* New Remittance Search Form - Left/Right Split Layout */
 .remit-search-wrapper { margin-bottom: 20px; }
-.remit-search-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+.remit-search-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; background-color: #F8F9FA; padding: 20px; border-radius: 8px; }
 
 /* Left Side: Search Conditions */
 .remit-search-left { flex: 1; display: flex; flex-direction: column; }
@@ -2055,4 +2056,87 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .remit-card-status-wrapper { width: 100%; margin-left: 0; margin-top: 8px; }
 
   .remit-detail-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  /* Search Form 480px Layout */
+  .remit-search-row { flex-direction: column; gap: 12px; }
+  .remit-search-left { width: 100%; }
+  .remit-search-section { flex-direction: column; align-items: flex-start; width: 100%; gap: 8px; }
+
+  /* Period section in one line */
+  .remit-search-section > .search-label,
+  .remit-search-section > .db-search-input,
+  .remit-search-section > .date-separator {
+    display: inline-block;
+  }
+
+  /* Quick buttons full width on next line */
+  .remit-quick-btns-inline {
+    width: 100%;
+    margin-left: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  /* Detail search - status and receipt number each on own line */
+  .remit-search-detail {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 12px;
+  }
+  .remit-search-detail .search-label {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .db-search-type {
+    width: 100%;
+  }
+  .db-search-input {
+    width: 100%;
+  }
+
+  /* Search buttons - one per line with icons */
+  .remit-search-right {
+    width: 100%;
+  }
+  .remit-search-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  .db-search-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .db-search-btn .search-btn-icon {
+    display: block;
+  }
+  .db-reset-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .db-reset-btn .reset-btn-text {
+    display: inline;
+  }
+
+  /* Hide detail toggle button */
+  .remit-detail-toggle-btn {
+    display: none;
+  }
+
+  /* Card status padding 0 */
+  .remit-card-status-wrapper .remit-status {
+    padding: 0;
+  }
 }
