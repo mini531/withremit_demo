@@ -987,8 +987,8 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-mobile-search-toggle { display: none; align-items: center; justify-content: center; gap: 6px; padding: 12px 16px; background: #fff; color: var(--text-dark); border: 1.5px solid var(--border-color); border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 0.9rem; font-weight: 600; width: 100%; margin-bottom: 16px; }
 .db-mobile-search-toggle:hover { background: #f9f9f9; }
 .db-mobile-search-toggle .close-icon, .db-mobile-search-toggle .close-text { display: none; }
-.db-mobile-search-toggle.active { background: #7A8E96; color: #fff; border-color: #7A8E96; }
-.db-mobile-search-toggle.active:hover { background: #6a7e86; }
+.db-mobile-search-toggle.active { background: #fff; color: var(--text-dark); border-color: var(--border-color); }
+.db-mobile-search-toggle.active:hover { background: #f9f9f9; }
 .db-mobile-search-toggle.active .search-icon, .db-mobile-search-toggle.active .search-text { display: none; }
 .db-mobile-search-toggle.active .close-icon, .db-mobile-search-toggle.active .close-text { display: inline; }
 .db-mobile-search-toggle svg { flex-shrink: 0; }
@@ -1149,7 +1149,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .search-date-section { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .search-date-section .db-search-input { flex: 0 1 150px; height: 36px; }
 .search-date-section .date-separator { margin: 0 4px; }
-.remit-quick-btns-inline { display: flex; gap: 2px; flex-wrap: wrap; margin-left: 12px; }
+.remit-quick-btns-inline { display: flex; gap: 2px; flex-wrap: wrap; }
 
 /* New Remittance Search Form - Left/Right Split Layout */
 .remit-search-wrapper { margin-bottom: 20px; }
@@ -1157,14 +1157,14 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 
 /* Left Side: Search Conditions */
 .remit-search-left { flex: 1; display: flex; flex-direction: column; }
-.remit-search-section { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.remit-search-section { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .search-label { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); min-width: 50px; }
 .date-separator { color: var(--text-muted); margin: 0 4px; font-size: 1.1rem; }
 
 /* Date Picker Custom Style */
 .date-picker-custom { padding: 8px 8px 8px 16px !important; }
 
-.remit-quick-btn-small { padding: 7px 12px; background: #fff; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.remit-quick-btn-small { padding: 8px 10px; background: #fff; border: 1.5px solid var(--border-color); border-radius: 6px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .remit-quick-btn-small:hover { border-color: var(--primary-blue); color: var(--primary-blue); background: var(--primary-blue-light); }
 
 /* Right Side: Buttons */
@@ -1985,7 +1985,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .remit-card-col { display: flex; align-items: center; }
 
 /* Column 1: KR Flag + Send/Deposit Amounts */
-.remit-card-kr-amounts { display: flex; align-items: center; gap: 12px; min-width: 200px; }
+.remit-card-kr-amounts { display: flex; align-items: center; gap: 12px; min-width: 170px; }
 .remit-card-flag { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex-shrink: 0; }
 .remit-card-amounts-krw { display: flex; flex-direction: column; gap: 4px; }
 .remit-card-amount-row { display: flex; align-items: center; gap: 8px; }
@@ -2004,10 +2004,10 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .remit-card-details { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 300px; align-items: flex-start; }
 .remit-card-detail-row { display: flex; gap: 8px; font-size: 0.85rem; }
 .remit-card-detail-label { color: var(--text-muted); min-width: 50px; flex-shrink: 0; }
-.remit-card-detail-value { font-weight: 600; color: var(--text-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.remit-card-detail-value { font-weight: 600; color: var(--text-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px; }
 
 /* Column 4: Status */
-.remit-card-status-wrapper { display: flex; align-items: center; margin-left: auto; }
+.remit-card-status-wrapper { display: flex; align-items: center; margin-left: auto; min-width: 100px; }
 .remit-card-status-wrapper .remit-status { padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
 
 /* Remittance Detail Modal */
@@ -2041,7 +2041,7 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .db-search-btn { flex: 1; }
 
   /* Quick Buttons - 1 row, 5 buttons */
-  .remit-quick-btns-inline { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 2px; margin-left: 0; }
+  .remit-quick-btns-inline { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 2px; margin-left: 0; justify-content: flex-end; }
   .remit-quick-btn-small { flex: 1; min-width: auto; font-size: 0.7rem; padding: 6px 8px; }
 
   /* Always show detail search on mobile */
@@ -2063,7 +2063,9 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .remit-card-receive-amount .remit-card-amount-value { font-size: 0.9rem; }
 
   .remit-card-details { width: 100%; min-width: 100%; margin-top: 8px; }
+  .remit-card-detail-value { max-width: 250px; }
   .remit-card-status-wrapper { width: 100%; margin-left: 0; margin-top: 8px; }
+  .remit-card-status-wrapper .remit-status { padding: 0; }
 
   .remit-detail-grid { grid-template-columns: 1fr; }
 }
@@ -2076,9 +2078,11 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 
   /* Period section in one line */
   .remit-search-section > .search-label,
-  .remit-search-section > .db-search-input,
-  .remit-search-section > .date-separator {
+  .remit-search-section > .db-search-input {
     display: inline-block;
+  }
+  .remit-search-section > .date-separator {
+    display: none;
   }
 
   /* Quick buttons full width on next line */
