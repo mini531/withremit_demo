@@ -2044,6 +2044,10 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .remit-quick-btns-inline { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 2px; margin-left: 0; justify-content: flex-end; }
   .remit-quick-btn-small { flex: 1; min-width: auto; font-size: 0.7rem; padding: 6px 8px; }
 
+  /* Search section mobile layout */
+  .remit-search-section { gap: 2px; width: 100%; }
+  .search-label { width: 100%; }
+
   /* Always show detail search on mobile - each field on separate line */
   .remit-search-detail { display: flex !important; flex-direction: column; gap: 12px; }
   .remit-search-detail .search-label { width: 100%; }
@@ -2080,7 +2084,8 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   /* Search Form 480px Layout */
   .remit-search-row { flex-direction: column; gap: 12px; }
   .remit-search-left { width: 100%; }
-  .remit-search-section { flex-direction: column; align-items: flex-start; width: 100%; gap: 8px; }
+  .remit-search-section { flex-direction: column; align-items: flex-start; width: 100%; gap: 2px; }
+  .search-label { width: 100%; }
 
   /* Period section in one line */
   .remit-search-section > .search-label,
