@@ -2038,14 +2038,20 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
   .remit-search-row { flex-direction: column; }
   .remit-search-right { width: 100%; align-items: flex-start; }
   .remit-search-buttons { width: 100%; }
-  .db-search-btn { flex: 1; }
+  .db-search-btn { flex: 1; justify-content: center; }
 
   /* Quick Buttons - 1 row, 5 buttons */
   .remit-quick-btns-inline { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 2px; margin-left: 0; justify-content: flex-end; }
   .remit-quick-btn-small { flex: 1; min-width: auto; font-size: 0.7rem; padding: 6px 8px; }
 
-  /* Always show detail search on mobile */
-  .remit-search-detail { display: flex !important; }
+  /* Always show detail search on mobile - each field on separate line */
+  .remit-search-detail { display: flex !important; flex-direction: column; gap: 12px; }
+  .remit-search-detail .search-label { width: 100%; }
+  .remit-search-detail .db-search-type { width: 100%; }
+  .remit-search-detail .db-search-input { width: 100%; }
+
+  /* Hide detail toggle button on mobile */
+  .remit-detail-toggle-btn { display: none; }
 
   /* Card Mobile Layout - Keep amounts in one row */
   .remit-card-body { flex-direction: row; flex-wrap: wrap; gap: 8px; }
