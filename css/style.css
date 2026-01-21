@@ -984,9 +984,11 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 .db-reset-btn .reset-text { display: none; }
 .db-reset-btn .reset-btn-text { display: none; }
 .db-table-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.db-mobile-search-toggle { display: none; align-items: center; gap: 6px; padding: 8px 16px; background: #7A8E96; color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 0.9rem; font-weight: 600; }
-.db-mobile-search-toggle:hover { background: #6a7e86; }
+.db-mobile-search-toggle { display: none; align-items: center; justify-content: center; gap: 6px; padding: 12px 16px; background: #fff; color: var(--text-dark); border: 1.5px solid var(--border-color); border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-size: 0.9rem; font-weight: 600; width: 100%; margin-bottom: 16px; }
+.db-mobile-search-toggle:hover { background: #f9f9f9; }
 .db-mobile-search-toggle .close-icon, .db-mobile-search-toggle .close-text { display: none; }
+.db-mobile-search-toggle.active { background: #7A8E96; color: #fff; border-color: #7A8E96; }
+.db-mobile-search-toggle.active:hover { background: #6a7e86; }
 .db-mobile-search-toggle.active .search-icon, .db-mobile-search-toggle.active .search-text { display: none; }
 .db-mobile-search-toggle.active .close-icon, .db-mobile-search-toggle.active .close-text { display: inline; }
 .db-mobile-search-toggle svg { flex-shrink: 0; }
