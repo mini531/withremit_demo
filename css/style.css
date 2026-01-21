@@ -748,9 +748,9 @@ textarea.error:focus { border-color: #ef4444 !important; box-shadow: 0 0 0 3px r
 @keyframes keypadPop { from { opacity: 0; transform: translate(-50%, 15px); } to { opacity: 1; transform: translate(-50%, 0); } }
 
 
-.db-body { background: var(--bg-section); min-height: 100vh; }
+.db-body { background: var(--bg-section); min-height: 100vh; padding-top: 72px; }
 .db-body.db-menu-open { overflow: hidden; }
-.db-header-sticky { position: sticky; top: 0; z-index: 1000; background: #fff; border-bottom: 1px solid var(--border-color); }
+.db-header-sticky { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #fff; border-bottom: 1px solid var(--border-color); }
 .db-header-sticky .nav-right { display: flex !important; align-items: center; gap: 15px; }
 .db-header-sticky .lang-select { display: block !important; }
 .db-header-sticky .db-user-dropdown { display: block !important; }
